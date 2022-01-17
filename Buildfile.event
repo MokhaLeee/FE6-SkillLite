@@ -1,0 +1,8 @@
+#include "EAstdlib.event"
+#include "Extensions/Hack Installation.txt"
+#include 6CDefinitions.event
+#include Custom Definations.event
+
+ORG FreeSpace
+	#include "EngineHacks/MasterHackInstaller.event"
+

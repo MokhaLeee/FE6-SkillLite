@@ -1,0 +1,18 @@
+#ifndef ANTI_HUFFMAN
+#define ANTI_HUFFMAN
+
+// Credit: 7743
+
+PUSH
+ORG $384c
+#incbin 384c.bin
+
+ORG CURRENTOFFSET-4
+POIN Anti_Huffman_Core
+POP
+
+ALIGN 4
+Anti_Huffman_Core:
+	#incbin 2dc460.bin
+	
+#endif // ANTI_HUFFMAN

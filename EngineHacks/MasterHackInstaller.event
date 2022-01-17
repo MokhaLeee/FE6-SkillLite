@@ -1,0 +1,22 @@
+/////////////////////////////////////////////////////////
+//                                                     //
+//               Master Hack Installer                 //
+//                                                     //
+/////////////////////////////////////////////////////////
+
+PUSH
+ORG FreeSpaceBLRange 	//defined in custom definitions
+#define inBLRange
+	
+
+#undef inBLRange
+POP
+
+// #include "Fonts/Anti-Huffman/Anti-Huffman.event"
+// #include "Fonts/unicode/unicode.event"
+// #include "Fonts/unicode/unicode-transcoder.event"
+// #include "Fonts/unicode/unicode-strings.event"
+
+#include "CoreSupport/UnitAction/UnitAction.event"
+#include "CoreSupport/UnitMenu/UnitMenu.event"
+

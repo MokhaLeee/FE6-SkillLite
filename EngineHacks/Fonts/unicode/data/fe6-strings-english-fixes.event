@@ -1,0 +1,12 @@
+PUSH
+    // str and skl label not shifted
+    ORG $06EDAA
+    BYTE 0x00
+    ORG $3193F5
+    BYTE 0x00
+    // rearrange items of the item help box
+    ORG $07113C
+    BYTE 0x30
+    ORG $0711AA
+    BYTE 0x20
+POP

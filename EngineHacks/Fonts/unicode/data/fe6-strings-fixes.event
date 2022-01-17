@@ -1,0 +1,31 @@
+PUSH
+    // fix battle anims level up labels to be a char*[] rather than a char[5][]
+    // without this fix, the string converter doesn't work correctly
+    // this overwrites string repointer
+    ORG $05D384
+    POIN $1C9FEC
+    ORG $05D4B8
+    POIN $1CA014
+    ORG $05D38C
+    SHORT $580D // ldr r5, [r1, r0]
+    ORG $05D3DA
+    BYTE 4 // mov r0, #4
+    ORG $1C9FEC
+    POIN UString_Banim_LevelUp_Label_Physical_Hp
+    POIN UString_Banim_LevelUp_Label_Physical_Strength
+    POIN UString_Banim_LevelUp_Label_Physical_Skill
+    POIN UString_Banim_LevelUp_Label_Physical_Speed
+    POIN UString_Banim_LevelUp_Label_Physical_Luck
+    POIN UString_Banim_LevelUp_Label_Physical_Defense
+    POIN UString_Banim_LevelUp_Label_Physical_Resistance
+    POIN UString_Banim_LevelUp_Label_Physical_Con
+    ORG $1CA014
+    POIN UString_Banim_LevelUp_Label_Magical_Hp
+    POIN UString_Banim_LevelUp_Label_Magical_Magic
+    POIN UString_Banim_LevelUp_Label_Magical_Skill
+    POIN UString_Banim_LevelUp_Label_Magical_Speed
+    POIN UString_Banim_LevelUp_Label_Magical_Luck
+    POIN UString_Banim_LevelUp_Label_Magical_Defense
+    POIN UString_Banim_LevelUp_Label_Magical_Resistance
+    POIN UString_Banim_LevelUp_Label_Magical_Con
+POP

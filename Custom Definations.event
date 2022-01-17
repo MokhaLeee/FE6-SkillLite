@@ -1,0 +1,14 @@
+#ifndef CUSTOM_DEF_H
+	#define CUSTOM_DEF_H
+
+	#ifndef HACK_INSTALLATION
+		#include "Extensions/Hack Installation.txt"
+	#endif
+
+	
+	// Free Space Defination
+	#define FreeSpaceBLRange $9FAC0
+	#define FreeSpace0 $69B670 // End at 0x6A0000
+	#define FreeSpace $7FF0B0
+	
+#endif // CUSTOM_DEF_H

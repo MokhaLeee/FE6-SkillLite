@@ -1,0 +1,72 @@
+
+#include MenuDef.h.event
+
+ALIGN 4
+// We just want to reset right x coord
+// So don't bother to remake such a lot functions
+// #include "src/MenuDecomp.lyn.event"
+
+PUSH
+	// reset right x coord
+	ORG $1BB80
+	BYTE 20
+
+	ORG $1EC0A
+	BYTE 20
+
+	ORG $1BAD0
+	BYTE 20
+
+	ORG $1EB64
+	BYTE 20
+
+	ORG $1F9FA
+	BYTE 20
+
+	ORG $1EC74
+	BYTE 20
+
+
+	// Repoint Unit Menu
+	ORG $5C7600
+	BYTE 1 3 9 0 	// x, y, w, h
+	BYTE 0 0 0 0	// style, ALIGN
+	POIN UnitMenuTable
+	WORD 0			// on_init
+	WORD 0			// on_end
+	WORD 0			// ?
+	POIN $8041E75	// on_b_press
+	POIN $8041F45	// on_r_press
+	POIN $8041E79	// on_help_box
+POP
+
+
+
+
+ALIGN 4
+UnitMenuTable:
+	UM_Size
+	UM_Attack
+	UM_Staff
+	UM_Play
+	UM_Dance
+	UM_Steal
+	UM_Talk
+	UM_Support
+	UM_Visit
+	UM_Chest
+	UM_Door
+	UM_Armory
+	UM_Vendor
+	UM_Secret
+	UM_Arena
+	UM_Rescue
+	UM_Drop
+	UM_Take
+	UM_Give
+	UM_Item
+	UM_Trade
+	UM_Supply
+	UM_Wait
+	UM_Separator
+
