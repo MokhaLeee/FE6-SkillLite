@@ -16,6 +16,13 @@ rm ./Tools/CLib/reference/Definitions.h.o
 make lyn
 
 
+# Assembling Tables
+echo "Make C2EA"
+cd "$base_dir/Tables"
+rm *.event
+python3 c2ea.py ../FE6.gba
+
+
 # Make Hack
 echo "Preparing ROM"
 cp -f "$source_rom" "$target_rom"

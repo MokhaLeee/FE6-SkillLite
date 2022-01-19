@@ -199,6 +199,7 @@ struct JInfo
     /* 44 */ void const* unk_44;
 };
 
+typedef struct Unit Unit;
 struct Unit
 {
     /* 00 */ struct PInfo const* pinfo;
@@ -326,13 +327,13 @@ bool CanActiveUnitStillMove(void);
 
 extern struct Unit* gActiveUnit;
 
-extern u8 EWRAM_DATA gActiveUnitId;
-extern struct Vec2 EWRAM_DATA gActiveUnitMoveOrigin;
+extern u8 gActiveUnitId;
+extern struct Vec2 gActiveUnitMoveOrigin;
 
-extern struct Unit EWRAM_DATA gUnitArrayBlue[UNIT_AMOUNT_BLUE];
-extern struct Unit EWRAM_DATA gUnitArrayRed[UNIT_AMOUNT_RED];
-extern struct Unit EWRAM_DATA gUnitArrayGreen[UNIT_AMOUNT_GREEN];
-extern struct Unit EWRAM_DATA gUnitArrayPurple[UNIT_AMOUNT_PURPLE];
+extern struct Unit gUnitArrayBlue[UNIT_AMOUNT_BLUE];
+extern struct Unit gUnitArrayRed[UNIT_AMOUNT_RED];
+extern struct Unit gUnitArrayGreen[UNIT_AMOUNT_GREEN];
+extern struct Unit gUnitArrayPurple[UNIT_AMOUNT_PURPLE];
 
 #define UNIT_FACTION(unit) ((unit)->id & 0xC0)
 #define UNIT_ATTRIBUTES(unit) (((unit)->pinfo->attributes) | ((unit)->jinfo->attributes))

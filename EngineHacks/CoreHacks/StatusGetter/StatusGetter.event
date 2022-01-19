@@ -1,0 +1,18 @@
+#ifndef STATUS_GETTER
+#define STATUS_GETTER
+
+#include "src/msgCore.lyn.event"
+
+
+ALIGN 4
+PowGetters:
+SpdGetters:
+SklGetters:
+LckGetters:
+DefGetters:
+ResGetters:
+HpMaxGetters:
+MovGetters:
+	WORD 0
+
+#endif // STATUS_GETTER

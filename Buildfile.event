@@ -5,4 +5,11 @@
 
 ORG FreeSpace
 	#include "EngineHacks/MasterHackInstaller.event"
+	#include "Tables/Table Installer.event"
 
+
+// For Debug
+PUSH
+	ORG $679B43
+	BYTE 0x50		// Roy's base Level, 8=level1, 0x50=level10
+POP

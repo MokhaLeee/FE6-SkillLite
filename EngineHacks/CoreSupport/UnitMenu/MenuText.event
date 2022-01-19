@@ -1,0 +1,96 @@
+#ifndef FE6_MENU_TEXT
+#define FE6_MENU_TEXT
+
+msg_UM_Seize:
+	String(Seize)
+	BYTE 0
+
+msg_UM_Attack:
+	String(Attack)
+	BYTE 0
+
+msg_UM_Staff:
+	String(Staff)
+	BYTE 0	
+
+msg_UM_Play:
+	String(Play)
+	BYTE 0
+
+msg_UM_Dance:
+	String(Dance)
+	BYTE 0
+
+msg_UM_Steal:
+	String(Steal)
+	BYTE 0
+
+msg_UM_Talk:
+	String(Talk)
+	BYTE 0
+	
+msg_UM_Support:
+	String(Support)
+	BYTE 0
+
+msg_UM_Visit:
+	String(Visit)
+	BYTE 0
+
+msg_UM_Chest:
+	String(Chest)
+	BYTE 0	
+
+msg_UM_Door:
+	String(Door)
+	BYTE 0
+
+msg_UM_Armory:
+	String(Armory)
+	BYTE 0
+
+msg_UM_Vendor:
+	String(Vendor)
+	BYTE 0
+
+msg_UM_Secret:
+	String(Secret)
+	BYTE 0
+	
+msg_UM_Arena:
+	String(Arena)
+	BYTE 0
+
+msg_UM_Rescue:
+	String(Rescue)
+	BYTE 0
+
+msg_UM_Drop:
+	String(Drop)
+	BYTE 0	
+
+msg_UM_Take:
+	String(Take)
+	BYTE 0
+
+msg_UM_Give:
+	String(Give)
+	BYTE 0
+
+msg_UM_Item:
+	String(Item)
+	BYTE 0
+
+msg_UM_Trade:
+	String(Trade)
+	BYTE 0
+	
+msg_UM_Supply:
+	String(Supply)
+	BYTE 0
+	
+msg_UM_Wait:
+	String(Wait)
+	BYTE 0		
+#endif // FE6_MENU_TEXT
+

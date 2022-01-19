@@ -1,0 +1,21 @@
+#ifndef ICON_DISPLAY
+#define ICON_DISPLAY
+
+
+#ifndef ICON_SHEET_COUNT
+	#define ICON_SHEET_COUNT 4
+#endif
+
+#include "src/IconCore.lyn.event"
+#include "src/UserFuncs.lyn.event"
+
+ALIGN 4
+IconGetters:
+	POIN GetVanillaIconGfx 	// Sheet #0, vanilla
+	// POIN GetSkillIconGfx	// Sheet #0, skill
+	ORG (IconGetters + 4 * ICON_SHEET_COUNT)
+
+#define InjectIconSheet(aSheetIndex, aIconGetterFunc) "PUSH; ORG IconGetters + 4 * (aSheetIndex); POIN (aIconGetterFunc); POP"
+
+
+#endif // ICON_DISPLAY

@@ -8,7 +8,7 @@ ORG $384c
 #incbin 384c.bin
 
 ORG CURRENTOFFSET-4
-POIN Anti_Huffman_Core
+POIN Anti_Huffman_Core|1
 POP
 
 ALIGN 4

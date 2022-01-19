@@ -1,0 +1,7 @@
+
+PUSH
+
+    ORG $5C4A34 + 8*5 // ProcScr_GameController + 8*5
+        WORD $0004000C 0 // PROC_GOTO(4)
+
+POP

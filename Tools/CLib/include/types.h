@@ -405,6 +405,7 @@ struct UnitUsageStats
 
 // enum { UNIT_SUPPORT_COUNT = 7 };
 
+/* 
 enum
 {
     SAVE_BLOCK_SAVE_BASE      = 0,
@@ -416,7 +417,7 @@ enum
     SAVE_BLOCK_SUSPEND        = SAVE_BLOCK_SUSPEND_BASE + 0,
     SAVE_BLOCK_SUSPEND_BACKUP = SAVE_BLOCK_SUSPEND_BASE + 1,
     // TODO: 5 & 6
-};
+}; */
 
 // TODO: move to bmcontainer.h
 enum { CONVOY_ITEM_COUNT = 100 };

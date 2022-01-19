@@ -1,0 +1,40 @@
+// Blow Skills
+SI_BlowArmored:
+	#incbin "gfx/BlowArmored.dmp"
+
+SI_BlowDarting:
+	#incbin "gfx/BlowDarting.dmp"
+
+SI_BlowDeath:
+	#incbin "gfx/BlowDeath.dmp"
+	
+SI_BlowDuelist:
+	#incbin "gfx/BlowDuelist.dmp"
+
+SI_BlowFiendish:
+	#incbin "gfx/BlowFiendish.dmp"	
+
+SI_BlowUncanny:
+	#incbin "gfx/BlowUncanny.dmp"	
+
+SI_BlowWarding:
+	#incbin "gfx/BlowWarding.dmp"
+
+
+
+
+// Battle Misc(0x20)
+SI_Vantage:
+	#incbin "gfx/Vantage.dmp"
+	
+SI_VantageBattalion:
+	#incbin "gfx/VantageBattalion.dmp"
+
+SI_Desperation:
+	#incbin "gfx/Desperation.dmp"
+	
+SI_DesperationBattalion:
+	#incbin "gfx/DesperationBattalion.dmp"
+
+SI_QuickRiposte:
+	#incbin "gfx/QuickRiposte.dmp"

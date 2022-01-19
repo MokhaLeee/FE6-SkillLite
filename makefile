@@ -39,7 +39,7 @@ LYNREF := Tools/CLib/reference/Definitions.h.o
 # ========================
 
 # Setting C/ASM include directories up
-INCLUDE_DIRS := Tools/CLib/include
+INCLUDE_DIRS := Tools/CLib/include Tools/inc
 INCFLAGS     := $(foreach dir, $(INCLUDE_DIRS), -I "$(dir)")
 
 # setting up compilation flags

@@ -7,8 +7,12 @@
 
 	
 	// Free Space Defination
-	#define FreeSpaceBLRange $9FAC0
-	#define FreeSpace0 $69B670 // End at 0x6A0000
+	#define FreeSpaceBLRange 0x1C1EC0		// I'm not for sure, here refer to FE8U
+	#define FreeSpace0 $69B670 				// End at 0x6A0000
 	#define FreeSpace $7FF0B0
+	
+	// Free RAM Space usage
+	// I also have no idea Free-RAM-Space on FE6
+	// So here refer to FE8Us
 	
 #endif // CUSTOM_DEF_H

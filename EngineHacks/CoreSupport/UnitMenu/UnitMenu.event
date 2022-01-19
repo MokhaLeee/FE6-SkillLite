@@ -1,4 +1,7 @@
 
+
+
+#include MenuText.event
 #include MenuDef.h.event
 
 ALIGN 4
@@ -7,7 +10,19 @@ ALIGN 4
 // #include "src/MenuDecomp.lyn.event"
 
 PUSH
-	// reset right x coord
+	// Repoint Unit Menu
+	ORG $5C7600
+	BYTE 1 3 9 0 	// x, y, w, h
+	BYTE 0 0 0 0	// style, ALIGN
+	POIN UnitMenuTable
+	WORD 0			// on_init
+	WORD 0			// on_end
+	WORD 0			// ?
+	POIN $8041E75	// on_b_press
+	POIN $8041F45	// on_r_press
+	POIN $8041E79	// on_help_box
+	
+	// reset UnitMenu right x coord
 	ORG $1BB80
 	BYTE 20
 
@@ -25,26 +40,49 @@ PUSH
 
 	ORG $1EC74
 	BYTE 20
-
-
-	// Repoint Unit Menu
-	ORG $5C7600
-	BYTE 1 3 9 0 	// x, y, w, h
-	BYTE 0 0 0 0	// style, ALIGN
-	POIN UnitMenuTable
-	WORD 0			// on_init
-	WORD 0			// on_end
-	WORD 0			// ?
-	POIN $8041E75	// on_b_press
-	POIN $8041F45	// on_r_press
-	POIN $8041E79	// on_help_box
+	
+	
+	
+	
+	// player phase menu
+	ORG $5C7648
+	BYTE 1 2 7 0 	// x, y, w, h
+	
+	ORG $1B2C6
+	BYTE 22
+	
+	ORG $1B1FC
+	BYTE 22
 POP
 
+/* 
+Macro:
+MenuCommand(nameString, description, colour, usability, effect)
+MenuCommand(nameString, description, colour, usability, effect, Hover, Unhover)
+MenuCommand(nameString, description, colour, usability, DrawText, effect, Hover, Unhover)
 
+Color:
+NormalText, GrayText, BlueText, OrangeText, GreenText, BlackText
 
+<note!>
+It's quite different to define Menu Commond for FE6
+you need to Set your own name string pointer, rather than text index
+
+Template as below:
+
+MenuCmdNameAt:
+	String(Eirika)
+	BYTE 0
+// ...
+MenuCommand(MenuCmdNameAt, $637, NormalText, $8041E6D, $801EB29) // Wait Effect
+*/
+MenuCmdNameAt:
+	String(Eirika)
+	BYTE 0
 
 ALIGN 4
 UnitMenuTable:
+	MenuCommand(MenuCmdNameAt, $637, NormalText, $8041E6D, $801EB29) // Wait Effect
 	UM_Size
 	UM_Attack
 	UM_Staff

@@ -12,11 +12,18 @@ ORG FreeSpaceBLRange 	//defined in custom definitions
 #undef inBLRange
 POP
 
-// #include "Fonts/Anti-Huffman/Anti-Huffman.event"
-// #include "Fonts/unicode/unicode.event"
-// #include "Fonts/unicode/unicode-transcoder.event"
-// #include "Fonts/unicode/unicode-strings.event"
 
+#include "Fonts/Anti-Huffman/Anti-Huffman.event"
+#include "Fonts/unicode/unicode.event"
+#include "Fonts/unicode/unicode-transcoder.event"
+#include "Fonts/unicode/unicode-strings.event"
+
+#include "CoreSupport/skip-intro.event"
 #include "CoreSupport/UnitAction/UnitAction.event"
 #include "CoreSupport/UnitMenu/UnitMenu.event"
+#include "CoreSupport/IconDisplay/IconDisplay.event"
+
+#include "CoreHacks/StatusGetter/StatusGetter.event"
+
+#include "SkillSystem/SkillSystem.event"
 

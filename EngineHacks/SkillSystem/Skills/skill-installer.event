@@ -1,0 +1,13 @@
+
+SD_BlowDarting:
+SD_BlowDeath:
+SD_BlowArmored:
+SD_BlowFiendish:
+SD_BlowWarding:
+SD_BlowDuelist:
+SD_BlowUncanny:
+	BYTE 0
+
+
+
+#include BlowSkills.event
