@@ -20,7 +20,7 @@ cd Tools
 git clone --recursive https://github.com/StanHash/EventAssembler.git
 cd EventAssembler
 ./build.sh
-cd ../..
+
 
 
 # Assembling Tables

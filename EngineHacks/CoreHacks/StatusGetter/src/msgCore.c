@@ -12,7 +12,7 @@ extern MSG_Func ResGetters[];
 
 
 
-static int Get(MSG_Func* funcs, Unit* unit){
+static inline int Get(MSG_Func* funcs, Unit* unit){
 	int base = 0;
 	MSG_Func* it = &funcs[0];
 	while(*it)

@@ -84,7 +84,7 @@ ALIGN 4
 UnitMenuTable:
 	UM_Size
 	UM_Attack
-	MenuCommand(MenuCmdNameAt, $637, NormalText, $8041E6D, $801EB29) // Wait Effect
+	// MenuCommand(MenuCmdNameAt, $637, NormalText, $8041E6D, $801EB29) // Wait Effect
 	UM_Staff
 	UM_Play
 	UM_Dance

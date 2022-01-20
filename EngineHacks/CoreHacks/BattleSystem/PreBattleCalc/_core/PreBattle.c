@@ -14,7 +14,7 @@ extern BC_Func BC_DodgBonus[];
 
 
 
-static int Get(BC_Func* funcs, BattleUnit* A, BattleUnit* B){
+static inline int Get(BC_Func* funcs, BattleUnit* A, BattleUnit* B){
 	int base = 0;
 	BC_Func* it = &funcs[0];
 	while(*it)
@@ -39,7 +39,7 @@ void ComputeBattleUnitStats(struct BattleUnit* attacker, struct BattleUnit* defe
 {
     /* 
 	ComputeBattleUnitDefense(attacker, defender);
-    ComputeBattleUnitAttack(attacker, defender);
+	ComputeBattleUnitAttack(attacker, defender);
     ComputeBattleUnitSpeed(attacker, defender);
     ComputeBattleUnitHitRate(attacker, defender);
     ComputeBattleUnitAvoidRate(attacker, defender);
@@ -52,8 +52,9 @@ void ComputeBattleUnitStats(struct BattleUnit* attacker, struct BattleUnit* defe
 	typedef void (*BC_Compute)(BattleUnit*, BattleUnit*);
 	extern BC_Compute PreBattleCalcLoop[];
 	
-	for(int i=0; PreBattleCalcLoop[i]; i++)
-		PreBattleCalcLoop[i](attacker, defender);
+	BC_Compute *it = &PreBattleCalcLoop[0];
+	while(*it)
+		(*it++)(attacker, defender);
 }
 
 
@@ -68,7 +69,10 @@ void InitBuStat(BattleUnit* attacker, BattleUnit* defender){
 }
 
 void ComputeBattleUnitDefense(struct BattleUnit* attacker, struct BattleUnit* defender){
-	short def = attacker->terrain_defense + attacker->unit.def;
+	short def =
+		attacker->battle_defense +
+		attacker->terrain_defense + 
+		attacker->unit.def;
 	
 	if (GetItemAttributes(defender->weapon) & ITEM_ATTR_MAGIC)
 		def += Get(BC_ResBonus, attacker, defender);
@@ -79,13 +83,14 @@ void ComputeBattleUnitDefense(struct BattleUnit* attacker, struct BattleUnit* de
 	if( def < 0 )
 		def = 0;
 	
-	attacker->battle_defense += def;
+	attacker->battle_defense = def;
 }
 
 
 void ComputeBattleUnitAttack(struct BattleUnit* attacker, struct BattleUnit* defender)
 {
     short atk =
+		attacker->battle_attack +
 		GetItemMight(attacker->weapon) + 
 		attacker->advantage_bonus_damage;
 	
@@ -101,7 +106,7 @@ void ComputeBattleUnitAttack(struct BattleUnit* attacker, struct BattleUnit* def
 	if (IsItemEffectiveAgainst(attacker->weapon, &defender->unit) == TRUE)
 		atk *= 3;
 
-    attacker->battle_attack += atk + attacker->unit.pow;
+    attacker->battle_attack = atk + attacker->unit.pow;
 }
 
 
@@ -116,21 +121,24 @@ void ComputeBattleUnitSpeed(struct BattleUnit* attacker, BattleUnit* defender)
 		weight = 0;
 
 	short spd = 
-		attacker->unit.spd - weight +
+		attacker->battle_speed +
+		attacker->unit.spd - 
+		weight +
 		Get(BC_SpdBonus, attacker, defender);
 	
 	// minus zero
 	if (spd < 0)
 		spd = 0;
 	
-	attacker->battle_speed += spd;
+	attacker->battle_speed = spd;
 }
 
 
 
 void ComputeBattleUnitHitRate(struct BattleUnit* attacker, BattleUnit* defender)
 {
-	short hit = 
+	short hit =
+		attacker->battle_hit +
 		attacker->unit.skl*2 + 
 		GetItemHit(attacker->weapon) + 
 		attacker->unit.lck/2 + 
@@ -141,7 +149,7 @@ void ComputeBattleUnitHitRate(struct BattleUnit* attacker, BattleUnit* defender)
 	if (hit < 0)
 		hit = 0;
 	
-	attacker->battle_hit += hit;
+	attacker->battle_hit = hit;
 }
 
 
@@ -167,6 +175,7 @@ void ComputeBattleUnitAvoidRate(BattleUnit* attacker, BattleUnit* defender)
 void ComputeBattleUnitCritRate(struct BattleUnit* attacker, BattleUnit* defender)
 {
     short crit = 
+		attacker->battle_crit +
 		GetItemCrit(attacker->weapon) + 
 		attacker->unit.skl/2 +
 		Get(BC_CritBonus, attacker, defender);
@@ -178,7 +187,7 @@ void ComputeBattleUnitCritRate(struct BattleUnit* attacker, BattleUnit* defender
 	if( crit < 0 )
 		crit = 0;
 	
-	attacker->battle_crit += crit;
+	attacker->battle_crit = crit;
 }
 
 
@@ -187,6 +196,7 @@ void ComputeBattleUnitCritRate(struct BattleUnit* attacker, BattleUnit* defender
 void ComputeBattleUnitDodgeRate(struct BattleUnit* attacker, BattleUnit* defender)
 {
 	short dodge = 
+		attacker->battle_dodge +
 		attacker->unit.lck +
 		Get(BC_DodgBonus, attacker, defender);
 	
@@ -194,5 +204,5 @@ void ComputeBattleUnitDodgeRate(struct BattleUnit* attacker, BattleUnit* defende
 	if( dodge < 0 )
 		dodge = 0;
 	
-    attacker->battle_dodge += dodge;
+    attacker->battle_dodge = dodge;
 }
