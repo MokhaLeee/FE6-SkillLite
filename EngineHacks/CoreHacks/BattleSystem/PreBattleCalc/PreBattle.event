@@ -18,7 +18,7 @@ PreBattleCalcLoop:
 	POIN ComputeBattleUnitHitRate
 	POIN ComputeBattleUnitAvoidRate
 	POIN ComputeBattleUnitCritRate
-	POIN ComputeBattleUnitDodgeRate
+	POIN _ComputeBattleUnitDodgeRate
 	POIN 0x80247F1 // ComputeBattleUnitSupportBonuses
 	PBC_Terminal
 	

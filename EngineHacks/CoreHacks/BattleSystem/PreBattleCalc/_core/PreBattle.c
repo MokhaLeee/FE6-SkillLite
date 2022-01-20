@@ -33,7 +33,10 @@ void ComputeBattleUnitSpeed(BattleUnit*, BattleUnit*);
 void ComputeBattleUnitHitRate(BattleUnit*, BattleUnit*);
 void ComputeBattleUnitAvoidRate(BattleUnit*, BattleUnit*);
 void ComputeBattleUnitCritRate(BattleUnit*, BattleUnit*);
-void ComputeBattleUnitDodgeRate(BattleUnit*, BattleUnit*);
+
+// Vanilla is too short
+// lyn jump will over-flow....
+void _ComputeBattleUnitDodgeRate(BattleUnit*, BattleUnit*);
 
 void ComputeBattleUnitStats(struct BattleUnit* attacker, struct BattleUnit* defender)
 {
@@ -193,7 +196,7 @@ void ComputeBattleUnitCritRate(struct BattleUnit* attacker, BattleUnit* defender
 
 
 
-void ComputeBattleUnitDodgeRate(struct BattleUnit* attacker, BattleUnit* defender)
+void _ComputeBattleUnitDodgeRate(struct BattleUnit* attacker, BattleUnit* defender)
 {
 	short dodge = 
 		attacker->battle_dodge +
