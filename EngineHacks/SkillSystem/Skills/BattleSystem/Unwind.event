@@ -1,0 +1,32 @@
+#ifndef SKILLS_BATTLE_UNWIND
+#define SKILLS_BATTLE_UNWIND
+
+QuickRiposteID:	BYTE SKILLID_QuickRiposte
+VantageID:		BYTE SKILLID_Vantage
+DesperationID:	BYTE SKILLID_Desperation
+
+ALIGN 4
+SkillInfo_QuickRiposte:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_QuickRiposte
+	/* icon */ POIN SI_QuickRiposte
+	/* pad  */ WORD 0
+
+SkillInfo_Vantage:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_Vantage
+	/* icon */ POIN SI_Vantage
+	/* pad  */ WORD 0
+
+SkillInfo_Desperation:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_Desperation
+	/* icon */ POIN SI_Desperation
+	/* pad  */ WORD 0
+
+
+InjectSkillInfo(SKILLID_QuickRiposte, SkillInfo_QuickRiposte)
+InjectSkillInfo(SKILLID_Vantage, SkillInfo_Vantage)
+InjectSkillInfo(SKILLID_Desperation, SkillInfo_Desperation)
+
+#endif // SKILLS_BATTLE_UNWIND

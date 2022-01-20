@@ -3,16 +3,27 @@
 
 #include "src/msgCore.lyn.event"
 
+#define MSG_Terminal "WORD 0"
 
 ALIGN 4
+HpGetters:
+	MSG_Terminal
+	
 PowGetters:
+	MSG_Terminal
 SpdGetters:
+	MSG_Terminal
+
 SklGetters:
+	MSG_Terminal
+
 LckGetters:
+	MSG_Terminal
+
 DefGetters:
+	MSG_Terminal
+
 ResGetters:
-HpMaxGetters:
-MovGetters:
-	WORD 0
+	MSG_Terminal
 
 #endif // STATUS_GETTER

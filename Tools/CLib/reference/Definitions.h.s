@@ -94,6 +94,84 @@ SET_FUNC CountFactionUnitsWithoutState, 0x80209C9
 
 
 
+@ item
+SET_FUNC CanItemReachDistance, 0x80169BD
+SET_FUNC IsItemEffectiveAgainst, 0x8016A11
+
+SET_FUNC GetItemAttributes, 0x8017191
+SET_FUNC GetItemUses, 0x80171A5
+SET_FUNC GetItemMaxUses, 0x80171C9
+SET_FUNC GetItemMight, 0x80171E9
+SET_FUNC GetItemHit, 0x80171FD
+SET_FUNC GetItemWeight, 0x8017211
+SET_FUNC GetItemCrit, 0x8017225
+SET_FUNC GetItemValue, 0x8017239
+SET_FUNC GetItemMinRange, 0x801725D
+SET_FUNC GetItemMaxRange, 0x8017271
+
+SET_FUNC GetItemWeaponEffect, 0x80172F9
+
+
+
+@ Battle
+SET_DATA gBattleSt, 0x2039200
+SET_DATA gBattleHitIt, 0x2039328
+SET_DATA gBattleActor, 0x2039214
+SET_DATA gBattleTarget, 0x2039290
+SET_DATA gBattleUnitA, 0x2039214
+SET_DATA gBattleUnitB, 0x2039290
+
+
+SET_FUNC BattleGenerateSimulationInternal, 0x802407D
+SET_FUNC BattleGenerateRealInternal, 0x8024145
+SET_FUNC BattleGenerateSimulation, 0x8024249
+SET_FUNC BattleGenerateReal, 0x8024281
+SET_FUNC BattleGenerate, 0x80242C9
+SET_FUNC BattleGenerateUiStats, 0x802430D
+SET_FUNC SetBattleUnitWeapon, 0x80245A1
+
+SET_FUNC ComputeBattleUnitStats, 0x8024791
+SET_FUNC ComputeBattleUnitDefense, 0x8024845
+SET_FUNC ComputeBattleUnitAttack, 0x802489D
+SET_FUNC ComputeBattleUnitSpeed, 0x80248E9
+SET_FUNC ComputeBattleUnitHitRate, 0x8024921
+SET_FUNC ComputeBattleUnitAvoidRate, 0x8024959
+SET_FUNC ComputeBattleUnitCritRate, 0x8024989
+SET_FUNC ComputeBattleUnitDodgeRate, 0x80249C5
+SET_FUNC ComputeBattleUnitSupportBonuses, 0x80247F1
+
+SET_FUNC ClearBattleHits, 0x8024A89
+SET_FUNC BattleUnwind, 0x8024AB5
+SET_FUNC BattleGetFollowUpOrder, 0x8024B41
+SET_FUNC BattleGenerateRoundHits, 0x8024BBD
+SET_FUNC BattleGenerateHit, 0x8024FA9
+SET_FUNC BattleApplyExpGains, 0x802503D
+SET_FUNC BattleApplyUnitUpdates, 0x80254CD
+SET_FUNC GetBattleUnitUpdatedWeaponExp, 0x8025555
+SET_FUNC UpdateUnitFromBattle, 0x8025645
+SET_FUNC GetBattleUnitExpGain, 0x8025881
+SET_FUNC BattleApplyItemExpGains, 0x80258E9
+SET_FUNC GetBattleUnitStaffExp, 0x8025941
+SET_FUNC BattleApplyMiscActionExpGains, 0x80259A1
+SET_FUNC BattleUnitTargetSetEquippedWeapon, 0x80259E5
+SET_FUNC BattleUnitTargetCheckCanCounter, 0x8025A38
+SET_FUNC BattleApplyWeaponTriangleEffect, 0x8025A91
+SET_FUNC BattleInitTargetCanCounter, 0x8025B1D
+SET_FUNC InitObstacleBattleUnit, 0x8025B89
+SET_FUNC ComputeBattleObstacleStats, 0x8025BD9
+SET_FUNC UpdateObstacleFromBattle, 0x8025C19
+SET_FUNC BeginBattleAnimations, 0x8025C7D
+
+
+
+@ Level Up
+SET_FUNC CheckBattleUnitLevelUp, 0x8025105
+SET_FUNC UnitPromote, 0x802529D
+
+
+
+
+
 @ MAP_MAIN
 @ SET_DATA ProcScr_PlayerPhase, 
 SET_FUNC PlayerPhase_BeginActionSelect, 0x801BAF1
@@ -119,9 +197,10 @@ SET_DATA DecodeStringRamFunc, 0x3003780 @ RAM function
 SET_FUNC DecodeMsg, 0x8013AD1
 SET_FUNC ResetTextFont, 0x800573D
 SET_FUNC SetTextFontGlyphs, 0x8005705
-SET_FUNC GetStringTextBox, 0x8005D05
-SET_FUNC GetCharTextLen, 0x8005C4D
 SET_FUNC GetStringTextLen, 0x8005B95
+SET_FUNC GetCharTextLen, 0x8005C4D
+SET_FUNC GetStringTextBox, 0x8005D05
+SET_FUNC GetStringLineEnd, 0x8005D6D
 SET_FUNC ClearText, 0x80058ED
 SET_FUNC Text_SetColor, 0x8005A39
 SET_FUNC Text_SetCursor, 0x80059E1
@@ -135,6 +214,7 @@ SET_FUNC PutText, 0x8005AB5
 SET_FUNC SetTextFont, 0x8005769
 @ SET_FUNC NumberToString, 
 SET_FUNC GetStringTextCenteredPos, 0x8005CD9
+
 
 
 
@@ -179,6 +259,19 @@ SET_FUNC DrawUnitStatScreen, 0x806ED35		@ Page 1
 SET_FUNC DrawUnitItemScreen, 0x806EFE1		@ Page 2
 SET_FUNC DrawUnitWeaponScreen, 0x806F325	@ Page 3
 
+SET_FUNC StartStatScreenHelp, 0x807030D @ MakeStatScreenRText6C
+
+
+@ HelpBox
+SET_DATA HelpInfo_UnitPage, 0x8677824
+SET_DATA HelpInfo_ItemPage, 0x8677A00
+SET_DATA HelpInfo_WeaponPage, 0x8677BA4
+
+SET_FUNC TryRelocateHbUp, 0x8070BED
+
+
+
+
 @ HardWare
 SET_DATA gBg0Tm, 0x2021B08	@ gBmFrameTmap0, gBg0MapBuffer
 SET_FUNC EnableBgSync, 0x8000FD5
@@ -216,16 +309,6 @@ SET_FUNC SaveMetadata_Save, 0x80844D5
 SET_FUNC SaveSuspendedGame, 0x80857B1
 SET_FUNC LoadSuspendedGame, 0x80858E5
 
-
-
-
-
-
-@ Battle
-SET_DATA gBattleStats, 0x2039200
-SET_DATA gBattleActor, 0x2039214
-SET_DATA gBattleTarget, 0x2039290
-SET_FUNC BattleGenerateUiStats, 0x802430D
 
 
 

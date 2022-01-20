@@ -1,0 +1,3 @@
+## SD_CritUp
+Crit Boost:[N]
++15 critical rate.[X]

@@ -15,10 +15,7 @@ const void* GetIconGfx(unsigned icon){
 	typedef const void* (*GetIconFunc) (int id);
 	extern GetIconFunc const IconGetters[];
 	
-	if( IconGetters[ICON_SHEET(icon)] )
-		return IconGetters[ICON_SHEET(icon)](ICON_INDEX(icon));
-	else
-		return NULL;
+	return IconGetters[ICON_SHEET(icon)](ICON_INDEX(icon));
 }
 
 const void* GetVanillaIconGfx(unsigned id){

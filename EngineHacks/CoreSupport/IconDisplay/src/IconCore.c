@@ -79,7 +79,7 @@ int GetIconChr(int icon){
 
 
 void ClearIcons(void){
-	CpuFill32(0, &sIconStTable, MAX_SIMULTANEOUS_ICONS * sizeof(u16));
+	CpuFill32(-1, &sIconStTable, MAX_SIMULTANEOUS_ICONS * sizeof(u16));
 }
 
 
@@ -90,7 +90,7 @@ void ClearIcon(unsigned icon) {
 
 	for (it = head; it != end; ++it) {
 		if (*it == icon) {
-			*it = 0;
+			*it = -1;
 			break;
 		}
 	}
@@ -158,7 +158,7 @@ static unsigned GetIconNewSlot(unsigned icon){
 	u16* end = head + MAX_SIMULTANEOUS_ICONS;
 	
 	for (it = head; it != end; ++it) {
-		if (*it == (u16)(0)) {
+		if (*it == (u16)(-1)) {
 			*it = icon;
 			return (it - head) + 1;
 		}

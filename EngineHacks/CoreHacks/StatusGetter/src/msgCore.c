@@ -1,14 +1,14 @@
 #include "unit.h"
 
 typedef int (*MSG_Func)(Unit*);
+extern MSG_Func HpGetters[];
 extern MSG_Func PowGetters[];
 extern MSG_Func SpdGetters[];
 extern MSG_Func SklGetters[];
 extern MSG_Func LckGetters[];
 extern MSG_Func DefGetters[];
 extern MSG_Func ResGetters[];
-extern MSG_Func HpMaxGetters[];
-extern MSG_Func MovGetters[];
+
 
 
 
@@ -21,51 +21,51 @@ static int Get(MSG_Func* funcs, Unit* unit){
 	return base;	
 }
 
-int GetUnitCurrentHp(struct Unit* unit){
-	
-	int bonus = Get(HpMaxGetters,unit);
-	int stat = unit->hp + bonus;
-	int HpMax = unit->max_hp + bonus;
-	
-	if( stat > HpMax)
-		stat = HpMax;
-	
-	if( stat < 0 )
-		stat = 0;
-	
-	unit->hp = stat;
-	
-	return stat;
-}
 
 int GetUnitMaxHp(struct Unit* unit){
-	int stat = unit->max_hp + Get(HpMaxGetters,unit);
+	int stat = unit->max_hp + Get(HpGetters,unit);
 	return stat>0 ? stat:0;
 }
+
+int GetUnitCurrentHp(struct Unit* unit){
+	
+	if (unit->hp > GetUnitMaxHp(unit))
+        unit->hp = GetUnitMaxHp(unit);
+	
+	return unit->hp;
+}
+
+
 int GetUnitPower(struct Unit* unit){
 	int stat = unit->pow + Get(PowGetters,unit);
 	return stat>0 ? stat:0;
 }
 
+
 int GetUnitSkill(struct Unit* unit){
-	int stat = unit->skl + Get(SklGetters,unit);
+	int stat;
+	
+	if (unit->state & US_RESCUING)
+		stat = unit->skl/2 + Get(SklGetters,unit);
+	else
+		stat = unit->skl + Get(SklGetters,unit);
 	
 	if( stat < 0 )
 		stat = 0;
-	
-	if( US_RESCUING & unit->state )
-		stat = stat/2;
 	
 	return stat;
 }
 
 int GetUnitSpeed(struct Unit* unit){
-	int stat = unit->spd + Get(SpdGetters,unit);
+	int stat;
+	
+	if (unit->state & US_RESCUING)
+		stat = unit->spd/2 + Get(SpdGetters,unit);
+	else
+		stat = unit->spd + Get(SpdGetters,unit);
+	
 	if( stat < 0 )
 		stat = 0;
-	
-	if( US_RESCUING & unit->state )
-		stat = stat/2;
 	
 	return stat;
 }

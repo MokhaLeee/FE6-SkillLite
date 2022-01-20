@@ -1,3 +1,8 @@
+// Status Skills
+SI_CritUp:
+	#incbin "gfx/CritUp.dmp"
+
+
 // Blow Skills
 SI_BlowArmored:
 	#incbin "gfx/BlowArmored.dmp"
@@ -26,15 +31,22 @@ SI_BlowWarding:
 // Battle Misc(0x20)
 SI_Vantage:
 	#incbin "gfx/Vantage.dmp"
-	
-SI_VantageBattalion:
-	#incbin "gfx/VantageBattalion.dmp"
 
 SI_Desperation:
 	#incbin "gfx/Desperation.dmp"
-	
-SI_DesperationBattalion:
-	#incbin "gfx/DesperationBattalion.dmp"
 
 SI_QuickRiposte:
 	#incbin "gfx/QuickRiposte.dmp"
+
+SI_WindSweep:
+	#incbin "gfx/WindSweep.dmp"
+
+SI_CounterAttack:
+	#incbin "gfx/CounterAttack.dmp"
+
+SI_WaryFighter:
+	#incbin "gfx/WaryFighter.dmp"
+
+SI_Discipline:
+	#incbin "gfx/Discipline.dmp"
+	

@@ -1,15 +1,15 @@
 INLINE SkillTable_Char,Base Skill0,Base Skill1,Base Skill2,Skill Level 5,Skill Level 10,Skill Level 15,Skill Level 20,Skill Level 25
 0x00 None,0,0,0,0,0,0,0,0
-0x01 Roy,SKILLID_BlowDeath,SKILLID_BlowWarding,0,SKILLID_BlowDuelist,SKILLID_BlowUncanny,0,0,0
+0x01 Roy,SKILLID_QuickRiposte,0,0,SKILLID_BlowDeath,0,0,0,0
 0x02 Clarine,0,0,0,0,0,0,0,0
 0x03 Fa,0,0,0,0,0,0,0,0
 0x04 Shin,0,0,0,0,0,0,0,0
-0x05 Sue,0,0,0,0,0,0,0,0
+0x05 Sue,SKILLID_CritUp,0,0,0,0,0,0,0
 0x06 Dayan,0,0,0,0,0,0,0,0
 0x07 Dayan (NPC),0,0,0,0,0,0,0,0
 0x08 Barth,0,0,0,0,0,0,0,0
 0x09 Bors,0,0,0,0,0,0,0,0
-0x0A Wendy,0,0,0,0,0,0,0,0
+0x0A Wendy,SKILLID_Vantage,0,0,0,0,0,0,0
 0x0B Douglas,0,0,0,0,0,0,0,0
 0x0C Douglas (NPC),0,0,0,0,0,0,0,0
 0x0D Wolt,0,0,0,0,0,0,0,0
@@ -20,27 +20,27 @@ INLINE SkillTable_Char,Base Skill0,Base Skill1,Base Skill2,Skill Level 5,Skill L
 0x12 Yodel,0,0,0,0,0,0,0,0
 0x13 Yodel (NPC),0,0,0,0,0,0,0,0
 0x14 Chad,0,0,0,0,0,0,0,0
-0x15 Karel,0,0,0,0,0,0,0,0
-0x16 Fir,0,0,0,0,0,0,0,0
-0x17 Rutger,0,0,0,0,0,0,0,0
-0x18 Dieck,0,0,0,0,0,0,0,0
+0x15 Karel,SKILLID_CritUp,0,0,0,0,0,0,0
+0x16 Fir,SKILLID_CritUp,0,0,0,0,0,0,0
+0x17 Rutger,SKILLID_CritUp,0,0,0,0,0,0,0
+0x18 Dieck,SKILLID_Desperation,0,0,0,0,0,0,0
 0x19 Oujay,0,0,0,0,0,0,0,0
 0x1A Garet,0,0,0,0,0,0,0,0
-0x1B Alan,0,0,0,0,0,0,0,0
-0x1C Lance,0,0,0,0,0,0,0,0
+0x1B Alan,SKILLID_BlowDeath,0,0,0,0,0,0,0
+0x1C Lance,SKILLID_BlowDarting,0,0,0,0,0,0,0
 0x1D Percival,0,0,0,0,0,0,0,0
 0x1E Igrene,0,0,0,0,0,0,0,0
-0x1F Marcus,0,0,0,0,0,0,0,0
+0x1F Marcus,SKILLID_WindSweep,0,0,0,0,0,0,0
 0x20 Astore,0,0,0,0,0,0,0,0
 0x21 Ward,0,0,0,0,0,0,0,0
 0x22 Lott,0,0,0,0,0,0,0,0
 0x23 Bartre,0,0,0,0,0,0,0,0
 0x24 Bartre (NPC),0,0,0,0,0,0,0,0
 0x25 Lugh,0,0,0,0,0,0,0,0
-0x26 Lilina,0,0,0,0,0,0,0,0
+0x26 Lilina,SKILLID_BlowFiendish,0,0,0,0,0,0,0
 0x27 Hugh,0,0,0,0,0,0,0,0
-0x28 Niime,0,0,0,0,0,0,0,0
-0x29 Niime (NPC),0,0,0,0,0,0,0,0
+0x28 Niime,SKILLID_BlowFiendish,0,0,0,0,0,0,0
+0x29 Niime (NPC),SKILLID_BlowFiendish,0,0,0,0,0,0,0
 0x2A Raigh,0,0,0,0,0,0,0,0
 0x2B Lalam,0,0,0,0,0,0,0,0
 0x2C Juno,0,0,0,0,0,0,0,0
@@ -48,15 +48,15 @@ INLINE SkillTable_Char,Base Skill0,Base Skill1,Base Skill2,Skill Level 5,Skill L
 0x2E Tate,0,0,0,0,0,0,0,0
 0x2F Tate (enemy),0,0,0,0,0,0,0,0
 0x30 Tate (NPC),0,0,0,0,0,0,0,0
-0x31 Shanna,0,0,0,0,0,0,0,0
+0x31 Shanna,SKILLID_Desperation,0,0,0,0,0,0,0
 0x32 Zeiss,0,0,0,0,0,0,0,0
 0x33 Gale,0,0,0,0,0,0,0,0
 0x34 Elphin,0,0,0,0,0,0,0,0
 0x35 Cass,0,0,0,0,0,0,0,0
-0x36 Sophia,0,0,0,0,0,0,0,0
+0x36 Sophia,SKILLID_BlowFiendish,0,0,0,0,0,0,0
 0x37 Milady,0,0,0,0,0,0,0,0
-0x38 Gonzales,0,0,0,0,0,0,0,0
-0x39 Gonzales (NPC),0,0,0,0,0,0,0,0
+0x38 Gonzales,SKILLID_BlowDeath,0,0,0,0,0,0,0
+0x39 Gonzales (NPC),SKILLID_BlowDeath,0,0,0,0,0,0,0
 0x3A Noah,0,0,0,0,0,0,0,0
 0x3B Treck,0,0,0,0,0,0,0,0
 0x3C Jerrot,0,0,0,0,0,0,0,0
@@ -67,7 +67,7 @@ INLINE SkillTable_Char,Base Skill0,Base Skill1,Base Skill2,Skill Level 5,Skill L
 0x41 Geese (NPC),0,0,0,0,0,0,0,0
 0x42 Merlinus,0,0,0,0,0,0,0,0
 0x43 Eliwood,0,0,0,0,0,0,0,0
-0x44 Guinevere,0,0,0,0,0,0,0,0
+0x44 Guinevere,SKILLID_BlowFiendish,0,0,0,0,0,0,0
 0x45 Bandit,0,0,0,0,0,0,0,0
 0x46 Bandit,0,0,0,0,0,0,0,0
 0x47 Bandit,0,0,0,0,0,0,0,0
@@ -98,8 +98,8 @@ INLINE SkillTable_Char,Base Skill0,Base Skill1,Base Skill2,Skill Level 5,Skill L
 0x60 Sigune,0,0,0,0,0,0,0,0
 0x61 Roartz,0,0,0,0,0,0,0,0
 0x62 Murdock,0,0,0,0,0,0,0,0
-0x63 Brunya,0,0,0,0,0,0,0,0
-0x64 Zephiel,0,0,0,0,0,0,0,0
+0x63 Brunya,SKILLID_BlowFiendish,SKILLID_BlowDarting,SKILLID_BlowUncanny,0,0,0,0,0
+0x64 Zephiel,SKILLID_CounterAttack,SKILLID_Vantage,0,0,0,0,0,0
 0x65 Idoun (no hood),0,0,0,0,0,0,0,0
 0x66 Idoun (dragon form),0,0,0,0,0,0,0,0
 0x67 Jahn,0,0,0,0,0,0,0,0

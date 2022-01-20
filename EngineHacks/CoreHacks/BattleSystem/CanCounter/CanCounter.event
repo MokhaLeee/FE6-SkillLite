@@ -1,0 +1,9 @@
+
+#include CanCounter.lyn.event
+
+PUSH
+// Inside Func: SetBattleUnitWeapon
+// Here will not judge for UNIT_STATUS_SLEEP and CanItemReachDistance
+ORG $0246FE
+SHORT $E01A
+POP

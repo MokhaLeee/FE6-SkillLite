@@ -49,3 +49,6 @@ struct HelpBoxInfo
 
 extern struct HelpBoxInfo const HelpInfo_BpShort_Hp;
 extern struct HelpBoxInfo const HelpInfo_BpLarge_Hp;
+
+
+extern int TryRelocateHbUp(struct HelpBoxProc* proc);

@@ -1,0 +1,1 @@
+python3 text-process-cn.py text_buildfile.txt InstallTextData.event TextDefinition.txt

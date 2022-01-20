@@ -1,0 +1,72 @@
+#ifndef SKILLS_BLOWSKILLS_INSTALLED
+#define SKILLS_BLOWSKILLS_INSTALLED
+
+
+
+
+
+// SKILL ID
+ALIGN 4
+BlowDartingID:	BYTE SKILLID_BlowDarting
+BlowDeathID:	BYTE SKILLID_BlowDeath
+BlowArmoredID:	BYTE SKILLID_BlowArmored
+BlowFiendishID:	BYTE SKILLID_BlowFiendish
+BlowWardingID:	BYTE SKILLID_BlowWarding
+BlowDuelistID:	BYTE SKILLID_BlowDuelist
+BlowUncannyID:	BYTE SKILLID_BlowUncanny
+
+
+
+// Skill Info
+ALIGN 4
+SkillInfo_BlowDarting:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_BlowDarting
+	/* icon */ POIN SI_BlowDarting
+	/* pad  */ WORD 0
+
+SkillInfo_BlowDeath:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_BlowDeath
+	/* icon */ POIN SI_BlowDeath
+	/* pad  */ WORD 0
+
+SkillInfo_BlowArmored:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_BlowArmored
+	/* icon */ POIN SI_BlowArmored
+	/* pad  */ WORD 0
+
+SkillInfo_BlowFiendish:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_BlowFiendish
+	/* icon */ POIN SI_BlowFiendish
+	/* pad  */ WORD 0
+
+SkillInfo_BlowWarding:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_BlowWarding
+	/* icon */ POIN	SI_BlowWarding
+	/* pad  */ WORD 0
+	
+SkillInfo_BlowDuelist:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_BlowDuelist
+	/* icon */ POIN SI_BlowDuelist
+	/* pad  */ WORD 0
+
+SkillInfo_BlowUncanny:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_BlowUncanny
+	/* icon */ POIN SI_BlowUncanny
+	/* pad  */ WORD 0
+
+InjectSkillInfo(SKILLID_BlowDarting, SkillInfo_BlowDarting)
+InjectSkillInfo(SKILLID_BlowDeath, SkillInfo_BlowDeath)
+InjectSkillInfo(SKILLID_BlowArmored, SkillInfo_BlowArmored)
+InjectSkillInfo(SKILLID_BlowFiendish, SkillInfo_BlowFiendish)
+InjectSkillInfo(SKILLID_BlowWarding, SkillInfo_BlowWarding)
+InjectSkillInfo(SKILLID_BlowDuelist, SkillInfo_BlowDuelist)
+InjectSkillInfo(SKILLID_BlowUncanny, SkillInfo_BlowUncanny)
+
+#endif // SKILLS_BLOWSKILLS_INSTALLED

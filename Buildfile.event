@@ -3,13 +3,21 @@
 #include 6CDefinitions.event
 #include Custom Definations.event
 
-ORG FreeSpace
+	ORG FreeSpaceText
+	#include "Texts/repoint/RepointTextTable.event"
+	#include "Texts/strings/InstallTextData.event"
+	#include "EngineHacks/JIStoUnicode/unicode/unicode.event"
+	#include "EngineHacks/JIStoUnicode/unicode/unicode-transcoder.event"
+	#include "EngineHacks/JIStoUnicode/unicode/unicode-strings.event"
+	
+	ORG FreeSpace
 	#include "EngineHacks/MasterHackInstaller.event"
+	
+	ORG FreeSpaceTable
 	#include "Tables/Table Installer.event"
 
 
-// For Debug
-PUSH
-	ORG $679B43
-	BYTE 0x50		// Roy's base Level, 8=level1, 0x50=level10
-POP
+	MESSAGE END_AT CURRENTOFFSET
+
+MESSAGE SkillTable_Char_ SkillTable_Char
+MESSAGE SkillTable_Class_ SkillTable_Class

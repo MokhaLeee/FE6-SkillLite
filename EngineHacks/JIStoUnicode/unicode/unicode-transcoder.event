@@ -1,0 +1,7 @@
+// transcodes Shift-JIS messages to UTF-8 for compatibility with the unicode hack
+// hack by stan
+
+#include "data/unicode-transcoder-luts.lyn.event"
+
+// added AntiHuffman patch, by Mokha
+#include "src/sjis-to-utf-8.lyn.event"	

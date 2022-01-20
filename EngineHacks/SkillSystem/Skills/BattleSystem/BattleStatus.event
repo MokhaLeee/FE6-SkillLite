@@ -1,0 +1,19 @@
+#ifndef SKILLS_BATTLE_STATUS
+#define SKILLS_BATTLE_STATUS
+
+
+ALIGN 4
+CritUpID:	BYTE SKILLID_CritUp
+
+ALIGN 4
+SkillInfo_CritUp:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_CritUp
+	/* icon */ POIN SI_CritUp
+	/* pad  */ WORD 0
+
+
+
+InjectSkillInfo(SKILLID_CritUp, SkillInfo_CritUp)
+
+#endif // SKILLS_BATTLE_STATUS

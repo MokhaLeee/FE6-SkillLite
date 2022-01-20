@@ -29,6 +29,14 @@ cd "$base_dir/Tables"
 rm *.event
 python3 c2ea.py ../FE6.gba
 
+
+
+# Assembling Text
+echo "Make Text"
+cd "$base_dir/Texts/strings"
+python3 text-process-cn.py text_buildfile.txt InstallTextData.event TextDefinition.txt
+
+
 # Make Hack
 echo "Preparing ROM"
 cp -f "$source_rom" "$target_rom"

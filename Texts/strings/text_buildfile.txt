@@ -1,0 +1,8 @@
+#include "string/ItemName.txt"
+
+# 0xD0E
+New Texts ORG Here[X]
+
+#include "string/Skills_Blow.txt"
+#include "string/Skills_BattleMisc.txt"
+#include "string/Skills_BattleStatus.txt"

@@ -34,7 +34,7 @@
 
 
 	/* Status Screen */
-	#include "StatusScreen/SkillPageCore.lyn.event"
+	#include "StatusScreen/SkillPage/SkillPageCore.lyn.event"
 
 	PUSH
 		ORG $06EFB8
@@ -42,7 +42,7 @@
 		SHORT 0x4B01; BL(0x9DF1C); SHORT 0xE001; POIN (DrawSkillPages|0x1)
 	POP
 
-
+	#include "StatusScreen/HelpBox/HelpBox.event"
 
 
 

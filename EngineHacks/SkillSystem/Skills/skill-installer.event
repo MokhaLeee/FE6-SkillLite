@@ -1,13 +1,10 @@
+#ifndef SKILLS_INSTALLED
+#define SKILLS_INSTALLED
 
-SD_BlowDarting:
-SD_BlowDeath:
-SD_BlowArmored:
-SD_BlowFiendish:
-SD_BlowWarding:
-SD_BlowDuelist:
-SD_BlowUncanny:
-	BYTE 0
+#include "BattleSystem/BlowSkills.event"
+#include "BattleSystem/CanCounter.event"
+#include "BattleSystem/Unwind.event"
+#include "BattleSystem/WeaponExp.event"
+#include "BattleSystem/BattleStatus.event"
 
-
-
-#include BlowSkills.event
+#endif // SKILLS_INSTALLED

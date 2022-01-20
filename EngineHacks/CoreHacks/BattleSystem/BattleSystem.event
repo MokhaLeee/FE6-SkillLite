@@ -1,0 +1,8 @@
+#ifndef BATTLE_SYSTEM
+#define BATTLE_SYSTEM
+
+#include "PreBattleCalc/PreBattle.event"
+#include "CanCounter/CanCounter.event"
+#include "Unwind/Unwind.event"
+
+#endif // BATTLE_SYSTEM

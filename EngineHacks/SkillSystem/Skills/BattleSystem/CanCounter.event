@@ -1,0 +1,24 @@
+#ifndef SKILLS_CAN_COUNTER
+#define SKILLS_CAN_COUNTER
+
+CounterAttackID:	BYTE SKILLID_CounterAttack
+WindSweepID:		BYTE SKILLID_WindSweep
+
+ALIGN 4
+SkillInfo_CounterAttack:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_CounterAttack
+	/* icon */ POIN SI_CounterAttack
+	/* pad  */ WORD 0
+
+SkillInfo_WindSweep:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_WindSweep
+	/* icon */ POIN SI_WindSweep
+	/* pad  */ WORD 0
+
+
+InjectSkillInfo(SKILLID_CounterAttack, SkillInfo_CounterAttack)
+InjectSkillInfo(SKILLID_WindSweep, SkillInfo_WindSweep)
+
+#endif // SKILLS_CAN_COUNTER
