@@ -1,4 +1,5 @@
 W.I.P to make a SkillLite-style buildfile for FE6.
+See source code at [MokhaLeee@git](https://github.com/MokhaLeee/FE6-SkillLite)
 
 # To compile:
 
@@ -6,6 +7,18 @@ W.I.P to make a SkillLite-style buildfile for FE6.
 
 2. put lyn.exe at path ```$DEVKITARM/```
 3. ```sh MakeAll.sh```
+
+# Advantage on working on FE6
+
+1. Only 8MB occupied by Vanilla and result in a more flexible space control.
+
+2. Succinct system without any check on Nightmare or eggs.
+
+3. Scalability on system design with lots of free-space on item/unit/class attr and others.
+
+
+
+
 
 
 # Structure:
