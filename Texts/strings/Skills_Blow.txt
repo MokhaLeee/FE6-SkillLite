@@ -1,0 +1,36 @@
+## SD_BlowDarting
+Darting Blow:[NL]
+If unit initiates combat, [NL]
+grants AS +6 during combat.[X]
+
+## SD_BlowDeath
+Death Blow:[NL]
+If unit initiates combat,[NL]
+grants Str +6 during combat.[X]
+
+## SD_BlowArmored
+Armored Blow:[NL]
+If unit initiates combat,[NL]
+grants Def +6 during combat.[X]
+
+
+## SD_BlowFiendish
+Fiendish Blow:[NL]
+If unit initiates combat,[NL]
+grants Mag+6 during combat[X]
+
+## SD_BlowWarding
+Warding Blow:[NL]
+If unit initiates combat,[NL]
+grants Res +6 during combat.[X]
+
+## SD_BlowDuelist
+Duelist's Blow:[NL]
+If unit initiates combat,[NL]
+grants Avo +20 during combat.[X]
+
+## SD_BlowUncanny
+Uncanny Blow:[NL]
+If unit initiates combat,[NL]
+grants Hit +30 during combat[X]
+

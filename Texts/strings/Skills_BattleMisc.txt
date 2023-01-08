@@ -1,0 +1,31 @@
+## SD_CounterAttack
+Counter Attack:[NL]
+Allows unit to counterattack[NL]
+regardless of distance to attacker.[X]
+
+## SD_WindSweep
+Wind Sweep:[NL]
+Attacker cannot attack double[NL] 
+Target can not counterattack[X]
+
+
+## SD_Vantage
+Vantage:[NL]
+When unit is defender with[NL]
+HP is <50%, attack first.[X]
+
+## SD_Desperation
+Desperation:[NL]
+When unit initiates combat with HP <50%,[NL]
+double attacks immediately if possible.[X]
+
+## SD_QuickRiposte
+Quick Riposte:[NL]
+If unit is defender with HP >50%,[NL]
+double attacks.[X]
+
+## SD_Discipline
+Discipline:[NL]
+Doubles skill experience earned in battle.[X]
+
+

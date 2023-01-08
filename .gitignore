@@ -50,3 +50,22 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# vscode related
+.vscode/
+
+# git related
+# .cache
+
+# gba related
+*.gba
+*.sav
+*.sym
+tools/EventAssembler
+tools/FE-PyTools
+
+Texts/Text.event
+Texts/TextDefinitions.event
+*.4bpp
+*.lz
+*.asm

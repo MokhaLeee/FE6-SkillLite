@@ -1,0 +1,19 @@
+#include "EAstdlib.event"
+#include "Extensions/Hack Installation.txt"
+#include "6CDefinitions.event"
+#include "CustomDefinations.event"
+
+ORG FreeSpaceText
+#include "Texts/repoint/RepointTextTable.event"
+#include "Texts/Text.event"
+#include "EngineHacks/JIStoUnicode/unicode/unicode.event"
+#include "EngineHacks/JIStoUnicode/unicode/unicode-transcoder.event"
+#include "EngineHacks/JIStoUnicode/unicode/unicode-strings.event"
+
+ORG FreeSpace
+#include "EngineHacks/MasterHackInstaller.event"
+	
+ORG FreeSpaceTable
+#include "Tables/TableInstaller.event"
+
+MESSAGE END_AT CURRENTOFFSET

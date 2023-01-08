@@ -1,12 +1,32 @@
 W.I.P to make a SkillLite-style buildfile for FE6.
 See source code at [MokhaLeee@git](https://github.com/MokhaLeee/FE6-SkillLite)
 
-# To compile:
+# Compiling:
 
-1. put FE6 clean rom (Japan version!) at root folder;
+1. You must have a copy of the FE6 clean ROM named `fe6.gba` in the repository directory.
+2. Install [devkitPro](https://devkitpro.org/wiki/Getting_Started) or [GNU Arm Embedded Toolchain](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm).
+```
+# for Ubuntu/WSL users
+apt install binutils-arm-none-eabi
+```
+3. Install [Event-Assembler](https://github.com/StanHash/EventAssembler/releases/tag/1.0) and EA tools to this project. Just download the release and put them inside `<path-to-repo>/Tools/EventAssembler/`.
+4. Install PyTools:
+```
+cd tools
+git clone --recursive git@github.com:StanHash/FE-PyTools.git
+```
+5. Now your repo should has components as below:
 
-2. put lyn.exe at path ```$DEVKITARM/```
-3. ```sh MakeAll.sh```
+├── ./EngineHacks<br>
+├── ./include<br>
+├── ./tools<br>
+│   ├── ./CLib<br>
+│   ├── ./EventAssembler<br>
+│   └── ./FE-PyTools<br>
+├── ./Tables<br>
+└── ./Texts<br>
+
+6. `make`, then you will get **fe6-chax.gba** in your repo.
 
 # Advantage on working on FE6
 
@@ -15,11 +35,6 @@ See source code at [MokhaLeee@git](https://github.com/MokhaLeee/FE6-SkillLite)
 2. Succinct system without any check on Nightmare or eggs.
 
 3. Scalability on system design with lots of free-space on item/unit/class attr and others.
-
-
-
-
-
 
 # Structure:
 

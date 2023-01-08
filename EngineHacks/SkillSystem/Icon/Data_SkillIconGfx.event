@@ -1,52 +1,51 @@
 // Status Skills
 SI_CritUp:
-	#incbin "gfx/CritUp.dmp"
+	#incbin "gfx/CritUp.4bpp"
 
 
 // Blow Skills
 SI_BlowArmored:
-	#incbin "gfx/BlowArmored.dmp"
+	#incbin "gfx/BlowArmored.4bpp"
 
 SI_BlowDarting:
-	#incbin "gfx/BlowDarting.dmp"
+	#incbin "gfx/BlowDarting.4bpp"
 
 SI_BlowDeath:
-	#incbin "gfx/BlowDeath.dmp"
+	#incbin "gfx/BlowDeath.4bpp"
 	
 SI_BlowDuelist:
-	#incbin "gfx/BlowDuelist.dmp"
+	#incbin "gfx/BlowDuelist.4bpp"
 
 SI_BlowFiendish:
-	#incbin "gfx/BlowFiendish.dmp"	
+	#incbin "gfx/BlowFiendish.4bpp"	
 
 SI_BlowUncanny:
-	#incbin "gfx/BlowUncanny.dmp"	
+	#incbin "gfx/BlowUncanny.4bpp"	
 
 SI_BlowWarding:
-	#incbin "gfx/BlowWarding.dmp"
+	#incbin "gfx/BlowWarding.4bpp"
 
 
 
 
 // Battle Misc(0x20)
 SI_Vantage:
-	#incbin "gfx/Vantage.dmp"
+	#incbin "gfx/Vantage.4bpp"
 
 SI_Desperation:
-	#incbin "gfx/Desperation.dmp"
+	#incbin "gfx/Desperation.4bpp"
 
 SI_QuickRiposte:
-	#incbin "gfx/QuickRiposte.dmp"
+	#incbin "gfx/QuickRiposte.4bpp"
 
 SI_WindSweep:
-	#incbin "gfx/WindSweep.dmp"
+	#incbin "gfx/WindSweep.4bpp"
 
 SI_CounterAttack:
-	#incbin "gfx/CounterAttack.dmp"
+	#incbin "gfx/CounterAttack.4bpp"
 
 SI_WaryFighter:
-	#incbin "gfx/WaryFighter.dmp"
+	#incbin "gfx/WaryFighter.4bpp"
 
 SI_Discipline:
-	#incbin "gfx/Discipline.dmp"
-	
+	#incbin "gfx/Discipline.4bpp"

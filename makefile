@@ -1,119 +1,113 @@
-.SUFFIXES:
-.PHONY: all clean lyn
+include tools.mk
+
+CLEAN_FILES :=
+CLEAN_DIRS  :=
+
+EVENT_MAIN := Main.event
+ROM_SOURCE := fe6.gba
+ROM_TARGET := fe6-chax.gba
+
+# EAFLAGS := -raws:Tools/EA-Raws --nocash-sym
+EAFLAGS :=
+EVENT_DEPENDS := $(shell $(EADEP) $(EVENT_MAIN) -I tools/EventAssembler --add-missings)
+
+$(ROM_TARGET): $(EVENT_MAIN) $(EVENT_DEPENDS) $(ROM_SOURCE)
+	$(NOTIFY_PROCESS)
+	@cp -f $(ROM_SOURCE) $(ROM_TARGET)
+	@$(EA) A FE8 -output:$(ROM_TARGET) -input:$(EVENT_MAIN) $(EAFLAGS) || (rm $(ROM_TARGET) && false)
+	@echo "cat $(ROM_SOURCE:.gba=.sym) >> $(ROM_TARGET:.gba=.sym)" > /dev/null
+
+CLEAN_FILES += $(ROM_TARGET)  $(ROM_TARGET:.gba=.sym)
 
 
-# Making sure devkitARM exists and is set up.
-ifeq ($(strip $(DEVKITARM)),)
-	$(error "Please set DEVKITARM in your environment. export DEVKITARM=<path to>devkitARM")
-endif
+# ============
+# = Wizardry =
+# ============
+INC_DIRS := tools/CLib/include include tools/agbcc/include
+INC_FLAG := $(foreach dir, $(INC_DIRS), -I $(dir))
+LYNREF := tools/CLib/reference/Definitions.h.o
 
-# Including devkitARM tool definitions
-include $(DEVKITARM)/base_tools
+ARCH    := -mcpu=arm7tdmi -mthumb -mthumb-interwork
+CFLAGS  := $(ARCH) $(INC_FLAG) -Wall -Wextra -Wno-unused -O2 -mtune=arm7tdmi -ffreestanding -mlong-calls
+ASFLAGS := $(ARCH) $(INC_FLAG)
 
-
-# ==================
-# = OBJECTS & DMPS =
-# ==================
-
-# defining path of lyn
-LYN := $(DEVKITARM)/lyn -longcalls
-
-# reference object
-LYNREF := Tools/CLib/reference/Definitions.h.o
-
-# OBJ to event
 %.lyn.event: %.o $(LYNREF)
 	$(NOTIFY_PROCESS)
-	$(LYN) $< $(LYNREF) > $@
+	@$(LYN) $< $(LYNREF) > $@
 
-# OBJ to DMP rule
 %.dmp: %.o
 	$(NOTIFY_PROCESS)
-	$(OBJCOPY) -S $< -O binary $@
+	@$(OBJCOPY) -S $< -O binary $@
 
-
-
-
-# ========================
-# = ASSEMBLY/COMPILATION =
-# ========================
-
-# Setting C/ASM include directories up
-INCLUDE_DIRS := Tools/CLib/include Tools/inc
-INCFLAGS     := $(foreach dir, $(INCLUDE_DIRS), -I "$(dir)")
-
-# setting up compilation flags
-ARCH    := -mcpu=arm7tdmi -mthumb -mthumb-interwork
-CFLAGS  := $(ARCH) $(INCFLAGS) -Wall -Os -mtune=arm7tdmi -ffreestanding -mlong-calls
-ASFLAGS := $(ARCH) $(INCFLAGS)
-
-# defining dependency flags
-CDEPFLAGS = -MMD -MT "$*.o" -MT "$*.asm" -MF "$(CACHE_DIR)/$(notdir $*).d" -MP
-SDEPFLAGS = --MD "$(CACHE_DIR)/$(notdir $*).d"
-
-# ASM to OBJ rule
 %.o: %.s
 	$(NOTIFY_PROCESS)
-	$(AS) $(ASFLAGS) $(SDEPFLAGS) -I $(dir $<) $< -o $@ $(ERROR_FILTER)
+	@$(AS) $(ASFLAGS) $< -o $@
 
-# C to ASM rule
-# I would be fine with generating an intermediate .s file but this breaks dependencies
 %.o: %.c
 	$(NOTIFY_PROCESS)
-	$(CC) $(CFLAGS) $(CDEPFLAGS) -g -c $< -o $@ $(ERROR_FILTER)
+	@$(CC) $(CFLAGS) -g -c $< -o $@
 
-# C to ASM rule
-%.asm: %.c
+CFILES := $(shell find -type f -name '*.c')
+CLEAN_FILES += $(CFILES:.c=.o) $(CFILES:.c=.asm) $(CFILES:.c=.dmp) $(CFILES:.c=.lyn.event)
+
+SFILES := $(shell find -type f -name '*.s')
+CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) $(SFILES:.s=.lyn.event)
+
+
+# =============
+# = Game Data =
+# =============
+%.event: %.csv %.nmm
 	$(NOTIFY_PROCESS)
-	$(CC) $(CFLAGS) $(CDEPFLAGS) -S $< -o $@ -fverbose-asm $(ERROR_FILTER)
+	@echo | $(C2EA) -csv $*.csv -nmm $*.nmm -out $*.event $(ROM_SOURCE) > /dev/null
 
-# Avoid make deleting objects it thinks it doesn't need anymore
-# Without this make may fail to detect some files as being up to date
-.PRECIOUS: %.o;
+NMM_FILES := $(shell find -type f -name '*.nmm')
+CLEAN_FILES += $(NMM_FILES:.nmm=.event)
 
+
+# ===========
+# = Writans =
+# ===========
+WRITANS_ALL_TEXT    := $(wildcard Texts/strings/*.txt)
+WRITANS_TEXT_MAIN   := Texts/TextMain.txt
+WRITANS_INSTALLER   := Texts/Text.event
+WRITANS_DEFINITIONS := Texts/TextDefinitions.event
+
+$(WRITANS_INSTALLER) $(WRITANS_DEFINITIONS): $(WRITANS_TEXT_MAIN) $(WRITANS_ALL_TEXT)
+	$(NOTIFY_PROCESS)
+	@$(TEXT_PROCESS) $(WRITANS_TEXT_MAIN) --installer $(WRITANS_INSTALLER) --definitions $(WRITANS_DEFINITIONS) --parser-exe $(PARSEFILE)
+
+%.fetxt.dmp: %.fetxt
+	$(NOTIFY_PROCESS)
+	@$(PARSEFILE) -i $< -o $@ > /dev/null
+
+CLEAN_FILES += $(WRITANS_INSTALLER) $(WRITANS_DEFINITIONS)
+CLEAN_DIRS  += Texts/.TextEntries
+
+
+# ============
+# = Spritans =
+# ============
+%.4bpp: %.png
+	$(NOTIFY_PROCESS)
+	@$(PNG2DMP) $< -o $@
+
+%.gbapal: %.png
+	$(NOTIFY_PROCESS)
+	@$(PNG2DMP) $< -po $@ --palette-only
+
+%.lz: %
+	$(NOTIFY_PROCESS)
+	@$(COMPRESS) $< $@
+
+PNG_FILES := $(shell find -type f -name '*.png')
+CLEAN_FILES += $(PNG_FILES:.png=.4bpp) $(PNG_FILES:.png=.4bpp.lz)
 
 
 # ==============
 # = MAKE CLEAN =
 # ==============
-ASMFILES := $(CFILES:.c=.asm)
-LYNFILES := $(OFILES:.o=.lyn.event)
-DMPFILES := $(OFILErrS:.o=.dmp)
-CLEAN_FILES := $(OFILES) $(ASMFILES) $(LYNFILES)
-
-ifeq ($(MAKECMDGOALS),clean)
-  CFILES := $(shell find -type f -name '*.c')
-  SFILES := $(shell find -type f -name '*.s')
-# ASM_C_GENERATED := $(CFILES:.c=.o) $(SFILES:.s=.o) $(CFILES:.c=.asm)
-  ASM_C_GENERATED := $(CFILES:.c=.o) $(CFILES:.c=.asm)
-# ASM_C_GENERATED += $(ASM_C_GENERATED:.o=.dmp) $(ASM_C_GENERATED:.o=.lyn.event)
-  ASM_C_GENERATED += $(ASM_C_GENERATED:.o=.lyn.event)
-  CLEAN_FILES += $(ASM_C_GENERATED)
-endif
-
 clean:
-	rm -f $(CLEAN_FILES)
-	
-	
-	
-# ============
-# = MAKE ALL =
-# ============
-DIRS = $(shell find $(SRC_PATH) -type d)
-
-SRC_FILES := $(foreach dir, $(DIRS), $(wildcard $(dir)/*.c))
-LYN_TARGET := $(patsubst %.c,%.lyn.event, $(SRC_FILES) )
-ASM_TARGET := $(patsubst %.c,%.asm, $(SRC_FILES) )
-OBJ_TARGET := $(patsubst %.c,%.o, $(SRC_FILES) )
-
-all:
-	$(MAKE) $(ASM_TARGET)
-	$(MAKE) $(LYN_TARGET)
-	rm -f $(OBJ_TARGET)
-	
-lyn:
-	$(MAKE) $(LYN_TARGET)
-	rm -f $(OBJ_TARGET)
-	
-	
-
+	@rm -f $(CLEAN_FILES)
+	@rm -rf $(CLEAN_DIRS)
+	@echo "[RM]	$(notdir $(CLEAN_FILES)) $(notdir $(CLEAN_DIRS))"
