@@ -1,12 +1,41 @@
-include tools.mk
-
-CLEAN_FILES :=
-CLEAN_DIRS  :=
-
 EVENT_MAIN := Main.event
 ROM_SOURCE := fe6.gba
 ROM_TARGET := fe6-chax.gba
 
+CLEAN_FILES :=
+CLEAN_DIRS  :=
+
+
+# =========
+# = Tools =
+# =========
+EXE := .exe
+PYTHON := python3
+
+PREFIX ?= arm-none-eabi-
+CC  := $(PREFIX)gcc
+CPP := $(PREFIX)cpp
+AS  := $(PREFIX)as
+
+EA := tools/EventAssembler/ColorzCore$(EXE)
+
+PARSEFILE         := tools/EventAssembler/Tools/ParseFile$(EXE)
+PORTRAITFORMATTER :=tools/EventAssembler/Tools/PortraitFormatter$(EXE)
+PNG2DMP           := tools/EventAssembler/Tools/Png2Dmp$(EXE)
+COMPRESS          := tools/EventAssembler/Tools/compress$(EXE)
+LYN               := tools/EventAssembler/Tools/lyn$(EXE) -longcalls
+EADEP             := tools/EventAssembler/ea-dep$(EXE)
+PORTRAIT_PROCESS  := $(PYTHON) tools/FE-PyTools/portrait-process.py
+TEXT_PROCESS      := $(PYTHON) tools/FE-PyTools/text-process-classic.py
+C2EA              := $(PYTHON) tools/FE-PyTools/NMM2CSV/c2ea.py
+TMX2EA            := $(PYTHON) tools/FE-PyTools/TMX2EA/tmx2ea.py
+
+NOTIFY_PROCESS = @echo "$(notdir $<) => $(notdir $@)"
+
+
+# ========
+# = Main =
+# ========
 # EAFLAGS := -raws:Tools/EA-Raws --nocash-sym
 EAFLAGS :=
 EVENT_DEPENDS := $(shell $(EADEP) $(EVENT_MAIN) -I tools/EventAssembler --add-missings)
