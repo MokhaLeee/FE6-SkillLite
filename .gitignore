@@ -55,7 +55,7 @@ dkms.conf
 .vscode/
 
 # git related
-# .cache
+.cache
 
 # gba related
 *.gba
