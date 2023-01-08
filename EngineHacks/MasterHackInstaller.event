@@ -7,7 +7,6 @@
 PUSH
 ORG FreeSpaceBLRange 	//defined in custom definitions
 #define inBLRange
-	
 
 #undef inBLRange
 POP

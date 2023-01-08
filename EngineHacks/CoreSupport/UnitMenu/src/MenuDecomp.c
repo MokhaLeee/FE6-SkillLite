@@ -15,12 +15,12 @@ static const u8 sItemCountYOffsetLookup[12] = { 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 3,
 struct MenuProc* StartMenu_AndDoSomethingCommands(MenuInfo const* info, int x, int left, int right){
 	struct MenuProc* result = StartMenuAdjusted(info, x, left, right);
 	int i;
-	
+
 	if (result->entry_count <= 6)
 		return result;
-	
+
 	result->rect.y -= sItemCountYOffsetLookup[result->entry_count];
-	
+
 	for (i = 0; i < result->entry_count; ++i)
 		result->entries[i]->y -= sItemCountYOffsetLookup[result->entry_count];
 
@@ -60,7 +60,7 @@ void PlayerPhase_BeginActionSelect(ProcPtr proc)
 		Proc_SetRepeatFunc(proc, StartMenuOnEvent);
 		return;
 	}
-	
+
 	if (gAction.id != ACTION_TRAPPED)
 		// Hack here to reset menu location
 		StartMenu_AndDoSomethingCommands(

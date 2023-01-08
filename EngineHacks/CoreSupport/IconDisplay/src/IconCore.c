@@ -13,8 +13,7 @@ enum { MAX_ICON_COUNT = 160 };
 enum { MAX_ICON_DISPLAY_COUNT = 0x20 };
 
 typedef struct IconSt IconSt;
-struct IconSt
-{
+struct IconSt {
     /* 00 */ u8 refCount;
     /* 01 */ u8 dispId;
 };
@@ -24,10 +23,6 @@ extern u16 const Pal_Icons[];
 
 extern struct IconSt sIconStTable[MAX_ICON_COUNT];
 extern u8 sIconDisplayList[MAX_ICON_DISPLAY_COUNT];
-
-
-
-
 
 
 /* 
@@ -53,21 +48,19 @@ void PutIcon(u16* tm, int icon, int tileref)
 */
 
 
-int GetIconChr(int icon){
+int GetIconChr(int icon)
+{
 	unsigned slot, tile;
-	
 	// Check if icon is already loaded
 	slot = GetIconUsedSlot(icon);
-	
+
 	if ( slot )
 		return IconSlot2Chr(slot);
-	
-	
+
 	// Register new icon
 	slot = GetIconNewSlot(icon);
 	tile = IconSlot2Chr(slot);
-	
-	
+
 	// Register icon graphics
     RegisterVramMove(
 		GetIconGfx(icon),
@@ -78,12 +71,14 @@ int GetIconChr(int icon){
 }
 
 
-void ClearIcons(void){
+void ClearIcons(void)
+{
 	CpuFill32(-1, &sIconStTable, MAX_SIMULTANEOUS_ICONS * sizeof(u16));
 }
 
 
-void ClearIcon(unsigned icon) {
+void ClearIcon(unsigned icon)
+{
 	u16* it;
 	u16* head = (u16*)&sIconStTable;
 	u16* end = head + MAX_SIMULTANEOUS_ICONS;
@@ -97,7 +92,8 @@ void ClearIcon(unsigned icon) {
 }
 
 
-void PutIconObjImg(int icon, int tile) {
+void PutIconObjImg(int icon, int tile)
+{
 	void* target = OBJ_VRAM0 + (tile * 0x20);
 
 	if (icon >= 0) {
@@ -106,7 +102,6 @@ void PutIconObjImg(int icon, int tile) {
 		RegisterDataMove(source,        target,         0x40);
 		RegisterDataMove(source + 0x40, target + 0x400, 0x40);
 	} else {
-		
 		// no icon, we clear the target graphics
 		RegisterDataFill(0, target,         0x40);
 		RegisterDataFill(0, target + 0x400, 0x40);
@@ -139,7 +134,8 @@ int GetNewIconSlot(int icon)
     return -1;
 } */
 
-static unsigned GetIconUsedSlot(unsigned icon){
+static unsigned GetIconUsedSlot(unsigned icon)
+{
 	u16* it;
 	u16* head = (u16*)&sIconStTable;
 	u16* end = head + MAX_SIMULTANEOUS_ICONS;
@@ -152,7 +148,8 @@ static unsigned GetIconUsedSlot(unsigned icon){
 	return 0;
 }
 
-static unsigned GetIconNewSlot(unsigned icon){
+static unsigned GetIconNewSlot(unsigned icon)
+{
 	u16* it;
 	u16* head = (u16*)&sIconStTable;
 	u16* end = head + MAX_SIMULTANEOUS_ICONS;

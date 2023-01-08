@@ -37,8 +37,3 @@ UpdateUnitFromBattle, 0x8025645
 LevelUp:
 CheckBattleUnitLevelUp, 0x8025105
 UnitPromote, 0x802529D
-
-
-
-
-

@@ -11,7 +11,7 @@ msg_UM_Attack:
 
 msg_UM_Staff:
 	String(Staff)
-	BYTE 0	
+	BYTE 0
 
 msg_UM_Play:
 	String(Play)
@@ -39,7 +39,7 @@ msg_UM_Visit:
 
 msg_UM_Chest:
 	String(Chest)
-	BYTE 0	
+	BYTE 0
 
 msg_UM_Door:
 	String(Door)
@@ -67,7 +67,7 @@ msg_UM_Rescue:
 
 msg_UM_Drop:
 	String(Drop)
-	BYTE 0	
+	BYTE 0
 
 msg_UM_Take:
 	String(Take)
@@ -91,6 +91,6 @@ msg_UM_Supply:
 	
 msg_UM_Wait:
 	String(Wait)
-	BYTE 0		
+	BYTE 0
 #endif // FE6_MENU_TEXT
 

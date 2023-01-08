@@ -6,12 +6,14 @@
 typedef int (*ActionFunc) (ProcPtr);
 extern const ActionFunc UnitActionCallTable[];
 
-static int RequiresProcYield(ActionFunc func){
+static int RequiresProcYield(ActionFunc func)
+{
 	const u32 raw = (u32)(func);
 	return (raw >> 28) ? 1 : 0;
 }
 
-static ActionFunc FilterFunc(ActionFunc func){
+static ActionFunc FilterFunc(ActionFunc func)
+{
 	const u32 raw           = (u32)(func);
 	const ActionFunc result = (ActionFunc)(raw & 0xFFFFFFF);
 
@@ -19,15 +21,14 @@ static ActionFunc FilterFunc(ActionFunc func){
 }
 
 
-bool DoAction(ProcPtr proc){
+bool DoAction(ProcPtr proc)
+{
+	ActionFunc func;
+
     gActiveUnit = GetUnit(gAction.instigator);
-
-	ActionFunc func = UnitActionCallTable[gAction.id];
-
-	if (func)
-	{
-		if (RequiresProcYield(func))
-		{
+	func = UnitActionCallTable[gAction.id];
+	if (func) {
+		if (RequiresProcYield(func)) {
 			func = FilterFunc(func);
 			func(proc);
 
@@ -40,11 +41,13 @@ bool DoAction(ProcPtr proc){
 	return TRUE;
 }
 
-bool WaitAction(ProcPtr proc){
+bool WaitAction(ProcPtr proc)
+{
 	gActiveUnit->state |= US_HAS_MOVED;
 	return TRUE;
 }
 
-bool ActionDefualt(ProcPtr proc){
+bool ActionDefualt(ProcPtr proc)
+{
 	return TRUE;
 }

@@ -40,17 +40,14 @@ PUSH
 
 	ORG $1EC74
 	BYTE 20
-	
-	
-	
-	
+
 	// player phase menu
 	ORG $5C7648
 	BYTE 1 2 7 0 	// x, y, w, h
 	
 	ORG $1B2C6
 	BYTE 22
-	
+
 	ORG $1B1FC
 	BYTE 22
 POP

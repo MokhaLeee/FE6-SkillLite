@@ -11,14 +11,16 @@
 
 
 
-const void* GetIconGfx(unsigned icon){
+const void* GetIconGfx(unsigned icon)
+{
 	typedef const void* (*GetIconFunc) (int id);
 	extern GetIconFunc const IconGetters[];
 	
 	return IconGetters[ICON_SHEET(icon)](ICON_INDEX(icon));
 }
 
-const void* GetVanillaIconGfx(unsigned id){
+const void* GetVanillaIconGfx(unsigned id)
+{
 	extern u8 const Img_Icons[];
 	
 	return Img_Icons + (id * CHR_SIZE * 4);
