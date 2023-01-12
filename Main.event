@@ -1,16 +1,17 @@
+#include "include/configs/fe6_chax_defconfig.event"
+#include "include/6CDefinitions.event"
+
 #include "EAstdlib.event"
 #include "Extensions/Hack Installation.txt"
-#include "6CDefinitions.event"
-#include "CustomDefinations.event"
 
-ORG FreeSpaceText
+ORG FreeSpaceStr
 #include "Texts/repoint/RepointTextTable.event"
 #include "Texts/Text.event"
 #include "EngineHacks/JIStoUnicode/unicode/unicode.event"
 #include "EngineHacks/JIStoUnicode/unicode/unicode-transcoder.event"
 #include "EngineHacks/JIStoUnicode/unicode/unicode-strings.event"
 
-ORG FreeSpace
+ORG FreeSpaceComm
 #include "EngineHacks/MasterHackInstaller.event"
 	
 ORG FreeSpaceTable

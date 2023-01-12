@@ -10,22 +10,36 @@ See source code at [MokhaLeee@git](https://github.com/MokhaLeee/FE6-SkillLite)
 apt install binutils-arm-none-eabi
 ```
 3. Install [Event-Assembler](https://github.com/StanHash/EventAssembler/releases/tag/1.0) and EA tools to this project. Just download the release and put them inside `<path-to-repo>/Tools/EventAssembler/`.
+```
+# for WSL user
+cd Tools
+wget https://github.com/StanHash/EventAssembler/releases/download/1.0/EventAssembler.zip
+unzip EventAssembler.zip
+rm EventAssembler.zip
+
+# for Ubuntu user
+# install .Net SDK: https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004
+cd Tools
+git clone --recursive git@github.com:StanHash/EventAssembler.git
+sudo apt install build-essential cmake re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev
+./build.sh
+```
 4. Install PyTools:
 ```
 cd tools
 git clone --recursive git@github.com:StanHash/FE-PyTools.git
 ```
 5. Now your repo should has components as below:
-
-├── ./EngineHacks<br>
-├── ./include<br>
-├── ./tools<br>
-│   ├── ./CLib<br>
-│   ├── ./EventAssembler<br>
-│   └── ./FE-PyTools<br>
-├── ./Tables<br>
-└── ./Texts<br>
-
+```
+├── ./EngineHacks
+├── ./include
+├── ./Tools
+│   ├── ./CLib
+│   ├── ./EventAssembler
+│   └── ./FE-PyTools
+├── ./Tables
+└── ./Texts
+```
 6. `make`, then you will get **fe6-chax.gba** in your repo.
 
 # Advantage on working on FE6
