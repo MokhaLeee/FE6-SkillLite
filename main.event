@@ -1,4 +1,4 @@
-#include "include/configs/fe6_chax_defconfig.event"
+#include "include/configs/fe6_chax_defconfig.h"
 
 #include "EAstdlib.event"
 #include "Extensions/Hack Installation.txt"

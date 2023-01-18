@@ -1,0 +1,7 @@
+## Modular Move Getter (to do):
+func_fe6_08032FF4
+func_fe6_080333B0
+func_fe6_080334F4
+func_fe6_080344AC
+func_fe6_0803462C
+func_fe6_08035028

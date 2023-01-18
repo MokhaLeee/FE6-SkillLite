@@ -25,7 +25,8 @@ struct SkillRomTable {
 extern const struct SkillRomTable Skills_PData[], Skills_JData[];
 
 // Core
-extern bool (*const SkillTester)(struct Unit *unit, u8 skillId);
+extern bool (*const SkillTester)(struct Unit *unit, const u8 skill);
+extern bool (*const SkillTester_Extern)(struct Unit *unit, const u8 skill);
 
 // Icons
 #define SKILL_ICON(id) (id + (1 << 8))

@@ -3,4 +3,7 @@
 
 #include "src/skill-tester.lyn.event"
 
+ALIGN 4
+SkillTester_Extern: WORD 0
+
 #endif

@@ -11,34 +11,26 @@ apt install binutils-arm-none-eabi
 ```
 3. Install EventAssembler:
 ```
-# Directly download the release:
-cd tools && \
-wget https://github.com/StanHash/EventAssembler/releases/download/1.0/EventAssembler.zip --no-check-certificate && \
-unzip EventAssembler.zip && \
-chmod 777 *.exe && chmod 777 Tools/*.exe && \
-rm EventAssembler.zip
-
-# Or build by yourself for Ubuntu/WSL users
-# Firstly install .Net SDK: https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004
+# Install .Net SDK, see: https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004
 sudo apt install build-essential cmake re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev && \
-cd tools && \
-git clone --recursive git@github.com:StanHash/EventAssembler.git && \
-cd EventAssembler && \
-./build.sh
+	cd tools && \
+	git clone --recursive git@github.com:StanHash/EventAssembler.git && \
+	cd EventAssembler && \
+	./build.sh
 ```
 4. Install PyTools:
 ```
 cd tools &&\
-git clone --recursive git@github.com:StanHash/FE-PyTools.git
+	git clone --recursive git@github.com:StanHash/FE-PyTools.git
 ```
 5. Install and build fe6 decompile project:
 ```
 cd tools &&\
-git clone git@github.com:MokhaLeee/fe6.git &&\
-cd fe6 &&\
-cp ../../fe6.gba ./fe6-base.gba &&\
-cd tools &&\
-./install-agbcc.sh
+	git clone git@github.com:MokhaLeee/fe6.git &&\
+	cd fe6 &&\
+	cp ../../fe6.gba ./fe6-base.gba &&\
+	cd tools &&\
+	./install-agbcc.sh
 ```
 6. Now your repo should has components as below:
 ```

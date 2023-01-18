@@ -4,4 +4,15 @@
 #include "src/msg.lyn.event"
 #include "src/msg_fix.lyn.event"
 
+ALIGN 4
+ModularHpGetter : WORD 0
+ModularPowGetter: WORD 0
+ModularMagGetter: WORD 0
+ModularSklGetter: WORD 0
+ModularSpdGetter: WORD 0
+ModularLckGetter: WORD 0
+ModularDefGetter: WORD 0
+ModularResGetter: WORD 0
+ModularMovGetter: WORD 0
+
 #endif // STATUS_GETTER
