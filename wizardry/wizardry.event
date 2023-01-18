@@ -1,0 +1,15 @@
+PUSH
+ORG FreeSpaceBLRange
+#define inBLRange
+
+#undef inBLRange
+POP
+
+#ifdef CONFIG_DEBUG
+    #include "failscreen/failscreen.event"
+#endif
+
+#include "unicode/unicode.event"
+#include "unicode/unicode-transcoder.event"
+#include "unicode/unicode-strings.event"
+#include "misc/skip-intro.event"

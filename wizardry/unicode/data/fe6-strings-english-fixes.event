@@ -1,0 +1,31 @@
+PUSH
+    // str and skl label not shifted
+    ORG $06EDAA
+    BYTE 0x00
+    ORG $3193F5
+    BYTE 0x00
+    // rearrange items of the item help box
+    ORG $07113C
+    BYTE 0x30
+    ORG $0711AA
+    BYTE 0x20
+    // TODO: do the same for staff help box
+    // make slightly more room for all menu text
+    ORG $04195C
+    BYTE 1
+    // enlarge map menu
+    ORG $5C764A
+    BYTE 7
+    ORG $01B1FC
+    BYTE 0x16
+    ORG $01B2C6
+    BYTE 0x16
+    // enlarge item action menu
+    ORG $01F7FE
+    BYTE 0xC0
+    // equip info window weapon kind label position
+    ORG $01CC1E
+    BYTE 0x18
+    // ORG $01CCF8 // I used to move the icon to the top right corner but decided against it
+    // BYTE 11
+POP

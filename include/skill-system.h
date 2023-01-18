@@ -1,5 +1,5 @@
 #pragma once
-#include "common.h"
+
 #include "unit.h"
 
 #define MAX_SKILL_NUM 255

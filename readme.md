@@ -9,38 +9,52 @@ See source code at [MokhaLeee@git](https://github.com/MokhaLeee/FE6-SkillLite)
 # for Ubuntu/WSL users
 apt install binutils-arm-none-eabi
 ```
-3. Install [Event-Assembler](https://github.com/StanHash/EventAssembler/releases/tag/1.0) and EA tools to this project. Just download the release and put them inside `<path-to-repo>/Tools/EventAssembler/`.
+3. Install EventAssembler:
 ```
-# for WSL user
-cd Tools
-wget https://github.com/StanHash/EventAssembler/releases/download/1.0/EventAssembler.zip
-unzip EventAssembler.zip
-rm EventAssembler.zip
+# Firstly install .Net SDK: https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
+sudo dpkg -i packages-microsoft-prod.deb && \
+rm packages-microsoft-prod.deb && \
+sudo apt-get update && \
+sudo apt-get install -y dotnet-sdk-6.0
 
-# for Ubuntu user
-# install .Net SDK: https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004
-cd Tools
-git clone --recursive git@github.com:StanHash/EventAssembler.git
-sudo apt install build-essential cmake re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev
+# Build EA
+sudo apt install build-essential cmake re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev && \
+cd tools && \
+git clone --recursive git@github.com:StanHash/EventAssembler.git && \
+cd EventAssembler && \
 ./build.sh
 ```
 4. Install PyTools:
 ```
-cd tools
+cd Tools
 git clone --recursive git@github.com:StanHash/FE-PyTools.git
 ```
-5. Now your repo should has components as below:
+5. Install and build fe6 decompile project:
 ```
-├── ./EngineHacks
+cd Tools
+git clone git@github.com:MokhaLeee/fe6.git && cd fe6
+cp ../../fe6.gba ./fe6-base.gba
+cd tools/
+./install-agbcc.sh
+```
+6. Now your repo should has components as below:
+```
+./FE6-SkillLite
+├── ./game-data
 ├── ./include
 ├── ./Tools
-│   ├── ./CLib
 │   ├── ./EventAssembler
+│   ├── ./fe6
 │   └── ./FE-PyTools
-├── ./Tables
-└── ./Texts
+├── ./wizardry
+└── ./writans
 ```
-6. `make`, then you will get **fe6-chax.gba** in your repo.
+7. `make -j8` in repository directory, then you will get **fe6-chax.gba** in your repo.
+
+Q: `ModuleNotFoundError: No module named 'elftools'`
+
+A: `sudo apt install python3-pip && pip install pyelftools`
 
 # Advantage on working on FE6
 

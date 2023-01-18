@@ -1,0 +1,369 @@
+# format:
+# <addr(08X)> <identifier> ["translation"]
+# any sjis string needs to be listed, even if they don't need to be translated
+
+# main menu related array at 0868A2EC
+08336CCC MainMenu_Blank
+08336CB8 MainMenu_StartCancel "Start Cancel"
+08336CA4 MainMenu_CopyCancel "Copy Cancel"
+08336C90 MainMenu_EraseCancel "Erase Cancel"
+08336C7C MainMenu_SaveCancel "Save Cancel"
+
+# terrain name table at 0860D00C
+08279E58 TerrainName_Blank
+08279E50 TerrainName_Plains "Plains"
+08279E4C TerrainName_Road "Road"
+08279E48 TerrainName_Village "Village"
+08279E40 TerrainName_Village_Closed "Village"
+08279E38 TerrainName_House "House"
+08279E30 TerrainName_Armory "Armory"
+08279E28 TerrainName_Vendor "Vendor"
+08279E20 TerrainName_Arena "Arena"
+08279E18 TerrainName_Storage "Storage"
+08279E14 TerrainName_Fort "Fort"
+08279E0C TerrainName_Gate "Gate"
+08279E08 TerrainName_Forest "Forest"
+08279E00 TerrainName_Thicket "Thicket"
+08279DF8 TerrainName_Sand "Sand"
+08279DF0 TerrainName_Desert "Desert"
+08279DEC TerrainName_River "River"
+08279DE8 TerrainName_Mountain "Mntn" # "Hills"?
+08279DE0 TerrainName_Peak "Peak"
+08279DDC TerrainName_Bridge "Bridge"
+08279DD4 TerrainName_Drawbridge "Bridge"
+08279DD0 TerrainName_Sea "Sea"
+08279DCC TerrainName_Lake "Lake"
+08279DC8 TerrainName_Floor "Floor"
+08279DC4 TerrainName_Fence "Fence"
+08279DC0 TerrainName_Wall "Wall"
+08279DB4 TerrainName_Rubble "Rubble"
+08279DB0 TerrainName_Pillar "Pillar"
+08279DAC TerrainName_Door "Door"
+08279DA4 TerrainName_Throne "Throne"
+08279D9C TerrainName_Chest_Opened "Chest"
+08279D94 TerrainName_Chest "Chest"
+08279D8C TerrainName_Roof "Roof"
+08279D88 TerrainName_DoorGate "Gate"
+08279D80 TerrainName_Church "Church"
+08279D78 TerrainName_Ruins "Ruins"
+08279D70 TerrainName_Cliff "Cliff"
+08279D68 TerrainName_Ballista "Ballista"
+08279D60 TerrainName_LongBallista "Long B"
+08279D58 TerrainName_KillerBallista "Killer B"
+08279D50 TerrainName_Flat "Flat" # wasteland?
+08279D44 TerrainName_Wreck "Wreck" # broken house?
+08279D3C TerrainName_Stairs "Stairs"
+08279D34 TerrainName_Glacier "Glacier"
+08279D28 TerrainName_LinkArena "Arena"
+08279D24 TerrainName_Valley "Valley"
+
+# prep screen related table at 08677DB8
+083195FC System_Label_Lv
+083195F8 System_Label_Lv_Debug
+08319608 System_Label_Exp "Exp"
+08319604 System_Label_Exp_Debug
+08319614 System_Label_Hp "HP"
+08319610 System_Label_Hp_Debug
+08319620 System_Label_Strength "Str"
+0831961C System_Label_Strength_Debug
+08319628 System_Label_Magic "Mag"
+08319624 System_Label_Magic_Debug
+08319638 System_Label_Skill "Skill"
+08319630 System_Label_Skill_Debug
+08319644 System_Label_Speed "Spd"
+0831963C System_Label_Speed_Debug
+08319650 System_Label_Defense "Def"
+0831964C System_Label_Defense_Debug
+08319660 System_Label_Resistance "Res"
+08319658 System_Label_Resistance_Debug
+08319670 System_Label_Luck "Luck"
+08319668 System_Label_Luck_Debug
+08319680 System_Label_Con "Con"
+08319678 System_Label_Con_Debug
+0831968C System_Label_Aid "Aid"
+08319688 System_Label_Aid_Debug
+08319698 System_Label_Move "Move"
+08319694 System_Label_Move_Debug
+083196A8 System_Label_Rescue "Trv"
+083196A0 System_Label_Rescue_Debug
+083196B8 System_Label_Affinity "Affin"
+083196B0 System_Label_Affinity_Debug
+083196C4 System_Label_Range "Rng"
+083196C0 System_Label_Range_Debug
+083196D0 System_Label_Atk "Atk"
+083196CC System_Label_Atk_Debug
+083196DC System_Label_Hit "Hit"
+083196D8 System_Label_Hit_Debug
+083196EC System_Label_Crit "Crit"
+083196E4 System_Label_Crit_Debug
+083196FC System_Label_Avoid "Avoid"
+083196F4 System_Label_Avoid_Debug
+0831970C System_Label_Status "Cond"
+08319704 System_Label_Status_Debug
+08319714 System_Label_Unk_08319714
+08319720 System_Label_Weight "Wgt"
+0831971C System_Label_Weight_Debug
+08319730 System_Label_Unk_08319730
+08319728 System_Label_Unk_08319730_Debug
+08319744 System_Label_Range_1ToMag "　1~Mag"
+0831973C System_Label_Range_1ToMag_Debug
+08319758 System_Label_Range_1 "　　　1"
+08319750 System_Label_Range_1_Debug
+0831976C System_Label_Range_1To2 "　 1~2"
+08319764 System_Label_Range_1To2_Debug
+08319780 System_Label_Range_1To3 "　 1~3"
+08319778 System_Label_Range_1To3_Debug
+08319794 System_Label_Range_2 "　　　2"
+0831978C System_Label_Range_2_Debug
+083197A8 System_Label_Range_2To3 "　 2~3"
+083197A0 System_Label_Range_2To3_Debug
+083197BC System_Label_Range_3To10 "　3~10"
+083197B4 System_Label_Range_3To10_Debug
+083197D0 System_Label_Range_3To15 "　3~15"
+083197C8 System_Label_Range_3To15_Debug
+083197E0 System_Unk_64
+083197DC System_Unk_65
+083197F0 System_Unk_66
+083197E8 System_Unk_67
+08319800 System_Unk_68
+083197F8 System_Unk_69
+08319814 System_Unk_70
+0831980C System_Unk_71
+08319828 System_Unk_72
+08319820 System_Unk_73
+0831983C System_Unk_74
+08319834 System_Unk_75
+08319848 System_Unk_76
+08319840 System_Unk_77
+08319850 System_Unk_78
+0831984C System_Unk_79
+08319858 System_Unk_80
+08319854 System_Unk_81
+08319864 System_Unk_82
+0831985C System_Unk_83
+08319870 System_Unk_84
+08319868 System_Unk_85
+08319880 System_Unk_86
+08319874 System_Unk_87
+08319890 System_Unk_88
+08319884 System_Unk_89
+
+083195AC PrepScreen_Label_Magic "Mag"
+083195B4 PrepScreen_Label_Strength "Str"
+
+08319894 PrepScreen_ItemHelp_Label_Range "Rng"
+0831989C PrepScreen_ItemHelp_Label_Weight "Wt"
+083198A4 PrepScreen_ItemHelp_Label_Might "Mt"
+083198AC PrepScreen_ItemHelp_Label_Hit "Hit"
+083198B4 PrepScreen_ItemHelp_Label_Crit "Crit"
+083198BC PrepScreen_Unk_083198BC
+083198C0 PrepScreen_Unk_083198C0
+083198C4 PrepScreen_Unk_083198C4
+
+# status names array at 085C526C
+08105878 StatusName_None
+0810586C StatusName_Poison
+08105860 StatusName_Sleep
+08105854 StatusName_Silence
+08105848 StatusName_Berserk
+
+# affinity names array at 081059F0
+081059D0 AffinityName_0 ""
+081059D4 AffinityName_1 ""
+081059D8 AffinityName_2 ""
+081059DC AffinityName_3 ""
+081059E0 AffinityName_4 ""
+081059E4 AffinityName_5 ""
+081059E8 AffinityName_6 ""
+081059EC AffinityName_7 ""
+
+# item range names array at 08105788
+08105710 ItemRange_1ToMag "　1~Mag"
+0810571C ItemRange_1 "　　　1"
+08105728 ItemRange_1To2 "　 1~2"
+08105734 ItemRange_1To3 "　 1~3"
+08105740 ItemRange_2 "　　　2"
+0810574C ItemRange_2To3 "　 2~3"
+08105758 ItemRange_3To10 "　3~10"
+08105764 ItemRange_3To15 "　3~15"
+08105770 ItemRange_All "　　All"
+0810577C ItemRange_None "　　ーー"
+
+# item level names array at 081057CC
+081057B0 ItemLevel_None
+081057B4 ItemLevel_E
+081057B8 ItemLevel_D
+081057BC ItemLevel_C
+081057C0 ItemLevel_B
+081057C4 ItemLevel_A
+081057C8 ItemLevel_S
+
+# item kind names array at 0810581C
+081057F0 ItemKind_Sword "Sword"
+081057F4 ItemKind_Lance "Lance"
+081057F8 ItemKind_Axe "Axe"
+081057FC ItemKind_Bow "Bow"
+08105800 ItemKind_Staff "Staff"
+08105804 ItemKind_Anima "Anima"
+08105808 ItemKind_Light "Light"
+0810580C ItemKind_Elder "Elder"
+08105810 ItemKind_8
+08105814 ItemKind_9
+08105818 ItemKind_Dragon "Dragon"
+
+# menu item names
+08105A38 Menu_TutorialInterrupt_Entry_Continue " Continue Tutorial"
+08105A1C Menu_TutorialInterrupt_Entry_Quit " Quit Tutorial"
+
+08105AA8 Menu_085C73E4_Entry_0
+08105A9C Menu_085C73E4_Entry_1
+08105A84 Menu_085C73E4_Entry_2
+08105A6C Menu_085C73E4_Entry_3
+08105A54 Menu_085C73E4_Entry_4
+
+08105AC0 Menu_Entry_Empty
+
+08105AE0 Menu_Debug_085C742C_Entry_0
+08105AD0 Menu_Debug_085C742C_Entry_1
+08105AC4 Menu_Debug_085C742C_Entry_2
+
+08105AF4 Menu_Debug_085C7450_Entry_0
+
+08105B4C Menu_Debug_085C7474_Entry_0
+08105B40 Menu_Debug_085C7474_Entry_1
+08105B38 Menu_Debug_085C7474_Entry_2
+08105B30 Menu_Debug_085C7474_Entry_3
+08105B24 Menu_Debug_085C7474_Entry_4
+08105B14 Menu_Debug_085C7474_Entry_5
+08105B00 Menu_Debug_085C7474_Entry_7
+
+08105B64 Menu_085C7504_Entry_0
+08105B58 Menu_085C7504_Entry_1
+
+08105B7C Menu_UnitItemDiscardPrompt_Entry_Yes "Yes"
+08105B74 Menu_UnitItemDiscardPrompt_Entry_No "No"
+
+08105B9C Menu_UnitItemAction_Entry_Use "Use"
+08105B94 Menu_UnitItemAction_Entry_Equip "Equip"
+08105B8C Menu_UnitItemAction_Entry_Trade "Trade"
+08105B84 Menu_UnitItemAction_Entry_Discard "Discard"
+
+08105C7C Menu_UnitAction_Entry_Seize " Seize"
+08105C74 Menu_UnitAction_Entry_Attack " Attack"
+08105C6C Menu_UnitAction_Entry_Staff " Staff"
+08105C60 Menu_UnitAction_Entry_Play " Play"
+08105C58 Menu_UnitAction_Entry_Dance " Dance"
+08105C50 Menu_UnitAction_Entry_Steal " Steal"
+08105C48 Menu_UnitAction_Entry_Talk " Talk"
+08105C40 Menu_UnitAction_Entry_Support " Support"
+08105C38 Menu_UnitAction_Entry_Visit " Visit"
+08105C30 Menu_UnitAction_Entry_Chest " Chest"
+08105C28 Menu_UnitAction_Entry_Door " Door"
+08105C1C Menu_UnitAction_Entry_Armory " Armory"
+08105C10 Menu_UnitAction_Entry_Vendor " Vendor"
+08105C04 Menu_UnitAction_Entry_SecretShop " Secret"
+08105BF8 Menu_UnitAction_Entry_Arena " Arena"
+08105BF0 Menu_UnitAction_Entry_Rescue " Rescue"
+08105BE4 Menu_UnitAction_Entry_Drop " Drop"
+08105BD8 Menu_UnitAction_Entry_Take " Take"
+08105BCC Menu_UnitAction_Entry_Give " Give"
+08105BC0 Menu_UnitAction_Entry_Item " Item"
+08105BB8 Menu_UnitAction_Entry_Trade " Trade"
+08105BAC Menu_UnitAction_Entry_Supply " Supply"
+08105BA4 Menu_UnitAction_Entry_Wait " Wait"
+
+08105C84 Menu_PrepMap_Entry " Ready"
+
+08105CB4 Menu_Map_Entry_Unit " Unit"
+08105CAC Menu_Map_Entry_Status " Status"
+08105CA4 Menu_Map_Entry_Options " Options"
+08105C9C Menu_Map_Entry_Suspend " Suspend"
+08105C94 Menu_Map_Entry_End " End"
+
+# equip info window strings
+0810599C EquipInfoWindow_Label_Kind "Kind"
+081059A4 EquipInfoWindow_Label_Attack "Atk"
+081059AC EquipInfoWindow_Label_Hit "Hit"
+081059B4 EquipInfoWindow_Label_Crit "Crit"
+081059BC EquipInfoWindow_Label_Avoid "Avo"
+
+# battle preview labels table at 085C8388
+08105DC8 BattlePreview_Label_Might "Mt"
+08105DC0 BattlePreview_Label_Hit "Hit"
+08105DB8 BattlePreview_Label_Crit "Crit"
+08105DB0 BattlePreview_Label_Atk "Atk"
+08105DA8 BattlePreview_Label_Def "Def"
+08105DA0 BattlePreview_Label_Speed "AS"
+
+# unit panel labels
+08105D58 UnitPanel_Label_Hp
+08105D60 UnitPanel_Label_HpSep
+08105D64 UnitPanel_Label_Con
+08105D6C UnitPanel_Label_Aid
+08105D74 UnitPanel_Label_Status
+08105D7C UnitPanel_Label_Res
+08105D84 UnitPanel_Label_Arrow
+
+08105D88 StaffOffensePanel_Label_Accuracy
+
+# unit screen labels
+0832724C UnitScreen_Label_0
+08327244 UnitScreen_Label_1
+0832723C UnitScreen_Label_2
+08327234 UnitScreen_Label_3
+0832722C UnitScreen_Label_11
+08327224 UnitScreen_Label_12
+0832721C UnitScreen_Label_13
+08327214 UnitScreen_Label_14
+08327210 UnitScreen_Label_15
+08327208 UnitScreen_Label_19
+08327204 UnitScreen_Label_20
+083271FC UnitScreen_Label_21
+083271F4 UnitScreen_Label_22
+083271EC UnitScreen_Label_23
+083271E4 UnitScreen_Label_24
+083271DC UnitScreen_Label_25
+083271D4 UnitScreen_Label_29
+083271CC UnitScreen_Label_30
+083271C4 UnitScreen_Label_31
+083271BC UnitScreen_Label_37
+083271B4 UnitScreen_Label_38
+083271AC UnitScreen_Label_39
+083271A4 UnitScreen_Label_40
+0832719C UnitScreen_Label_41
+08327194 UnitScreen_Label_55
+
+0832714C UnitScreen_0832714C
+08327154 UnitScreen_08327154
+08327160 UnitScreen_08327160
+08327168 UnitScreen_08327168
+0832716C UnitScreen_0832716C
+08327170 UnitScreen_08327170
+
+# NOTE: function + pointers to these have to be manually fixed
+# see data/fe6-strings-fixes.event
+081C9FEC Banim_LevelUp_Label_Physical_Hp "HP"
+081C9FF1 Banim_LevelUp_Label_Physical_Strength "Str"
+081C9FF6 Banim_LevelUp_Label_Physical_Skill "Skill"
+081C9FFB Banim_LevelUp_Label_Physical_Speed "Spd"
+081CA000 Banim_LevelUp_Label_Physical_Luck "Luck"
+081CA005 Banim_LevelUp_Label_Physical_Defense "Def"
+081CA00A Banim_LevelUp_Label_Physical_Resistance "Res"
+081CA00F Banim_LevelUp_Label_Physical_Con "Con"
+081CA014 Banim_LevelUp_Label_Magical_Hp "HP"
+081CA019 Banim_LevelUp_Label_Magical_Magic "Mag"
+081CA01E Banim_LevelUp_Label_Magical_Skill "Skill"
+081CA023 Banim_LevelUp_Label_Magical_Speed "Spd"
+081CA028 Banim_LevelUp_Label_Magical_Luck "Luck"
+081CA02D Banim_LevelUp_Label_Magical_Defense "Def"
+081CA032 Banim_LevelUp_Label_Magical_Resistance "Res"
+081CA037 Banim_LevelUp_Label_Magical_Con "Con"
+
+081CA04C Banim_LevelUp_Label_Lv
+
+0835C7E4 ClassReel_Label_Hp
+0835C7EC ClassReel_Label_Strength "Str"
+0835C7F0 ClassReel_Label_Skill "Skill"
+0835C7F4 ClassReel_Label_Speed "Spd"
+0835C7FC ClassReel_Label_Defense "Def"
+0835C804 ClassReel_Label_Resistance "Res"

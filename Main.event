@@ -5,16 +5,11 @@
 #include "Extensions/Hack Installation.txt"
 
 ORG FreeSpaceStr
-#include "Texts/repoint/RepointTextTable.event"
-#include "Texts/Text.event"
-#include "EngineHacks/JIStoUnicode/unicode/unicode.event"
-#include "EngineHacks/JIStoUnicode/unicode/unicode-transcoder.event"
-#include "EngineHacks/JIStoUnicode/unicode/unicode-strings.event"
 
 ORG FreeSpaceComm
-#include "EngineHacks/MasterHackInstaller.event"
-	
+#include "wizardry/wizardry.event"
+
 ORG FreeSpaceTable
-#include "Tables/TableInstaller.event"
+#include "game-data/game_data.event"
 
 MESSAGE END_AT CURRENTOFFSET

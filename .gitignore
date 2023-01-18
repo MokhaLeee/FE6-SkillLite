@@ -56,14 +56,16 @@ dkms.conf
 
 # git related
 .cache
+test.sh
 
 # gba related
 *.gba
 *.sav
 *.sym
-tools/EventAssembler
-tools/FE-PyTools
-
+.cache_dir/
+Tools/EventAssembler
+Tools/FE-PyTools
+Tools/fe6/
 Texts/Text.event
 Texts/TextDefinitions.event
 *.4bpp
