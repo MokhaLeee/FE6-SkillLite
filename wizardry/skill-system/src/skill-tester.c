@@ -7,10 +7,10 @@
 #define BasicJudgeSkill(unit, skill)    \
 do {                                    \
     if (MAX_SKILL_NUM == skill)         \
-        return TRUE;                    \
+        return FALSE;                   \
                                         \
     if (0 == skill)                     \
-        return FALSE;                   \
+        return TRUE;                    \
                                         \
     if (!UNIT_IS_VALID(unit))           \
         return FALSE;                   \
