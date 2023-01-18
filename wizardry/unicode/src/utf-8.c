@@ -1,5 +1,5 @@
 #include "common-chax.h"
-#include "failscreen.h"
+#include "debug_chax.h"
 #include "text.h"
 #include "util.h"
 
@@ -8,58 +8,53 @@
 struct UnicodeGlyphEnt
 {
     u32 character;
-    struct Glyph const * glyph;
+    struct Glyph const *glyph;
 };
 
 struct UnicodeFontInfo
 {
-    struct UnicodeGlyphEnt const * beg;
-    struct UnicodeGlyphEnt const * end;
+    struct UnicodeGlyphEnt const *beg;
+    struct UnicodeGlyphEnt const *end;
 };
 
 extern struct UnicodeFontInfo const UnicodeFontInfoTable[];
 extern char const DateCvtStringsBuilt[];
 
-u32 Utf8DecodeCharacter(char const * * strptr)
+u32 Utf8DecodeCharacter(char const **strptr)
 {
     u32 byte_0, byte_1, byte_2, byte_3;
 
     byte_0 = *(*strptr)++;
 
-    switch (byte_0 & 0xF0)
-    {
-        default:
-            return byte_0;
+    switch (byte_0 & 0xF0) {
+    default:
+        return byte_0;
 
-        case 0x80: case 0x90: case 0xA0: case 0xB0:
-            // continuation byte
+    case 0x80: case 0x90: case 0xA0: case 0xB0:
+        // continuation byte
+        goto error;
+
+    case 0xC0: case 0xD0:
+        byte_0 = 0x1F & byte_0;
+        byte_1 = 0x3F & *(*strptr)++;
+        return (byte_0 << 6) + (byte_1);
+
+    case 0xE0:
+        byte_0 = 0x0F & byte_0;
+        byte_1 = 0x3F & *(*strptr)++;
+        byte_2 = 0x3F & *(*strptr)++;
+        return (byte_0 << 12) + (byte_1 << 6) + (byte_2);
+
+    case 0xF0:
+        if ((byte_0 & 0x08) != 0)
             goto error;
 
-        case 0xC0: case 0xD0:
-            byte_0 = 0x1F & byte_0;
-            byte_1 = 0x3F & *(*strptr)++;
+        byte_0 = 0x07 & byte_0;
+        byte_1 = 0x3F & *(*strptr)++;
+        byte_2 = 0x3F & *(*strptr)++;
+        byte_3 = 0x3F & *(*strptr)++;
 
-            return (byte_0 << 6) + (byte_1);
-
-        case 0xE0:
-            byte_0 = 0x0F & byte_0;
-            byte_1 = 0x3F & *(*strptr)++;
-            byte_2 = 0x3F & *(*strptr)++;
-
-            return (byte_0 << 12) + (byte_1 << 6) + (byte_2);
-
-        case 0xF0:
-            if ((byte_0 & 0x08) != 0)
-            {
-                goto error;
-            }
-
-            byte_0 = 0x07 & byte_0;
-            byte_1 = 0x3F & *(*strptr)++;
-            byte_2 = 0x3F & *(*strptr)++;
-            byte_3 = 0x3F & *(*strptr)++;
-
-            return (byte_0 << 18) + (byte_1 << 12) + (byte_2 << 6) + (byte_3);
+        return (byte_0 << 18) + (byte_1 << 12) + (byte_2 << 6) + (byte_3);
     }
 
 error:
@@ -81,10 +76,10 @@ error:
     FailScreen();
     return 0;
 }
-#if 0
-struct Glyph const * Utf8GetGlyph(u32 character)
+
+struct Glyph const *Utf8GetGlyph(u32 character)
 {
-    struct UnicodeFontInfo const * unicode_font_info = (struct UnicodeFontInfo const *) gActiveFont->glyphs;
+    struct UnicodeFontInfo const *unicode_font_info = (struct UnicodeFontInfo const *) gActiveFont->glyphs;
 
     // binary search!
 
@@ -95,22 +90,16 @@ struct Glyph const * Utf8GetGlyph(u32 character)
 
     u32 l = 0;
     u32 r = (unicode_font_info->end - unicode_font_info->beg) - 1;
-    struct UnicodeGlyphEnt const * a = unicode_font_info->beg;
+    struct UnicodeGlyphEnt const *a = unicode_font_info->beg;
 
-    while (l <= r)
-    {
+    while (l <= r) {
         u32 m = (l + r) / 2;
 
         if (a[m].character < character)
-        {
             l = m + 1;
-        }
         else if (a[m].character > character)
-        {
             r = m - 1;
-        }
-        else
-        {
+        else {
             // DebugPrintStr("Utf8GetGlyph iterations: ");
             // DebugPrintNumber(iterations, 3);
             // DebugPrintStr("\n");
@@ -132,6 +121,7 @@ struct Glyph const * Utf8GetGlyph(u32 character)
     DebugPrintNumberHex(character, (character < 0x100 ? 2 : (character < 0x1000 ? 3 : 4)));
     DebugPrintStr("\n");
     FailScreen();
+    return 0;
 }
 
 // replaces
@@ -143,12 +133,11 @@ void SetTextFontGlyphs(int glyph_set)
 
 // replaces
 LYN_REPLACE_CHECK(GetCharTextLen);
-char const * GetCharTextLen(char const * str, int * out_width)
+char const *GetCharTextLen(char const *str, int *out_width)
 {
     u32 character = Utf8DecodeCharacter(&str);
 
-    if (character < 0x20)
-    {
+    if (character < 0x20) {
         *out_width = 0;
         return str;
     }
@@ -160,12 +149,11 @@ char const * GetCharTextLen(char const * str, int * out_width)
 
 // replaces
 LYN_REPLACE_CHECK(GetStringTextLen);
-int GetStringTextLen(char const * str)
+int GetStringTextLen(char const *str)
 {
     int result = 0;
 
-    while (*str > 1)
-    {
+    while (*str > 1) {
         int tmp;
         str = GetCharTextLen(str, &tmp);
 
@@ -177,19 +165,17 @@ int GetStringTextLen(char const * str)
 
 // replaces
 LYN_REPLACE_CHECK(GetStringLineEnd);
-char const * GetStringLineEnd(char const * str)
+char const *GetStringLineEnd(char const *str)
 {
     while (*str > 1)
-    {
         Utf8DecodeCharacter(&str);
-    }
 
     return str;
 }
 
 // replaces
 LYN_REPLACE_CHECK(Text_DrawCharacter);
-char const* Text_DrawCharacter(struct Text * text, char const * str)
+char const*Text_DrawCharacter(struct Text *text, char const *str)
 {
     u32 character = Utf8DecodeCharacter(&str);
 
@@ -200,7 +186,7 @@ char const* Text_DrawCharacter(struct Text * text, char const * str)
 
 // replaces
 LYN_REPLACE_CHECK(Text_DrawString);
-void Text_DrawString(struct Text * text, char const * str)
+void Text_DrawString(struct Text *text, char const *str)
 {
     while (*str > 1)
         str = Text_DrawCharacter(text, str);
@@ -208,16 +194,14 @@ void Text_DrawString(struct Text * text, char const * str)
 
 // replaces
 LYN_REPLACE_CHECK(Text_DrawNumber);
-void Text_DrawNumber(struct Text * text, int number)
+void Text_DrawNumber(struct Text *text, int number)
 {
-    if (number == 0)
-    {
+    if (number == 0) {
         Text_DrawCharacter(text, "0");
         return;
     }
 
-    while (number != 0)
-    {
+    while (number != 0) {
         char buf = '0' + DivRem(number, 10);
         number = Div(number, 10);
 
@@ -229,10 +213,9 @@ void Text_DrawNumber(struct Text * text, int number)
 
 // replaces
 LYN_REPLACE_CHECK(Text_DrawNumberOrBlank);
-void Text_DrawNumberOrBlank(struct Text * text, int number)
+void Text_DrawNumberOrBlank(struct Text *text, int number)
 {
-    if (number == 0xFF || number == -1)
-    {
+    if (number == 0xFF || number == -1) {
         Text_Skip(text, -8);
         Text_DrawString(text, "ーー");
 
@@ -258,21 +241,19 @@ static u32 my_log10(u32 number)
 
 // replaces
 LYN_REPLACE_CHECK(NumberToString);
-int NumberToString(int number, char * buf)
+int NumberToString(int number, char *buf)
 {
     u32 off, beg;
 
     off = 0;
 
-    if (number == 0)
-    {
+    if (number == 0) {
         *buf++ = '0';
         *buf++ = '\0';
         return 1;
     }
 
-    if (number < 0)
-    {
+    if (number < 0) {
         buf[off++] = '-';
         number = -number;
     }
@@ -280,8 +261,7 @@ int NumberToString(int number, char * buf)
     off += my_log10(number);
     beg = off;
 
-    while (number > 0)
-    {
+    while (number > 0) {
         buf[off--] = '0' + DivRem(number, 10);
         number = Div(number, 10);
     }
@@ -289,4 +269,3 @@ int NumberToString(int number, char * buf)
     buf[beg + 1] = '\0';
     return beg + 1;
 }
-#endif

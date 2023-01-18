@@ -11,14 +11,15 @@ apt install binutils-arm-none-eabi
 ```
 3. Install EventAssembler:
 ```
-# Firstly install .Net SDK: https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004
-wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
-sudo dpkg -i packages-microsoft-prod.deb && \
-rm packages-microsoft-prod.deb && \
-sudo apt-get update && \
-sudo apt-get install -y dotnet-sdk-6.0
+# Directly download the release:
+cd tools && \
+wget https://github.com/StanHash/EventAssembler/releases/download/1.0/EventAssembler.zip --no-check-certificate && \
+unzip EventAssembler.zip && \
+chmod 777 *.exe && chmod 777 Tools/*.exe && \
+rm EventAssembler.zip
 
-# Build EA
+# Or build by yourself for Ubuntu/WSL users
+# Firstly install .Net SDK: https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004
 sudo apt install build-essential cmake re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev && \
 cd tools && \
 git clone --recursive git@github.com:StanHash/EventAssembler.git && \
@@ -27,15 +28,16 @@ cd EventAssembler && \
 ```
 4. Install PyTools:
 ```
-cd Tools
+cd tools &&\
 git clone --recursive git@github.com:StanHash/FE-PyTools.git
 ```
 5. Install and build fe6 decompile project:
 ```
-cd Tools
-git clone git@github.com:MokhaLeee/fe6.git && cd fe6
-cp ../../fe6.gba ./fe6-base.gba
-cd tools/
+cd tools &&\
+git clone git@github.com:MokhaLeee/fe6.git &&\
+cd fe6 &&\
+cp ../../fe6.gba ./fe6-base.gba &&\
+cd tools &&\
 ./install-agbcc.sh
 ```
 6. Now your repo should has components as below:

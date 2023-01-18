@@ -6,7 +6,7 @@ ORG FreeSpaceBLRange
 POP
 
 #ifdef CONFIG_DEBUG
-    #include "failscreen/failscreen.event"
+    #include "debug_chax/debug_chax.event"
 #endif
 
 #include "unicode/unicode.event"

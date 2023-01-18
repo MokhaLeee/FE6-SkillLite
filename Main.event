@@ -4,12 +4,15 @@
 #include "EAstdlib.event"
 #include "Extensions/Hack Installation.txt"
 
+ORG FreeSpaceTable
+#include "game-data/game_data.event"
+ASSERT (FreeSpaceTableEnd - CURRENTOFFSET)
+
 ORG FreeSpaceStr
+#include "writans/repoint/repoint_text_table.event"
+#include "writans/text.event"
+ASSERT (FreeSpaceStrEnd - CURRENTOFFSET)
 
 ORG FreeSpaceComm
 #include "wizardry/wizardry.event"
-
-ORG FreeSpaceTable
-#include "game-data/game_data.event"
-
 MESSAGE END_AT CURRENTOFFSET

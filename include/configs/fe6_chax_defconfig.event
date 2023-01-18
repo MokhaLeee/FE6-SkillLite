@@ -3,14 +3,15 @@
 
 // #define CONFIG_DEBUG
 
-// Free space definitions
-#define FreeSpaceBLRange 0xF635C		// Occupy MSG tables, if not relocate text table, then 0xF9794
+#define FreeSpaceBLRange 0xF635C // gMsgTable
 #define FreeSpaceTable $7FF0B0
-#define FreeSpaceStr FreeSpaceTable + 0x2000
-#define FreeSpaceComm FreeSpaceStr + 0xF0000
+#define FreeSpaceTableEnd (FreeSpaceTable + 0x2000)
+#define FreeSpaceStr FreeSpaceTableEnd
+#define FreeSpaceStrEnd (FreeSpaceStr + 0xF0000)
+#define FreeSpaceComm FreeSpaceStrEnd
 
 #ifndef CONFIG_DEBUG
-    #define FreeRAMSpace 0x2025B8C			// size = 0x2028, sDebugTextSt
+    #define FreeRAMSpace 0x2025B8C // sDebugTextSt, size = 0x2028, end at 0x2027BB4
 #endif
 
 #endif

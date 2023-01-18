@@ -1,5 +1,0 @@
-// ASCII support (as a subset of Shift-JIS)
-// hack by stan
-
-#include "english-font-data.event"
-#include "src/sjis.lyn.event"
