@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "unit.h"
 #include "item.h"
+#include "skill-system.h"
 
 LYN_REPLACE_CHECK(GetUnitMaxHp);
 int GetUnitMaxHp(struct Unit *unit)
@@ -76,6 +77,7 @@ int GetUnitLuck(struct Unit *unit)
 
     status = unit->lck;
     status += GetItemLckBonus(GetUnitEquippedWeapon(unit));
+    status += SkillTester(unit, SKILLID_LckBonus) ? 2 : 0;
 
     return status > 0 ? status : 0;
 }

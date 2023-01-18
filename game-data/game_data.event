@@ -1,1 +1,7 @@
+#ifndef GAME_DATA
+#define GAME_DATA
 
+#include "skill-rom-table/skill-pdata.lyn.event"
+#include "skill-rom-table/skill-jdata.lyn.event"
+
+#endif

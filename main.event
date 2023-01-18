@@ -4,6 +4,8 @@
 #include "Extensions/Hack Installation.txt"
 #include "Extensions/ProcDefinitions.txt"
 
+#include "include/skill-defs.h"
+
 ORG FreeSpaceTable
 #include "game-data/game_data.event"
 ASSERT (FreeSpaceTableEnd - CURRENTOFFSET)

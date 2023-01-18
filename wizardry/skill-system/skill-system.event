@@ -1,0 +1,6 @@
+#ifndef SKILL_SYSTEM
+#define SKILL_SYSTEM
+
+#include "src/skill-tester.lyn.event"
+
+#endif
