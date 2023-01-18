@@ -62,7 +62,7 @@ NOTIFY_PROCESS = @echo "$(notdir $<) => $(notdir $@)"
 MAIN_DEPS := $(shell $(EA_DEP) $(MAIN) -I $(EA_DIR) --add-missings)
 
 $(FE6_CHX): $(MAIN) $(FE6_GBA) $(FE6_SYM) $(MAIN_DEPS)
-	@echo "[EA]		$(notdir $@)"
+	@echo "[EA ]	$(notdir $@)"
 	@cp -f $(FE6_GBA) $(FE6_CHX)
 	@$(EA) A FE6 -input:$(MAIN) -output:$(FE6_CHX) --nocash-sym || rm -f $(FE6_CHX)
 	@cat $(FE6_SYM) >> $(FE6_CHX:.gba=.sym)
@@ -74,19 +74,19 @@ CLEAN_FILES += $(FE6_CHX)  $(FE6_CHX:.gba=.sym)
 # = DECOMP =
 # ==========
 $(FE6_ELF): FORCE
-	@echo "[BUILD]	$(notdir $@)"
+	@echo "[MAKE]	$(notdir $@)"
 	@$(MAKE) -s -C $(FE6_DIR)
 
 $(FE6_REF): $(FE6_ELF)
-	@echo "[PYTHON]	$(notdir $@)"
+	@echo "[PY ]	$(notdir $@)"
 	@$(ELF2REF) $(FE6_ELF) > $(FE6_REF)
 
 $(FE6_SYM): $(FE6_ELF)
-	@echo "[PYTHON]	$(notdir $@)"
+	@echo "[PY ]	$(notdir $@)"
 	@$(ELF2SYM) $(FE6_ELF) > $(FE6_SYM)
 
 $(FE6_GBA): $(FE6_ELF)
-	@echo "[OBJDMP]	$(notdir $@)"
+	@echo "[ODP]	$(notdir $@)"
 	@touch $(FE6_GBA)
 
 
@@ -102,23 +102,23 @@ CFLAGS  := $(ARCH) $(INC_FLAG) -Wall -O2 -mtune=arm7tdmi -ffreestanding -mlong-c
 ASFLAGS := $(ARCH) $(INC_FLAG)
 
 %.lyn.event: %.o $(LYN_REF)
-	@echo "[LYN]		$(notdir $@)"
+	@echo "[LYN]	$(notdir $@)"
 	@$(LYN) $< $(LYN_REF) > $@
 
 %.dmp: %.o
-	@echo "[OBJCPY]	$(notdir $@)"
+	@echo "[OPY]	$(notdir $@)"
 	@$(OBJCOPY) -S $< -O binary $@
 
 %.o: %.s
-	@echo "[AS]		$(notdir $@)"
+	@echo "[AS ]	$(notdir $@)"
 	@$(AS) $(ASFLAGS) $(SDEPFLAGS) -I $(dir $<) $< -o $@
 
 %.o: %.c
-	@echo "[CC]		$(notdir $@)"
+	@echo "[CC ]	$(notdir $@)"
 	@$(CC) $(CFLAGS) $(CDEPFLAGS) -g -c $< -o $@
 
 %.asm: %.c
-	@echo "[CC]		$(notdir $@)"
+	@echo "[CC ]	$(notdir $@)"
 	@$(CC) $(CFLAGS) $(CDEPFLAGS) -S $< -o $@ -fverbose-asm
 
 # Avoid make deleting objects it thinks it doesn't need anymore
@@ -136,7 +136,7 @@ CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) $(SFILES:.s=.lyn.event)
 # = Game Data =
 # =============
 %.event: %.csv %.nmm
-	@echo "[C2EA]	$(notdir $@)"
+	@echo "[CEA]	$(notdir $@)"
 	@echo | $(C2EA) -csv $*.csv -nmm $*.nmm -out $*.event $(ROM_SOURCE) > /dev/null
 
 NMM_FILES := $(shell find -type f -name '*.nmm')
@@ -153,11 +153,11 @@ WRITANS_INSTALLER   := $(WRITANS_DIR)/text.event
 WRITANS_DEFINITIONS := $(WRITANS_DIR)/text_defs.event
 
 $(WRITANS_INSTALLER) $(WRITANS_DEFINITIONS): $(WRITANS_TEXT_MAIN) $(WRITANS_ALL_TEXT)
-	$(NOTIFY_PROCESS)
+	@echo "[TPS]	$(notdir $@)"
 	@$(TEXT_PROCESS) $(WRITANS_TEXT_MAIN) --installer $(WRITANS_INSTALLER) --definitions $(WRITANS_DEFINITIONS) --parser-exe $(PARSEFILE)
 
 %.fetxt.dmp: %.fetxt
-	@echo "[PARSE]	$(notdir $@)"
+	@echo "[PAS]	$(notdir $@)"
 	@$(PARSEFILE) -i $< -o $@ > /dev/null
 
 CLEAN_FILES += $(WRITANS_INSTALLER) $(WRITANS_DEFINITIONS)
@@ -168,15 +168,15 @@ CLEAN_DIRS  += $(WRITANS_DIR)/.TextEntries
 # = Spritans =
 # ============
 %.4bpp: %.png
-	@echo "[PNGDMP]	$(notdir $@)"
+	@echo "[P2D]	$(notdir $@)"
 	@$(PNG2DMP) $< -o $@
 
 %.gbapal: %.png
-	@echo "[PNGDMP]	$(notdir $@)"
+	@echo "[P2D]	$(notdir $@)"
 	@$(PNG2DMP) $< -po $@ --palette-only
 
 %.lz: %
-	@echo "[COMPR]	$(notdir $@)"
+	@echo "[CPR]	$(notdir $@)"
 	@$(COMPRESS) $< $@
 
 PNG_FILES := $(shell find -type f -name '*.png')

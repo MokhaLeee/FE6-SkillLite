@@ -6,10 +6,14 @@ ORG FreeSpaceBLRange
 POP
 
 #ifdef CONFIG_DEBUG
-    #include "debug_chax/debug_chax.event"
+    #include "debug-chax/debug-chax.event"
 #endif
 
 #include "unicode/unicode.event"
 #include "unicode/unicode-transcoder.event"
 #include "unicode/unicode-strings.event"
 #include "misc/skip-intro.event"
+#include "icon-display/icon-display.event"
+#include "unit-menu/unit-menu.event"
+#include "unit-action/unit-action.event"
+#include "status-getter/status-getter.event"

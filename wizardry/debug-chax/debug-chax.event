@@ -1,0 +1,6 @@
+// implements a function that displays a fail screen, ported over from beta fe8
+// hack by stan
+
+// header is available at ../include/debug-chax.h
+
+#include "src/failscreen.lyn.event"

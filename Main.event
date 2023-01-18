@@ -1,8 +1,8 @@
 #include "include/configs/fe6_chax_defconfig.event"
-#include "include/6CDefinitions.event"
 
 #include "EAstdlib.event"
 #include "Extensions/Hack Installation.txt"
+#include "Extensions/ProcDefinitions.txt"
 
 ORG FreeSpaceTable
 #include "game-data/game_data.event"

@@ -14,4 +14,6 @@
     #define FreeRAMSpace 0x2025B8C // sDebugTextSt, size = 0x2028, end at 0x2027BB4
 #endif
 
+#define ICON_SHEET_COUNT 4
+
 #endif

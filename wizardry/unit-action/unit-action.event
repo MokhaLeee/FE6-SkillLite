@@ -1,0 +1,75 @@
+#ifndef UNIT_ACTION
+#define UNIT_ACTION
+
+
+#ifndef IsPointer
+	#define IsPointer 0x8000000
+#endif // IsPointer
+
+#ifndef ACTION_TABLE_SIZE
+	#define ACTION_TABLE_SIZE 0x30
+#endif // ACTION_TABLE_SIZE
+
+#define NoActionRoutine "WORD 0"
+#define ActionRoutine(apRoutine) "POIN (apRoutine)"
+#define ActionRoutine(apRoutine, abForcedYeild) "WORD (IsPointer | (apRoutine) | (abForcedYeild << 28))"
+
+#define InjectUnitAction(aActionId, adActionRoutine) "PUSH; ORG (UnitActionCallTable + 4*aActionId); adActionRoutine; POP"
+
+#include "src/action-rework.lyn.event"
+
+ALIGN 4
+UnitActionCallTable:
+	NoActionRoutine					// 0x00 ?
+	ActionRoutine(WaitAction)		// 0x01 ACTION_WAIT
+	ActionRoutine(0x2A30D)			// 0x02 ACTION_COMBAT
+	ActionRoutine(0x27F99, True)	// 0x03 ACTION_STAFF
+	ActionRoutine(0x2A371)			// 0x04 ACTION_REFRESH
+	NoActionRoutine					// 0x05
+	ActionRoutine(0x2A495)			// 0x06 ACTION_STEAL
+	ActionRoutine(0x2A139)			// 0x07 ACTION_RESCUE
+	ActionRoutine(0x2A189)			// 0x08 ACTION_DROP
+	NoActionRoutine					// 0x09 ACTION_TAKE
+	NoActionRoutine					// 0x0A ACTION_GIVE
+	NoActionRoutine					// 0x0B
+	ActionRoutine(0x2A3C1)			// 0x0C ACTION_TALK
+	ActionRoutine(0x2A3ED)			// 0x0D ACTION_SUPPORT
+	ActionRoutine(0x2A209)			// 0x0E ACTION_VISIT
+	ActionRoutine(0x2A209)			// 0x0F ACTION_SEIZE
+	ActionRoutine(0x27F99, True)	// 0x10 ACTION_DOOR
+	NoActionRoutine					// 0x11
+	ActionRoutine(0x27F99, True)	// 0x12 ACTION_CHEST
+	NoActionRoutine					// 0x13
+	NoActionRoutine					// 0x14
+	NoActionRoutine					// 0x15
+	ActionRoutine(0x2A35D)			// 0x16
+	ActionRoutine(0x27F99, True)	// 0x17 ACTION_USEITEM
+	NoActionRoutine					// 0x18
+	NoActionRoutine					// 0x19
+	NoActionRoutine					// 0x1A
+	ActionRoutine(WaitAction)		// 0x1B ACTION_TRAPPED
+	
+	NoActionRoutine					// 0x1C FREE
+	NoActionRoutine					// 0x1D FREE
+	NoActionRoutine					// 0x1E FREE
+	NoActionRoutine					// 0x1F FREE
+	NoActionRoutine					// 0x20 FREE
+	NoActionRoutine					// 0x21 FREE
+	NoActionRoutine					// 0x22 FREE
+	NoActionRoutine					// 0x23 FREE
+	NoActionRoutine					// 0x24 FREE
+	NoActionRoutine					// 0x25 FREE
+	NoActionRoutine					// 0x26 FREE
+	NoActionRoutine					// 0x27 FREE
+	NoActionRoutine					// 0x28 FREE
+	NoActionRoutine					// 0x29 FREE
+	NoActionRoutine					// 0x2A FREE
+	NoActionRoutine					// 0x2B FREE
+	NoActionRoutine					// 0x2C FREE
+	NoActionRoutine					// 0x2D FREE
+	NoActionRoutine					// 0x2E FREE
+	NoActionRoutine					// 0x2F FREE
+
+	ORG UnitActionCallTable + (ACTION_TABLE_SIZE*4)
+
+#endif // UNIT_ACTION

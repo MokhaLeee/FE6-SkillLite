@@ -1,9 +1,7 @@
 #include "common-chax.h"
-#include "debug_chax.h"
+#include "debug-chax.h"
 #include "text.h"
 #include "util.h"
-
-#include "macros.h"
 
 struct UnicodeGlyphEnt
 {
