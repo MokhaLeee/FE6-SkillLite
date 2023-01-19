@@ -194,6 +194,7 @@ CLEAN_FILES += $(PNG_FILES:.png=.4bpp) $(PNG_FILES:.png=.4bpp.lz)
 clean:
 	@rm -f $(CLEAN_FILES)
 	@rm -rf $(CLEAN_DIRS)
+	@$(MAKE) -s -C $(FE6_DIR) clean
 	@echo "[RM]	$(notdir $(CLEAN_FILES)) $(notdir $(CLEAN_DIRS))"
 
 FORCE:

@@ -1,0 +1,29 @@
+#ifndef EXPANDED_MODULAR_SAVE
+#define EXPANDED_MODULAR_SAVE
+
+/**
+ * Mokha's plan:
+ * SAVE NAME       SAVE OFFSET     SAVE LENGTH     DEFAULT LENGTH  EXPANSION SIZE
+ * meta            0x00            0x90            0x90            0x0
+ * suspend0        0x90            0x27C0          0x1DAC          0xA14
+ * suspend1        0x2850          0xC             0x1DAC          -----
+ * save1           0x285C          0x1474          0xDF0           0x684
+ * save2           0x3CD0          0x1474          0xDF0           0x684
+ * save3           0x5144          0x1474          0xDF0           0x684
+ * link_arena      0x65B8          0x93C (?)       0x93C (?)       ???
+ * chunk6          0x7000          ???             ???             0x0
+ */
+
+#define EmsChunk(aOffset, aSize, apSaver, apLoader) "SHORT (aOffset) (aSize); POIN (apSaver) (apLoader)"
+#define EmsChunkEnd "SHORT 0xFFFF 0 0 0 0 0"
+
+ALIGN 4
+EmsChunkSa:
+    EmsChunkEnd
+
+EmsChunkSu:
+    EmsChunkEnd
+
+#include "src/ms-core.lyn.event"
+
+#endif
