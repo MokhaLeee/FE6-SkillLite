@@ -4,7 +4,7 @@
 #include "hardware.h"
 #include "move.h"
 #include "m4a.h"
-#include "debug-chax.h"
+#include "debug.h"
 
 #ifdef CONFIG_DEBUG
 

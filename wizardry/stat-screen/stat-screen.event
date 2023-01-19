@@ -1,0 +1,6 @@
+#ifndef STAT_SCREEN
+#ifndef STAT_SCREEN
+
+#include "src/draw-pages.lyn.event"
+
+#endif /* STAT_SCREEN */

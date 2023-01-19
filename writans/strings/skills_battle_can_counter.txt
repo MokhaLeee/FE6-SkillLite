@@ -1,0 +1,14 @@
+## SD_CloseCounter
+Close Counter:[NL]
+Enables unit to counter-attack[NL]
+if got melee attack[X]
+
+## SD_CounterAttack
+Counter Attack:[NL]
+Allows unit to counterattack[NL]
+regardless of distance to attacker.[X]
+
+## SD_WindSweep
+Wind Sweep:[NL]
+Attacker cannot attack double[NL] 
+Target can not counterattack[X]

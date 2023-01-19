@@ -60,11 +60,12 @@ A: `sudo apt install python3-pip && pip install pyelftools`
 
 # Wizardy to-do list:
 - [ ] **skill-system**
-	- [ ] skill infos
-	- [ ] skill stat-screen
+	- [x] skill infos
+	- [x] skill stat-screen
 	- [x] skill ROM list
 	- [ ] skill RAM list
 	- [ ] skill prep-screen selection
+	- [ ] skill activation animations
 - [ ] **combat-arts**
 	- [ ] combat-art infos
 	- [ ] combat-art tester
@@ -81,7 +82,7 @@ A: `sudo apt install python3-pip && pip install pyelftools`
 	- [ ] effective judgement
 	- [ ] battle forcast
 - [ ] **stat-screen**
-	- [ ] UI rework
+	- [x] UI rework
 	- [ ] negative stat boosts UI
 - [ ] **weapon range**
 - [ ] **str / mag split**

@@ -23,13 +23,18 @@
 #define SKILLID_BlowUncanny 0x18			// Uncanny Blow: 	Hit +30
 
 
-// Battle Misc(0x20)
+// Battle Order(0x20)
 #define SKILLID_Vantage 0x20				// 待伏
 #define SKILLID_Desperation 0x21			// 猛攻	
 #define SKILLID_QuickRiposte 0x22			// 回击
-#define SKILLID_CounterAttack 0x23			// 迎击
-#define SKILLID_WindSweep 0x24				// 风扫
-#define SKILLID_Discipline 0x25				// WpnExp*2
+#define SKILLID_CloseCounter 0x23
+#define SKILLID_CounterAttack 0x24			// 迎击
+#define SKILLID_WindSweep 0x25				// 风扫
+#define SKILLID_WaryFighter 0x26
+#define SKILLID_DoubleLion 0x27
+
+// Battle Misc
+#define SKILLID_Discipline 0x28				// WpnExp*2
 
 
 // Battle Status(0x30)

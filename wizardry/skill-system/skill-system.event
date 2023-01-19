@@ -2,6 +2,10 @@
 #define SKILL_SYSTEM
 
 #include "src/skill-tester.lyn.event"
+#include "src/skill-infos.lyn.event"
+#include "src/skill-screen.lyn.event"
+
+#define InjectSkillInfo(id, info) "PUSH; ORG SkillInfoTable + 4 * (id); POIN (info); POP"
 
 ALIGN 4
 SkillTester_Extern: WORD 0

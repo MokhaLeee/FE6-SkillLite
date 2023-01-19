@@ -1,0 +1,48 @@
+#ifndef SKILLS_BATTLE_UNWIND
+#define SKILLS_BATTLE_UNWIND
+
+ALIGN 4
+SI_Vantage:			#incbin "icons/Vantage.4bpp"
+SI_Desperation:		#incbin "icons/Desperation.4bpp"
+SI_QuickRiposte:	#incbin "icons/QuickRiposte.4bpp"
+SI_WaryFighter:		#incbin "icons/WaryFighter.4bpp"
+SI_DoubleLion:		#incbin "icons/DoubleLion.4bpp"
+
+ALIGN 4
+SkillInfo_QuickRiposte:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_QuickRiposte
+	/* icon */ POIN SI_QuickRiposte
+	/* priv */ WORD 0
+
+SkillInfo_Vantage:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_Vantage
+	/* icon */ POIN SI_Vantage
+	/* priv */ WORD 0
+
+SkillInfo_Desperation:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_Desperation
+	/* icon */ POIN SI_Desperation
+	/* priv */ WORD 0
+
+SkillInfo_WaryFighter:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_WaryFighter
+	/* icon */ POIN SI_WaryFighter
+	/* priv */ WORD 0
+
+SkillInfo_DoubleLion:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_DoubleLion
+	/* icon */ POIN SI_DoubleLion
+	/* priv */ WORD 0
+
+InjectSkillInfo(SKILLID_QuickRiposte, SkillInfo_QuickRiposte)
+InjectSkillInfo(SKILLID_Vantage, SkillInfo_Vantage)
+InjectSkillInfo(SKILLID_Desperation, SkillInfo_Desperation)
+InjectSkillInfo(SKILLID_WaryFighter, SkillInfo_WaryFighter)
+InjectSkillInfo(SKILLID_DoubleLion, SkillInfo_DoubleLion)
+
+#endif

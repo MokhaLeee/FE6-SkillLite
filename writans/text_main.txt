@@ -3,6 +3,9 @@
 # 0xD0E
 New Texts ORG Here[X]
 
-#include "strings/skills_blow.txt"
+#include "strings/skills_battle_blow.txt"
 #include "strings/skills_battle_misc.txt"
 #include "strings/skills_battle_status.txt"
+#include "strings/skills_battle_order.txt"
+#include "strings/skills_battle_can_counter.txt"
+#include "strings/skills_status_getter.txt"

@@ -1,0 +1,11 @@
+
+ALIGN 4
+SI_WIP:
+	#incbin "WIP.4bpp"
+
+#include "battle-blow/battle-blow.event"
+#include "battle-can-counter/battle-can-counter.event"
+#include "battle-order/battle-order.event"
+#include "battle-status/battle-status.event"
+#include "exp/exp.event"
+#include "status-getter/status-getter.event"

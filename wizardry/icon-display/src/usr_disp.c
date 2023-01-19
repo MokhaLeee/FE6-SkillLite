@@ -11,7 +11,10 @@ extern u8 const Img_Icons[];
 
 const void* GetIconGfx(unsigned icon)
 {
-    return IconGetters[ICON_SHEET(icon)](ICON_INDEX(icon));
+    if (icon >= 0 && ICON_SHEET(icon) < ICON_SHEET_COUNT)
+        return IconGetters[ICON_SHEET(icon)](ICON_INDEX(icon));
+    
+    return NULL;
 }
 
 const void* GetVanillaIconGfx(unsigned id)

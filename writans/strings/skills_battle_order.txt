@@ -1,0 +1,36 @@
+## SD_Vantage
+Vantage:[NL]
+When unit is defender with[NL]
+HP is <50%, attack first[X]
+
+## SD_VantageBattalion
+Vantage Battalion:[NL]
+When unit is defender with[NL]
+battalion<1/3, attack first[X]
+
+## SD_Desperation
+Desperation: When unit[NL]
+attacks with HP <50%,[NL]
+double attacks immediately[X]
+
+## SD_DesperationBattalion
+Desperation Battalion: When[NL]
+unit attacks with battalion <[NL]
+1/3, doubles immediately[X]
+
+## SD_QuickRiposte
+Quick Riposte: [NL]
+If unit is attacked with HP[NL]
+>50%, double attacks[X]
+
+## SD_WaryFighter
+Wary Fighter:[NL]
+Prevents follow up attack[NL]
+if unit's HP >50%[X]
+
+## SD_DoubleLion
+Double Lion:[NL]
+If unit attacks with full HP,[NL]
+enjoys Brave effect and lose 1 HP[X]
+
+

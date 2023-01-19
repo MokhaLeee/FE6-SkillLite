@@ -101,6 +101,9 @@ ARCH    := -mcpu=arm7tdmi -mthumb -mthumb-interwork
 CFLAGS  := $(ARCH) $(INC_FLAG) -Wall -O2 -mtune=arm7tdmi -ffreestanding -mlong-calls
 ASFLAGS := $(ARCH) $(INC_FLAG)
 
+CDEPFLAGS = -MMD -MT "$*.o" -MT "$*.asm" -MF "$(CACHE_DIR)/$(notdir $*).d" -MP
+SDEPFLAGS = --MD "$(CACHE_DIR)/$(notdir $*).d"
+
 %.lyn.event: %.o $(LYN_REF)
 	@echo "[LYN]	$(notdir $@)"
 	@$(LYN) $< $(LYN_REF) > $@
@@ -124,6 +127,8 @@ ASFLAGS := $(ARCH) $(INC_FLAG)
 # Avoid make deleting objects it thinks it doesn't need anymore
 # Without this make may fail to detect some files as being up to date
 .PRECIOUS: %.o;
+
+-include $(wildcard $(CACHE_DIR)/*.d)
 
 CFILES := $(shell find -type f -name '*.c')
 CLEAN_FILES += $(CFILES:.c=.o) $(CFILES:.c=.asm) $(CFILES:.c=.dmp) $(CFILES:.c=.lyn.event)

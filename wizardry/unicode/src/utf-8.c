@@ -1,5 +1,5 @@
 #include "common-chax.h"
-#include "debug-chax.h"
+#include "debug.h"
 #include "text.h"
 #include "util.h"
 

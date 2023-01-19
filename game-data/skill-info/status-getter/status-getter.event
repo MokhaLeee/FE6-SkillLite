@@ -1,0 +1,67 @@
+ALIGN 4
+SI_StrBonus:	#incbin "Icons/StrBonus.4bpp"
+SI_MagBonus:	#incbin "Icons/MagBonus.4bpp"
+SI_SklBonus:	#incbin "Icons/SklBonus.4bpp"
+SI_SpdBonus:	#incbin "Icons/SpdBonus.4bpp"
+SI_LckBonus:	#incbin "Icons/LckBonus.4bpp"
+SI_DefBonus:	#incbin "Icons/DefBonus.4bpp"
+SI_ResBonus:	#incbin "Icons/ResBonus.4bpp"
+SI_MovBonus:	#incbin "Icons/MovBonus.4bpp"
+
+ALIGN 4
+SkillInfo_StrBonus:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_StrBonus
+	/* icon */ POIN SI_StrBonus
+	/* priv */ WORD 0
+
+SkillInfo_MagBonus:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_MagBonus
+	/* icon */ POIN SI_MagBonus
+	/* priv */ WORD 0
+
+SkillInfo_SklBonus:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_SklBonus
+	/* icon */ POIN SI_SklBonus
+	/* priv */ WORD 0
+
+SkillInfo_SpdBonus:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_SpdBonus
+	/* icon */ POIN SI_SpdBonus
+	/* priv */ WORD 0
+
+SkillInfo_LckBonus:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_LckBonus
+	/* icon */ POIN SI_LckBonus
+	/* priv */ WORD 0
+
+SkillInfo_DefBonus:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_DefBonus
+	/* icon */ POIN SI_DefBonus
+	/* priv */ WORD 0
+
+SkillInfo_ResBonus:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_ResBonus
+	/* icon */ POIN SI_ResBonus
+	/* priv */ WORD 0
+
+SkillInfo_MovBonus:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_MovBonus
+	/* icon */ POIN SI_MovBonus
+	/* priv */ WORD 0
+
+InjectSkillInfo(SKILLID_StrBonus, SkillInfo_StrBonus)
+InjectSkillInfo(SKILLID_MagBonus, SkillInfo_MagBonus)
+InjectSkillInfo(SKILLID_SklBonus, SkillInfo_SklBonus)
+InjectSkillInfo(SKILLID_SpdBonus, SkillInfo_SpdBonus)
+InjectSkillInfo(SKILLID_LckBonus, SkillInfo_LckBonus)
+InjectSkillInfo(SKILLID_DefBonus, SkillInfo_DefBonus)
+InjectSkillInfo(SKILLID_ResBonus, SkillInfo_ResBonus)
+InjectSkillInfo(SKILLID_MovBonus, SkillInfo_MovBonus)

@@ -1,0 +1,11 @@
+ALIGN 4
+SI_CritUp:	#incbin "Icons/CritUp.4bpp"
+
+ALIGN 4
+SkillInfo_CritUp:
+	/* name */ SHORT 0
+	/* desc */ SHORT SD_CritUp
+	/* icon */ POIN SI_CritUp
+	/* priv */ WORD 0
+
+InjectSkillInfo(SKILLID_CritUp, SkillInfo_CritUp)

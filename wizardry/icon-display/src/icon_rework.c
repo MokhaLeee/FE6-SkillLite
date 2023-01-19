@@ -76,6 +76,7 @@ LYN_REPLACE_CHECK(GetIconChr);
 int GetIconChr(int icon)
 {
     int slot, tile;
+    const u8 *src;
 
     // Check if icon is already loaded
     slot = GetIconUsedSlot(icon);
@@ -87,10 +88,18 @@ int GetIconChr(int icon)
     tile = IconSlot2Chr(slot);
 
     // Register icon graphics
-    RegisterVramMove(
-        GetIconGfx(icon),
-        VRAM + CHR_SIZE * tile,
-        CHR_SIZE * 4);
+    src = GetIconGfx(icon);
+    if (src) {
+        RegisterVramMove(
+            src,
+            VRAM + CHR_SIZE * tile,
+            CHR_SIZE * 4);
+    } else {
+        RegisterVramFill(
+            0,
+            VRAM + CHR_SIZE * tile,
+            CHR_SIZE * 4);
+    }
 
     return tile;
 }
@@ -98,17 +107,14 @@ int GetIconChr(int icon)
 LYN_REPLACE_CHECK(PutIconObjImg);
 void PutIconObjImg(int icon, int chr)
 {
-    u8 const *src;
-    u8 *dst;
+    const u8 *src = GetIconGfx(icon);
+    u8 *dst = OBJ_VRAM0 + CHR_SIZE * (chr & 0x3FF);
 
-    dst = OBJ_VRAM0 + CHR_SIZE * (chr & 0x3FF);
-
-    if (icon < 0) {
+    if (src) {
         // no icon, we clear the target graphics
         RegisterDataFill(0, dst,         CHR_SIZE * 2);
         RegisterDataFill(0, dst + 0x400, CHR_SIZE * 2);
     } else {
-        src = GetIconGfx(icon);
         RegisterDataMove(src,                dst,         CHR_SIZE * 2);
         RegisterDataMove(src + CHR_SIZE * 2, dst + 0x400, CHR_SIZE * 2);
     }

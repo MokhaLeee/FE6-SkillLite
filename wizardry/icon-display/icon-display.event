@@ -11,7 +11,7 @@
 ALIGN 4
 IconGetters:
     POIN GetVanillaIconGfx    // Sheet #0, vanilla
-    // POIN GetSkillIconGfx   // Sheet #0, skill
+    POIN GetSkillIconGfx      // Sheet #1, skill
     ORG (IconGetters + 4 * ICON_SHEET_COUNT)
 
 #define InjectIconSheet(aSheetIndex, aIconGetterFunc) "PUSH; ORG IconGetters + 4 * (aSheetIndex); POIN (aIconGetterFunc); POP"

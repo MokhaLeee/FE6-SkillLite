@@ -2,7 +2,7 @@
 
 #include "msg.h"
 #include "ramfunc.h"
-#include "debug-chax.h"
+#include "debug.h"
 
 #include <string.h>
 extern void (*DecodeStringRamFunc)(char const *src, char *dst);

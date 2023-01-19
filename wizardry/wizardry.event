@@ -6,7 +6,7 @@ ORG FreeSpaceBLRange
 POP
 
 #ifdef CONFIG_DEBUG
-    #include "debug-chax/debug-chax.event"
+    #include "debug/debug.event"
 #endif
 
 #include "unicode/unicode.event"
@@ -19,5 +19,6 @@ POP
 #include "unit-action/unit-action.event"
 #include "null-bwl/null-bwl.lyn.event"
 
+#include "stat-screen/stat-screen.event"
 #include "status-getter/status-getter.event"
 #include "skill-system/skill-system.event"

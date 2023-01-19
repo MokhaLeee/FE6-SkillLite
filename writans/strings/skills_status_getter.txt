@@ -1,0 +1,31 @@
+## SD_StrBonus
+Str+2: [NL]
+Unit grants bonus Str+2[X]
+
+## SD_MagBonus
+Mag+2: [NL]
+Unit grants bonus Mag+2[X]
+
+## SD_SklBonus
+Skl+2: [NL]
+Unit grants bonus Skl+2[X]
+
+## SD_SpdBonus
+Spd+2: [NL]
+Unit grants bonus Spd+2[X]
+
+## SD_LckBonus
+Luk+2: [NL]
+Unit grants bonus Luk+2[X]
+
+## SD_DefBonus
+Def+2: [NL]
+Unit grants bonus Def+2[X]
+
+## SD_ResBonus
+Res+2: [NL]
+Unit grants bonus Res+2[X]
+
+## SD_MovBonus
+Mov+2: [NL]
+Unit grants bonus Mov+2[X]
