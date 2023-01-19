@@ -14,11 +14,20 @@ POP
 #include "unicode/unicode-strings.event"
 #include "misc/skip-intro.event"
 
+/****************
+ * Core Support *
+ ****************/
 #include "icon-display/icon-display.event"
 #include "unit-menu/unit-menu.event"
 #include "unit-action/unit-action.event"
-#include "null-bwl/null-bwl.lyn.event"
 
+#ifdef CONFIG_NULL_BWL
+    #include "null-bwl/null-bwl.lyn.event"
+#endif
+
+/**************
+ * Core Hacks *
+ **************/
 #include "stat-screen/stat-screen.event"
 #include "status-getter/status-getter.event"
 #include "skill-system/skill-system.event"

@@ -1,5 +1,8 @@
 #include "common-chax.h"
 #include "save.h"
+#include "null-bwl.h"
+
+#ifdef CONFIG_NULL_BWL
 
 LYN_REPLACE_CHECK(GetPidStats);
 struct PidStats *GetPidStats(u8 pid)
@@ -60,3 +63,15 @@ int PidStatsGetTotalLevel()
 
 LYN_REPLACE_CHECK(PidStatsRecordBattleRes);
 void PidStatsRecordBattleRes(void) {}
+
+struct NewBwl *GetNewBwlEntry(u8 pid)
+{
+    if (pid >= BWL_ARRAY_SIZE)
+        return NULL;
+    else if (0 == GetPInfo(pid)->affinity)
+        return NULL;
+
+    return (struct NewBwl *)(gPidStatsData + (pid - 1));
+}
+
+#endif /* CONFIG_NULL_BWL */

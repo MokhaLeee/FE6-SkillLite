@@ -5,7 +5,19 @@
  * Enable debug log with function FailScreen() etc.
  * But since FreeRAMSpace uses debug text space (sDebugTextSt) so it will disable FreeRAMSpace.
  */
-// define CONFIG_DEBUG
+// #define CONFIG_DEBUG
+
+/**
+ * Disable vanilla BWL entry so that we may get (0x46 *0x10) auto savable Free-RAM-Space
+ */
+#define CONFIG_NULL_BWL
+
+/**
+ * Let unit support data saved in BWL table, need CONFIG_NULL_BWL defined
+ */
+#ifdef CONFIG_NULL_BWL
+    #define CONFIG_BWL_SUPPORT
+#endif
 
 /**
  * FreeSpace

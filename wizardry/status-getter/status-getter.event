@@ -1,18 +1,38 @@
 #ifndef STATUS_GETTER
 #define STATUS_GETTER
 
+#define MSG_END "WORD 0"
+
 #include "src/msg.lyn.event"
 #include "src/msg_fix.lyn.event"
 
 ALIGN 4
-ModularHpGetter : WORD 0
-ModularPowGetter: WORD 0
-ModularMagGetter: WORD 0
-ModularSklGetter: WORD 0
-ModularSpdGetter: WORD 0
-ModularLckGetter: WORD 0
-ModularDefGetter: WORD 0
-ModularResGetter: WORD 0
-ModularMovGetter: WORD 0
+ModularHpGetter :
+    MSG_END
+
+ModularPowGetter:
+    // POIN msg_test_func
+    MSG_END
+
+ModularMagGetter:
+    MSG_END
+
+ModularSklGetter:
+    MSG_END
+
+ModularSpdGetter:
+    MSG_END
+
+ModularLckGetter:
+    MSG_END
+
+ModularDefGetter:
+    MSG_END
+
+ModularResGetter:
+    MSG_END
+
+ModularMovGetter:
+    MSG_END
 
 #endif // STATUS_GETTER

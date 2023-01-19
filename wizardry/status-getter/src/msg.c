@@ -6,13 +6,18 @@
 #define UNIT_MAX_STATUS 128
 
 typedef int (*const msg_func)(struct Unit *unit, int old_status);
-extern msg_func ModularHpGetter,  ModularPowGetter, ModularMagGetter, ModularSklGetter, ModularSpdGetter, \
-                ModularLckGetter, ModularDefGetter, ModularResGetter, ModularMovGetter;
+extern msg_func ModularHpGetter[],  ModularPowGetter[], ModularMagGetter[], ModularSklGetter[], ModularSpdGetter[], \
+                ModularLckGetter[], ModularDefGetter[], ModularResGetter[], ModularMovGetter[];
+
+int msg_test_func(struct Unit *unit, int old_status)
+{
+    return old_status + 1;
+}
 
 LYN_REPLACE_CHECK(GetUnitMaxHp);
 int GetUnitMaxHp(struct Unit *unit)
 {
-    int status;
+    int status, i = 0;
 
     /* Internal modular */
     status = unit->max_hp;
@@ -20,8 +25,8 @@ int GetUnitMaxHp(struct Unit *unit)
     status += SkillTester(unit, SKILLID_HpBonus) ? 5 : 0;
 
     /* External modular */
-    if (ModularHpGetter)
-        status = ModularHpGetter(unit, status);
+    while (ModularHpGetter[i])
+        status = ModularHpGetter[i++](unit, status);
 
     LIMIT_AREA(status, 0, UNIT_MAX_STATUS);
     return status;
@@ -30,7 +35,7 @@ int GetUnitMaxHp(struct Unit *unit)
 LYN_REPLACE_CHECK(GetUnitPower);
 int GetUnitPower(struct Unit *unit)
 {
-    int status;
+    int status, i = 0;
 
     /* Internal modular */
     status = unit->pow;
@@ -38,8 +43,8 @@ int GetUnitPower(struct Unit *unit)
     status += SkillTester(unit, SKILLID_StrBonus) ? 2 : 0;
 
     /* External modular */
-    if (ModularPowGetter)
-        status = ModularPowGetter(unit, status);
+    while (ModularPowGetter[i])
+        status = ModularPowGetter[i++](unit, status);
 
     LIMIT_AREA(status, 0, UNIT_MAX_STATUS);
     return status;
@@ -48,7 +53,7 @@ int GetUnitPower(struct Unit *unit)
 LYN_REPLACE_CHECK(GetUnitSkill);
 int GetUnitSkill(struct Unit *unit)
 {
-    int status;
+    int status, i = 0;
 
     /* Internal modular */
     status = unit->flags & UNIT_FLAG_RESCUING ? unit->skl / 2 : unit->skl;
@@ -56,8 +61,8 @@ int GetUnitSkill(struct Unit *unit)
     status += SkillTester(unit, SKILLID_SklBonus) ? 2 : 0;
 
     /* External modular */
-    if (ModularSklGetter)
-        status = ModularSklGetter(unit, status);
+    while (ModularSklGetter[i])
+        status = ModularSklGetter[i++](unit, status);
 
     LIMIT_AREA(status, 0, UNIT_MAX_STATUS);
     return status;
@@ -66,7 +71,7 @@ int GetUnitSkill(struct Unit *unit)
 LYN_REPLACE_CHECK(GetUnitSpeed);
 int GetUnitSpeed(struct Unit *unit)
 {
-    int status;
+    int status, i = 0;
 
     /* Internal modular */
     status = unit->flags & UNIT_FLAG_RESCUING ? unit->spd / 2 : unit->spd;
@@ -74,8 +79,8 @@ int GetUnitSpeed(struct Unit *unit)
     status += SkillTester(unit, SKILLID_SpdBonus) ? 2 : 0;
 
     /* External modular */
-    if (ModularSpdGetter)
-        status = ModularSpdGetter(unit, status);
+    while (ModularSpdGetter[i])
+        status = ModularSpdGetter[i++](unit, status);
 
     LIMIT_AREA(status, 0, UNIT_MAX_STATUS);
     return status;
@@ -84,7 +89,7 @@ int GetUnitSpeed(struct Unit *unit)
 LYN_REPLACE_CHECK(GetUnitDefense);
 int GetUnitDefense(struct Unit *unit)
 {
-    int status;
+    int status, i = 0;
 
     /* Internal modular */
     status = unit->def;
@@ -92,8 +97,8 @@ int GetUnitDefense(struct Unit *unit)
     status += SkillTester(unit, SKILLID_DefBonus) ? 2 : 0;
 
     /* External modular */
-    if (ModularDefGetter)
-        status = ModularDefGetter(unit, status);
+    while (ModularDefGetter[i])
+        status = ModularDefGetter[i++](unit, status);
 
     LIMIT_AREA(status, 0, UNIT_MAX_STATUS);
     return status;
@@ -102,7 +107,7 @@ int GetUnitDefense(struct Unit *unit)
 LYN_REPLACE_CHECK(GetUnitResistance);
 int GetUnitResistance(struct Unit *unit)
 {
-    int status;
+    int status, i = 0;
 
     /* Internal modular */
     status = unit->res;
@@ -111,8 +116,8 @@ int GetUnitResistance(struct Unit *unit)
     status += unit->barrier;
 
     /* External modular */
-    if (ModularResGetter)
-        status = ModularResGetter(unit, status);
+    while (ModularResGetter[i])
+        status = ModularResGetter[i++](unit, status);
 
     LIMIT_AREA(status, 0, UNIT_MAX_STATUS);
     return status;
@@ -121,7 +126,7 @@ int GetUnitResistance(struct Unit *unit)
 LYN_REPLACE_CHECK(GetUnitLuck);
 int GetUnitLuck(struct Unit *unit)
 {
-    int status;
+    int status, i = 0;
 
     /* Internal modular */
     status = unit->lck;
@@ -129,8 +134,8 @@ int GetUnitLuck(struct Unit *unit)
     status += SkillTester(unit, SKILLID_LckBonus) ? 2 : 0;
 
     /* External modular */
-    if (ModularLckGetter)
-        status = ModularLckGetter(unit, status);
+    while (ModularLckGetter[i])
+        status = ModularLckGetter[i++](unit, status);
 
     LIMIT_AREA(status, 0, UNIT_MAX_STATUS);
     return status;
@@ -138,7 +143,7 @@ int GetUnitLuck(struct Unit *unit)
 
 int GetUnitMove(struct Unit *unit)
 {
-    int status;
+    int status, i = 0;
 
     /* Internal modular */
     status = UNIT_CON_BASE(unit);
@@ -146,8 +151,8 @@ int GetUnitMove(struct Unit *unit)
     status += SkillTester(unit, SKILLID_MovBonus) ? 2 : 0;
 
     /* External modular */
-    if (ModularMovGetter)
-        status = ModularMovGetter(unit, status);
+    while (ModularMovGetter[i])
+        status = ModularMovGetter[i++](unit, status);
 
     LIMIT_AREA(status, 0, UNIT_MAX_STATUS);
     return status;
