@@ -81,11 +81,21 @@ A: `sudo apt install python3-pip && pip install pyelftools`
 	- [ ] weapon tri-angle
 	- [ ] effective judgement
 	- [ ] battle forcast
+- [ ] **extra random-number system**
+	- [ ] save data
+	- [ ] Switch & 3DS style level up
 - [ ] **stat-screen**
 	- [x] UI rework
 	- [ ] negative stat boosts UI
 - [ ] **weapon range**
 - [ ] **str / mag split**
+	- [ ] combat hack
+	- [ ] unit magic power getter
+	- [ ] check cap
+	- [ ] auto-level
+	- [ ] level-up screen (map-anim)
+	- [ ] level-up screen (banim)
+	- [ ] magic booster item
 - [ ] **promotion list**
 - [ ] **buff & debuff rework**
 	- [ ] unit-status rework
@@ -102,6 +112,13 @@ A: `sudo apt install python3-pip && pip install pyelftools`
 - [x] **unit-action**
 - [x] **icon-rework**
 - [ ] **popup-rework**
+- [ ] **load unit hook**
+- [ ] **battle-unit hook**
+- [ ] **level-up rework**
+	- [ ] level-up hook
+	- [ ] promotion hook
+	- [ ] modular growth getter
+- [ ] **post-action procs**
 
 # Credits:
 * [StanH](https://github.com/StanHash) and his arts: [FE6-Decomp](https://github.com/StanHash/fe6), [FE6-+Wizardry](https://github.com/StanHash/fe6-wizardry)
