@@ -5,10 +5,8 @@ ORG FreeSpaceBLRange
 #undef inBLRange
 POP
 
-#ifdef CONFIG_DEBUG
-    #include "debug/debug.event"
-#endif
 
+#include "debug/debug.event"
 #include "unicode/unicode.event"
 #include "unicode/unicode-transcoder.event"
 #include "unicode/unicode-strings.event"
@@ -26,7 +24,7 @@ POP
 #endif
 
 // WIP
-// #include "save-data/save-data.event"
+#include "save-data/save-data.event"
 
 /**************
  * Core Hacks *

@@ -5,7 +5,6 @@
 #include "chapter.h"
 
 #include "modular-save.h"
-#include "sram-memmap.h"
 
 LYN_REPLACE_CHECK(WriteSaveBlockInfo);
 void WriteSaveBlockInfo(struct SaveBlockInfo *chunk, int index)
@@ -22,9 +21,7 @@ void WriteSaveBlockInfo(struct SaveBlockInfo *chunk, int index)
         break;
 
     case BLOCK_INFO_KIND_SUS:
-        chunk->size = (index == SAVE_ID_SUSPEND0)
-                    ? EMS_SRAM_SIZE_SUS0
-                    : EMS_SRAM_SIZE_SUS1;
+        chunk->size = EMS_SRAM_SIZE_SUS0;
         break;
 
     case BLOCK_INFO_KIND_2:
@@ -63,14 +60,13 @@ u8 *GetSaveTargetAddress(int index)
         return gpSramEntry + EMS_SRAM_MEMMAP_SAV2;
 
     case SAVE_ID_SUSPEND0:
-        return gpSramEntry + EMS_SRAM_MEMMAP_SUS0;
-
     case SAVE_ID_SUSPEND1:
-        return gpSramEntry + EMS_SRAM_MEMMAP_SUS1;
+        return gpSramEntry + EMS_SRAM_MEMMAP_SUS0;
 
     case SAVE_ID_5:
         return gpSramEntry + EMS_SRAM_MEMMAP_5;
 
+    /* Seems unused ? */
     case SAVE_ID_6:
         return gpSramEntry + EMS_SRAM_MEMMAP_6;
 
@@ -78,6 +74,16 @@ u8 *GetSaveTargetAddress(int index)
         return NULL;
     } /* switch */
 }
+
+int GetCkSum32ViaGenericBuf(void * sram_src, int size)
+{
+    if (size > sizeof(gBuf))
+        size = sizeof(gBuf);
+
+    ReadSramFast(sram_src, gBuf, size);
+    return Checksum32_t((u16 *)gBuf, size);
+}
+
 
 LYN_REPLACE_CHECK(CopyGameSave);
 void CopyGameSave(int index_src, int index_dst)
@@ -119,7 +125,6 @@ void SaveGame(int slot)
     ResetSaveBlockInfo(SAVE_ID_SUSPEND0);
 
     gPlaySt.save_slot = slot;
-    gPlaySt.unk_00 = GetGameTime();
     
     for (cur = EmsChunkSa; cur->offset != 0xFFFF; cur++)
         cur->save(dst + cur->offset, cur->size);
@@ -142,7 +147,6 @@ void LoadGame(int slot)
     for (cur = EmsChunkSa; cur->offset != 0xFFFF; cur++)
         cur->load(src + cur->offset, cur->size);
 
-    SetGameTime(gPlaySt.unk_00);
     gPlaySt.save_slot = slot;
     UpdateLastUsedGameSaveSlot(slot);
 }
@@ -162,9 +166,6 @@ void SaveSuspendedGame(int slot)
 
     dst = GetSaveTargetAddress(SAVE_ID_SUSPEND0);
 
-    gPlaySt.unk_00 = GetGameTime();
-    SaveActionRand();
-    
     for (cur = EmsChunkSu; cur->offset != 0xFFFF; cur++)
         cur->save(dst + cur->offset, cur->size);
 
@@ -182,26 +183,6 @@ void LoadSuspendedGame(int slot)
     const struct EmsChunk *cur;
     u8 *src = GetSaveSourceAddress(SAVE_ID_SUSPEND0);
 
-    InitUnits();
-
     for (cur = EmsChunkSu; cur->offset != 0xFFFF; cur++)
         cur->load(src + cur->offset, cur->size);
-
-    SetGameTime(gPlaySt.unk_00);
-    RestoreActionRand();
 }
-
-LYN_REPLACE_CHECK(GetLastSuspendSaveId);
-int GetLastSuspendSaveId()
-{
-    return 0;
-}
-
-LYN_REPLACE_CHECK(GetNextSuspendSaveId);
-int GetNextSuspendSaveId()
-{
-    return 0;
-}
-
-LYN_REPLACE_CHECK(ChangeSuspendSaveId);
-void ChangeSuspendSaveId() {}

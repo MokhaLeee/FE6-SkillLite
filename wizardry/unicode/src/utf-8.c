@@ -72,7 +72,6 @@ error:
     DebugPrintStr(DateCvtStringsBuilt);
     DebugPrintStr("\n");
     FailScreen();
-    return 0;
 }
 
 struct Glyph const *Utf8GetGlyph(u32 character)
@@ -119,7 +118,6 @@ struct Glyph const *Utf8GetGlyph(u32 character)
     DebugPrintNumberHex(character, (character < 0x100 ? 2 : (character < 0x1000 ? 3 : 4)));
     DebugPrintStr("\n");
     FailScreen();
-    return 0;
 }
 
 // replaces

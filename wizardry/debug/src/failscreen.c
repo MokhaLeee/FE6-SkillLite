@@ -6,8 +6,6 @@
 #include "m4a.h"
 #include "debug.h"
 
-#ifdef CONFIG_DEBUG
-
 static void FailScreenOnVBlank(void)
 {
     INTR_CHECK = INTR_FLAG_VBLANK;
@@ -38,5 +36,3 @@ noreturn void FailScreen(void)
         SoftResetIfKeyCombo();
     }
 }
-
-#endif /* CONFIG_DEBUG */

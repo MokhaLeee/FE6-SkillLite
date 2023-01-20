@@ -3,27 +3,41 @@
 
 /**
  * Mokha's plan:
+ * see src/modular-save.h
+ *
  * SAVE NAME       SAVE OFFSET     SAVE LENGTH     DEFAULT LENGTH  EXPANSION SIZE
- * meta            0x00            0x90            0x90            0x0
- * suspend0        0x90            0x27C0          0x1DAC          0xA14
- * suspend1        0x2850          0xC             0x1DAC          -----
- * save1           0x285C          0x1474          0xDF0           0x684
- * save2           0x3CD0          0x1474          0xDF0           0x684
- * save3           0x5144          0x1474          0xDF0           0x684
- * link_arena      0x65B8          0x93C (?)       0x93C (?)       ???
- * chunk6          0x7000          ???             ???             0x0
+ * meta            0x00            0x94            0x94            0x0
+ * suspend0        0x94            0x27C0          0x1DAC          0xA14
+ * suspend1        ------          ------          0x1DAC          -----
+ * save1           0x2854          0x1474          0xDF0           0x684
+ * save2           0x3CC8          0x1474          0xDF0           0x684
+ * save3           0x513C          0x1474          0xDF0           0x684
+ * _PAD_           0x65B0          0x8             -----           -----
+ * link_arena      0x65B8          0x93C           0x93C           0x0
+ * _PAD_           0x6EF4          0xC             -----           -----
+ * chunk6          0x7000          0x1000          0x1000          0x0
  */
 
-#define EmsChunk(aOffset, aSize, apSaver, apLoader) "SHORT (aOffset) (aSize); POIN (apSaver) (apLoader)"
+#define EmsChunk(aOffset, aSize, apSaver, apLoader) "SHORT (aOffset) (aSize); POIN (apSaver | 1) (apLoader | 1)"
 #define EmsChunkEnd "SHORT 0xFFFF 0 0 0 0 0"
 
 ALIGN 4
 EmsChunkSa:
+    EmsChunk(0x0000, 0x05D0, MSA_SaveBasic, MSA_LoadBasic)
+    EmsChunk(0x05D0, 0x0820, MSA_SaveUnit, MSA_LoadUnit)
+
+    /* Free: 0x0DF0 ~ 0x1474, Size: 0x684 */
     EmsChunkEnd
 
 EmsChunkSu:
+    EmsChunk(0x0000, 0x06EC, MSU_SaveBasic, MSU_LoadBasic)
+    EmsChunk(0x06EC, 0x16C0, MSU_SaveUnit, MSU_LoadUnit)
+
+    /* Free: 0x1DAC ~ 0x27C0, Size: 0xA14 */
     EmsChunkEnd
 
 #include "src/ms-core.lyn.event"
+#include "src/msa.lyn.event"
+#include "src/msu.lyn.event"
 
 #endif

@@ -2,10 +2,47 @@
 #define _CONFIG_H
 
 /**
+ * FreeSpace
+ */
+#define FreeSpaceBLRange 0xF635C
+#define FreeSpace 0x7FF0B0
+
+#define FreeSpaceTable (FreeSpace)
+#define FreeSpaceTableEnd (FreeSpaceTable + 0x2000)
+#define FreeSpaceStr FreeSpaceTableEnd
+#define FreeSpaceStrEnd (FreeSpaceStr + 0xF0000)
+#define FreeSpaceRsv FreeSpaceStrEnd
+#define FreeSpaceRsvEnd (FreeSpaceRsv + 0x1000)
+#define FreeSpaceComm FreeSpaceRsvEnd
+
+
+/**
+ * Enbale Free-RAM-Sapce.
+ * Since this will occupy debug text space (sDebugTextSt),
+ * so it will need debug text not work.
+ */
+#define CONFIG_USE_FREE_RAM_SPACE
+
+#ifdef CONFIG_USE_FREE_RAM_SPACE
+    #define FreeRAMSpace 0x2025B8C /* sDebugTextSt, size = 0x2028, end at 0x2027BB4 */
+#else
+    #define FreeRAMSpace FreeSpaceRsv
+#endif /* CONFIG_USE_FREE_RAM_SPACE */
+
+/**
+ * Free RAM Space in SRAM
+ * Note that these data can only be accessed via function:
+ * WriteAndVerifySramFast() & ReadSramFast()
+ */
+#define FreeSRAMSpace 0x0E008000
+
+/**
  * Enable debug log with function FailScreen() etc.
  * But since FreeRAMSpace uses debug text space (sDebugTextSt) so it will disable FreeRAMSpace.
  */
-// #define CONFIG_DEBUG
+#ifndef CONFIG_USE_FREE_RAM_SPACE
+    #define CONFIG_USE_DEBUG_TEXT
+#endif
 
 /**
  * Disable vanilla BWL entry so that we may get (0x46 *0x10) auto savable Free-RAM-Space
@@ -18,25 +55,6 @@
 #ifdef CONFIG_NULL_BWL
     #define CONFIG_BWL_SUPPORT
 #endif
-
-/**
- * FreeSpace
- */
-#define FreeSpaceBLRange 0xF635C
-#define FreeSpace 0x7FF0B0
-
-#define FreeSpaceTable (FreeSpace)
-#define FreeSpaceTableEnd (FreeSpaceTable + 0x2000)
-#define FreeSpaceStr FreeSpaceTableEnd
-#define FreeSpaceStrEnd (FreeSpaceStr + 0xF0000)
-#define FreeSpaceComm FreeSpaceStrEnd
-
-/**
- * Free-RAM-Space
- */
-#ifndef CONFIG_DEBUG
-    #define FreeRAMSpace 0x2025B8C /* sDebugTextSt, size = 0x2028, end at 0x2027BB4 */
-#endif /* CONFIG_DEBUG */
 
 /**
  * Icon-rework getter

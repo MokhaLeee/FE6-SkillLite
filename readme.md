@@ -82,7 +82,6 @@ A: `sudo apt install python3-pip && pip install pyelftools`
 	- [ ] effective judgement
 	- [ ] battle forcast
 - [ ] **extra random-number system**
-	- [ ] save data
 	- [ ] Switch & 3DS style level up
 - [ ] **stat-screen**
 	- [x] UI rework
@@ -105,7 +104,7 @@ A: `sudo apt install python3-pip && pip install pyelftools`
 	- [ ] bm effect
 	- [ ] prep-screen effect
 - [ ] **save-data**
-	- [ ] expanded modular save
+	- [x] expanded modular save
 	- [x] null-bwl
 	- [ ] bwl-support
 - [x] **unit-menu**

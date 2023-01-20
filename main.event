@@ -6,6 +6,9 @@
 
 #include "include/skill-defs.h"
 
+ORG FreeSpaceRsv
+    FILL 0x1000
+
 ORG FreeSpaceStr
 #include "writans/repoint/repoint_text_table.event"
 #include "writans/text.event"
