@@ -21,17 +21,14 @@ void WriteSaveBlockInfo(struct SaveBlockInfo *chunk, int index)
         break;
 
     case BLOCK_INFO_KIND_SUS:
-        chunk->size = EMS_SRAM_SIZE_SUS0;
+        chunk->size = EMS_SRAM_SIZE_SUS;
         break;
 
     case BLOCK_INFO_KIND_2:
-        chunk->size = EMS_SRAM_SIZE_BLOCK5;
+        chunk->size = EMS_SRAM_SIZE_ARENA;
         break;
 
     case BLOCK_INFO_KIND_3:
-        chunk->size = EMS_SRAM_SIZE_BLOCK6;
-        break;
-
     case (u8)BLOCK_INFO_KIND_INVALID:
         chunk->size = 0;
         chunk->offset = 0;
@@ -61,15 +58,12 @@ u8 *GetSaveTargetAddress(int index)
 
     case SAVE_ID_SUSPEND0:
     case SAVE_ID_SUSPEND1:
-        return gpSramEntry + EMS_SRAM_MEMMAP_SUS0;
+        return gpSramEntry + EMS_SRAM_MEMMAP_SUS;
 
     case SAVE_ID_5:
         return gpSramEntry + EMS_SRAM_MEMMAP_5;
 
-    /* Seems unused ? */
     case SAVE_ID_6:
-        return gpSramEntry + EMS_SRAM_MEMMAP_6;
-
     default:
         return NULL;
     } /* switch */

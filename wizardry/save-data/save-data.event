@@ -7,15 +7,12 @@
  *
  * SAVE NAME       SAVE OFFSET     SAVE LENGTH     DEFAULT LENGTH  EXPANSION SIZE
  * meta            0x00            0x94            0x94            0x0
- * suspend0        0x94            0x27C0          0x1DAC          0xA14
- * suspend1        ------          ------          0x1DAC          -----
- * save1           0x2854          0x1474          0xDF0           0x684
- * save2           0x3CC8          0x1474          0xDF0           0x684
- * save3           0x513C          0x1474          0xDF0           0x684
- * _PAD_           0x65B0          0x8             -----           -----
- * link_arena      0x65B8          0x93C           0x93C           0x0
- * _PAD_           0x6EF4          0xC             -----           -----
- * chunk6          0x7000          0x1000          0x1000          0x0
+ * suspend0        0x94            0x2F30          0x1DAC          0x1184
+ * save1           0x2F54          0x17A8          0xDF0           0x9B8
+ * save2           0x46CC          0x17A8          0xDF0           0x9B8
+ * save3           0x5E44          0x17A8          0xDF0           0x9B8
+ * link_arena      0x75BC          0x93C           0x93C           0x0
+ * _PAD_           0x7EF8          0x8             -----           -----
  */
 
 #define EmsChunk(aOffset, aSize, apSaver, apLoader) "SHORT (aOffset) (aSize); POIN (apSaver | 1) (apLoader | 1)"
@@ -26,18 +23,20 @@ EmsChunkSa:
     EmsChunk(0x0000, 0x05D0, MSA_SaveBasic, MSA_LoadBasic)
     EmsChunk(0x05D0, 0x0820, MSA_SaveUnit, MSA_LoadUnit)
 
-    /* Free: 0x0DF0 ~ 0x1474, Size: 0x684 */
+    /* Free: 0x0DF0 ~ 0x17A8, Size: 0x9B8 */
     EmsChunkEnd
 
 EmsChunkSu:
     EmsChunk(0x0000, 0x06EC, MSU_SaveBasic, MSU_LoadBasic)
     EmsChunk(0x06EC, 0x16C0, MSU_SaveUnit, MSU_LoadUnit)
 
-    /* Free: 0x1DAC ~ 0x27C0, Size: 0xA14 */
+    /* Free: 0x1DAC ~ 0x2F30, Size: 0x1184 */
     EmsChunkEnd
 
 #include "src/ms-core.lyn.event"
 #include "src/msa.lyn.event"
 #include "src/msu.lyn.event"
+
+#include "lyn-jump.event"
 
 #endif

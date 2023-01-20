@@ -23,7 +23,6 @@ POP
     #include "null-bwl/null-bwl.lyn.event"
 #endif
 
-// WIP
 #include "save-data/save-data.event"
 
 /**************
