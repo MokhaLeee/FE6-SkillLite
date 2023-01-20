@@ -1,0 +1,15 @@
+#ifndef BATTLE_UNIT_HOOK
+#define BATTLE_UNIT_HOOK
+
+#include "src/b2u-hook.lyn.event"
+
+#include "lyn-jump.event"
+
+ALIGN 4
+Unit2BattleFuncList:
+	WORD 0
+
+Battle2UnitFuncList:
+	WORD 0 
+
+#endif

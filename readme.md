@@ -111,8 +111,8 @@ A: `sudo apt install python3-pip && pip install pyelftools`
 - [x] **unit-action**
 - [x] **icon-rework**
 - [ ] **popup-rework**
-- [ ] **load unit hook**
-- [ ] **battle-unit hook**
+- [x] **load unit hook**
+- [x] **battle-unit hook**
 - [ ] **level-up rework**
 	- [ ] level-up hook
 	- [ ] promotion hook

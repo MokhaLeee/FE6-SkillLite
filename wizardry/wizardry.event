@@ -18,6 +18,8 @@ POP
 #include "icon-display/icon-display.event"
 #include "unit-menu/unit-menu.event"
 #include "unit-action/unit-action.event"
+#include "battle-unit-hook/battle-unit-hook.event"
+#include "load-unit-hook/load-unit-hook.event"
 
 #ifdef CONFIG_NULL_BWL
     #include "null-bwl/null-bwl.lyn.event"

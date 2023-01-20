@@ -1,0 +1,11 @@
+#ifndef LOAD_UNIT_HOOK
+#define LOAD_UNIT_HOOK
+
+#include "src/load-u-hook.lyn.event"
+#include "lyn-jump.event"
+
+ALIGN 4
+OnLoadUnitFuncList:
+    WORD 0
+
+#endif
