@@ -18,16 +18,9 @@
 
 /**
  * Enbale Free-RAM-Sapce.
- * Since this will occupy debug text space (sDebugTextSt),
- * so it will need debug text not work.
+ * This will occupy debug text space (sDebugTextSt),
  */
-#define CONFIG_USE_FREE_RAM_SPACE
-
-#ifdef CONFIG_USE_FREE_RAM_SPACE
-    #define FreeRAMSpace 0x2025B8C /* sDebugTextSt, size = 0x2028, end at 0x2027BB4 */
-#else
-    #define FreeRAMSpace FreeSpaceRsv
-#endif /* CONFIG_USE_FREE_RAM_SPACE */
+#define FreeRAMSpace 0x2025B8C /* sDebugTextSt, size = 0x2028, end at 0x2027BB4 */
 
 /**
  * Free RAM Space in SRAM
@@ -35,14 +28,15 @@
  * WriteAndVerifySramFast() & ReadSramFast()
  */
 #define FreeSRAMSpace 0x0E008000
+#define DebugTextSramSt_ptr 0x0E008000
+#define DebugTextSramSt_End 0x0E00A028
 
 /**
  * Enable debug log with function FailScreen() etc.
- * But since FreeRAMSpace uses debug text space (sDebugTextSt) so it will disable FreeRAMSpace.
+ * BTW, sDebugTextSt has been moved to SRAM Free Space.
+ * See: wizardry/debug/src/debug-text-sram.c
  */
-#ifndef CONFIG_USE_FREE_RAM_SPACE
-    #define CONFIG_USE_DEBUG_TEXT
-#endif
+#define CONFIG_USE_DEBUG_TEXT
 
 /**
  * Disable vanilla BWL entry so that we may get (0x46 *0x10) auto savable Free-RAM-Space

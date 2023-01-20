@@ -118,6 +118,9 @@ A: `sudo apt install python3-pip && pip install pyelftools`
 	- [ ] promotion hook
 	- [ ] modular growth getter
 - [ ] **post-action procs**
+- [x] **debug system**
+	- [x] fail-screen (by StanH)
+	- [x] debug-text move to SRAM free-space
 
 # Credits:
 * [StanH](https://github.com/StanHash) and his arts: [FE6-Decomp](https://github.com/StanHash/fe6), [FE6-+Wizardry](https://github.com/StanHash/fe6-wizardry)

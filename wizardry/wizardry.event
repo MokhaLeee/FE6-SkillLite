@@ -6,7 +6,6 @@ ORG FreeSpaceBLRange
 POP
 
 
-#include "debug/debug.event"
 #include "unicode/unicode.event"
 #include "unicode/unicode-transcoder.event"
 #include "unicode/unicode-strings.event"
@@ -15,6 +14,7 @@ POP
 /****************
  * Core Support *
  ****************/
+ #include "debug/debug.event"
 #include "icon-display/icon-display.event"
 #include "unit-menu/unit-menu.event"
 #include "unit-action/unit-action.event"

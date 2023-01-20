@@ -1,6 +1,7 @@
-// implements a function that displays a fail screen, ported over from beta fe8
-// hack by stan
-
-// header is available at ../include/debug.h
+#ifndef CHAX_DEBUG
+#define CHAX_DEBUG
 
 #include "src/failscreen.lyn.event"
+#include "src/debug-text-sram.lyn.event"
+
+#endif
