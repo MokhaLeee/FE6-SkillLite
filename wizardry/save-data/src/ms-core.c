@@ -29,6 +29,9 @@ void WriteSaveBlockInfo(struct SaveBlockInfo *chunk, int index)
         break;
 
     case BLOCK_INFO_KIND_3:
+        chunk->size = EMS_SRAM_SIZE_6;
+        break;
+
     case (u8)BLOCK_INFO_KIND_INVALID:
         chunk->size = 0;
         chunk->offset = 0;
@@ -64,6 +67,8 @@ u8 *GetSaveTargetAddress(int index)
         return gpSramEntry + EMS_SRAM_MEMMAP_5;
 
     case SAVE_ID_6:
+        return gpSramEntry + EMS_SRAM_MEMMAP_6;
+
     default:
         return NULL;
     } /* switch */
