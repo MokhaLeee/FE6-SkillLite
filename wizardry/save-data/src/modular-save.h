@@ -17,7 +17,7 @@
  * 
  * W Block-6:
  * meta            0x00            0x94            0x94            0x0
- * suspend0        0x94            0x2830          0x1DAC          0xA184
+ * suspend0        0x94            0x2830          0x1DAC          0xA84
  * save1           0x28C4          0x14A8          0xDF0           0x6B8
  * save2           0x3D6C          0x14A8          0xDF0           0x6B8
  * save3           0x5214          0x14A8          0xDF0           0x6B8
