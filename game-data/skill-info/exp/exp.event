@@ -2,7 +2,7 @@
 #define SKILLS_BATTLE_WPNEXP
 
 ALIGN 4
-SI_Discipline:	#incbin "Icons/Discipline.4bpp"
+SI_Discipline:	#incbin "icons/Discipline.4bpp"
 
 ALIGN 4
 SkillInfo_Discipline:

@@ -7,7 +7,7 @@ FE6_ELF := $(FE6_DIR)/fe6.elf
 FE6_REF := $(CACHE_DIR)/fe6-ref.s
 FE6_SYM := $(CACHE_DIR)/fe6.sym
 
-MAIN    := Main.event
+MAIN    := main.event
 FE6_CHX := fe6-chax.gba
 
 CLEAN_FILES :=

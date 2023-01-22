@@ -1,12 +1,12 @@
 ALIGN 4
-SI_StrBonus:	#incbin "Icons/StrBonus.4bpp"
-SI_MagBonus:	#incbin "Icons/MagBonus.4bpp"
-SI_SklBonus:	#incbin "Icons/SklBonus.4bpp"
-SI_SpdBonus:	#incbin "Icons/SpdBonus.4bpp"
-SI_LckBonus:	#incbin "Icons/LckBonus.4bpp"
-SI_DefBonus:	#incbin "Icons/DefBonus.4bpp"
-SI_ResBonus:	#incbin "Icons/ResBonus.4bpp"
-SI_MovBonus:	#incbin "Icons/MovBonus.4bpp"
+SI_StrBonus:	#incbin "icons/StrBonus.4bpp"
+SI_MagBonus:	#incbin "icons/MagBonus.4bpp"
+SI_SklBonus:	#incbin "icons/SklBonus.4bpp"
+SI_SpdBonus:	#incbin "icons/SpdBonus.4bpp"
+SI_LckBonus:	#incbin "icons/LckBonus.4bpp"
+SI_DefBonus:	#incbin "icons/DefBonus.4bpp"
+SI_ResBonus:	#incbin "icons/ResBonus.4bpp"
+SI_MovBonus:	#incbin "icons/MovBonus.4bpp"
 
 ALIGN 4
 SkillInfo_StrBonus:

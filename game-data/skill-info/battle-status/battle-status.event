@@ -1,5 +1,5 @@
 ALIGN 4
-SI_CritUp:	#incbin "Icons/CritUp.4bpp"
+SI_CritUp:	#incbin "icons/CritUp.4bpp"
 
 ALIGN 4
 SkillInfo_CritUp:
