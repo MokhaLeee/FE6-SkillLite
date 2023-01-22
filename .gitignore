@@ -63,9 +63,6 @@ test.sh
 *.sav
 *.sym
 .cache_dir/
-tools/EventAssembler
-tools/FE-PyTools
-tools/fe6/
 writans/text.event
 writans/text_defs.event
 writans/.TextEntries/

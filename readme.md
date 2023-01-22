@@ -1,54 +1,24 @@
 W.I.P to make a SkillLite-style buildfile for FE6.
 See source code at [MokhaLeee@git](https://github.com/MokhaLeee/FE6-SkillLite)
 
-# Compiling:
+# Build in WSL & Ubuntu:
 
 1. You must have a copy of the FE6 clean ROM named `fe6.gba` in the repository directory.
-2. Install [devkitPro](https://devkitpro.org/wiki/Getting_Started) or [GNU Arm Embedded Toolchain](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm).
-```
-# for Ubuntu/WSL users
-apt install binutils-arm-none-eabi
-```
-3. Install EventAssembler:
+2. Install dependence
 ```
 # Install .Net SDK, see: https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004
-sudo apt install build-essential cmake re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev && \
-	cd tools && \
-	git clone --recursive git@github.com:StanHash/EventAssembler.git && \
-	cd EventAssembler && \
-	./build.sh
-```
-4. Install PyTools:
-```
-cd tools &&\
-	git clone --recursive git@github.com:StanHash/FE-PyTools.git
-```
-5. Install and build fe6 decompile project:
-```
-cd tools &&\
-	git clone git@github.com:MokhaLeee/fe6.git &&\
-	cd fe6 &&\
-	cp ../../fe6.gba ./fe6-base.gba &&\
-	cd tools &&\
-	./install-agbcc.sh
-```
-6. Now your repo should has components as below:
-```
-./FE6-SkillLite
-├── ./game-data
-├── ./include
-├── ./Tools
-│   ├── ./EventAssembler
-│   ├── ./fe6
-│   └── ./FE-PyTools
-├── ./wizardry
-└── ./writans
-```
-7. `make -j8` in repository directory, then you will get **fe6-chax.gba** in your repo.
 
-Q: `ModuleNotFoundError: No module named 'elftools'`
+sudo apt-get install binutils-arm-none-eabi build-essential cmake \
+    re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev python3-pip
 
-A: `sudo apt install python3-pip && pip install pyelftools`
+pip install pyelftools PyInstaller tmx six
+```
+3. Build tools:
+```
+./build_tools.sh
+```
+4. `make -j8` in repository directory, then you will get **fe6-chax.gba** in your repo.
+
 
 # Advantage on working on FE6
 
