@@ -1,0 +1,9 @@
+[submodule "tools/EventAssembler"]
+	path = tools/EventAssembler
+	url = git@github.com:StanHash/EventAssembler.git
+[submodule "tools/FE-PyTools"]
+	path = tools/FE-PyTools
+	url = git@github.com:StanHash/FE-PyTools.git
+[submodule "tools/fe6"]
+	path = tools/fe6
+	url = git@github.com:MokhaLeee/fe6.git

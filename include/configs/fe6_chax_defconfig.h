@@ -11,9 +11,7 @@
 #define FreeSpaceTableEnd (FreeSpaceTable + 0x2000)
 #define FreeSpaceStr FreeSpaceTableEnd
 #define FreeSpaceStrEnd (FreeSpaceStr + 0xF0000)
-#define FreeSpaceRsv FreeSpaceStrEnd
-#define FreeSpaceRsvEnd (FreeSpaceRsv + 0x1000)
-#define FreeSpaceComm FreeSpaceRsvEnd
+#define FreeSpaceComm FreeSpaceStrEnd
 
 
 /**
