@@ -2,5 +2,6 @@
 #ifndef STAT_SCREEN
 
 #include "src/draw-pages.lyn.event"
+#include "lyn-jump.event"
 
 #endif /* STAT_SCREEN */

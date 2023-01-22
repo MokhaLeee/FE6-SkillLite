@@ -5,6 +5,7 @@
 
 #include "src/msg.lyn.event"
 #include "src/msg_fix.lyn.event"
+#include "lyn-jump.event"
 
 ALIGN 4
 ModularHpGetter :

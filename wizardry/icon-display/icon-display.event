@@ -7,6 +7,7 @@
 
 #include "src/icon_rework.lyn.event"
 #include "src/usr_disp.lyn.event"
+#include "lyn-jump.event"
 
 ALIGN 4
 IconGetters:

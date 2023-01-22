@@ -17,6 +17,7 @@
 #define InjectUnitAction(aActionId, adActionRoutine) "PUSH; ORG (UnitActionCallTable + 4*aActionId); adActionRoutine; POP"
 
 #include "src/action-rework.lyn.event"
+#include "lyn-jump.event"
 
 ALIGN 4
 UnitActionCallTable:

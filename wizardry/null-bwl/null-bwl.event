@@ -1,0 +1,8 @@
+#ifndef NULL_BWL
+#define NULL_BWL
+
+#include "src/null-bwl.lyn.event"
+
+#include "lyn-jump.event"
+
+#endif

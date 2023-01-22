@@ -22,7 +22,7 @@ POP
 #include "load-unit-hook/load-unit-hook.event"
 
 #ifdef CONFIG_NULL_BWL
-    #include "null-bwl/null-bwl.lyn.event"
+    #include "null-bwl/null-bwl.event"
 #endif
 
 #include "save-data/save-data.event"

@@ -4,4 +4,6 @@
 #include "src/failscreen.lyn.event"
 #include "src/debug-text-sram.lyn.event"
 
+#include "lyn-jump.event"
+
 #endif
