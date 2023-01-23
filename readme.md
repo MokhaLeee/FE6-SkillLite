@@ -44,7 +44,7 @@ pip install pyelftools PyInstaller tmx six
 	- [x] modular status getter
 	- [ ] mov & con getter
 - [ ] **battle-system**
-	- [ ] pre-battle calculation
+	- [x] pre-battle calculation
 	- [ ] battle order
 	- [ ] battle can-counter
 	- [ ] weapon tri-angle

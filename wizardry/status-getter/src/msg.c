@@ -3,8 +3,6 @@
 #include "item.h"
 #include "skill-system.h"
 
-#define UNIT_MAX_STATUS 128
-
 typedef int (*const msg_func)(struct Unit *unit, int old_status);
 extern msg_func ModularHpGetter[],  ModularPowGetter[], ModularMagGetter[], ModularSklGetter[], ModularSpdGetter[], \
                 ModularLckGetter[], ModularDefGetter[], ModularResGetter[], ModularMovGetter[];

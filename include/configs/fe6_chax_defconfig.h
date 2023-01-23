@@ -53,4 +53,14 @@
  */
 #define ICON_SHEET_COUNT 4
 
+/**
+ * Max status for unit status-getter
+ */
+#define UNIT_MAX_STATUS 128
+
+/**
+ * Max status for battle-system pre-battle-calc
+ */
+#define BATTLE_MAX_STATUS 0x7FFF
+
 #endif /* _CONFIG_H */

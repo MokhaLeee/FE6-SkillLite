@@ -33,3 +33,4 @@ POP
 #include "stat-screen/stat-screen.event"
 #include "status-getter/status-getter.event"
 #include "skill-system/skill-system.event"
+#include "battle-system/battle-system.event"

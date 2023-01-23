@@ -1,0 +1,8 @@
+LYN_JUMP_UTIL(ComputeBattleUnitStats, $24790)
+LYN_JUMP_UTIL(ComputeBattleUnitDefense, $24844)
+LYN_JUMP_UTIL(ComputeBattleUnitBaseDefense, $24884)
+LYN_JUMP_UTIL(ComputeBattleUnitAttack, $2489c)
+LYN_JUMP_UTIL(ComputeBattleUnitSpeed, $248e8)
+LYN_JUMP_UTIL(ComputeBattleUnitHitRate, $24920)
+LYN_JUMP_UTIL(ComputeBattleUnitAvoidRate, $24958)
+LYN_JUMP_UTIL(ComputeBattleUnitCritRate, $24988)

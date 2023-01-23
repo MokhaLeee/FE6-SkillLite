@@ -1,0 +1,8 @@
+#ifndef BATTLE_SYSTEM
+#define BATTLE_SYSTEM
+
+#include "src/pre-battle-calc.lyn.event"
+
+#include "lyn-jump.event"
+
+#endif
