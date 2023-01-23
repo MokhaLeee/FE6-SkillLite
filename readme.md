@@ -4,10 +4,12 @@
 3. Install dependence
 ```
 # Install .Net SDK, see: https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004
-
+```
+```
 sudo apt-get install binutils-arm-none-eabi build-essential cmake \
     re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev python3-pip
-
+```
+```
 pip install pyelftools PyInstaller tmx six
 ```
 4. Build tools:
@@ -90,7 +92,7 @@ pip install pyelftools PyInstaller tmx six
 	- [x] debug-text move to SRAM free-space
 
 # Credits:
-* [StanH](https://github.com/StanHash) and his arts: [FE6-Decomp](https://github.com/StanHash/fe6), [FE6-+Wizardry](https://github.com/StanHash/fe6-wizardry)
+* [StanH](https://github.com/StanHash) and his arts: [FE6-Decomp](https://github.com/StanHash/fe6), [FE6-Wizardry](https://github.com/StanHash/fe6-wizardry)
 
 * [laqieer](https://github.com/laqieer) and his [FE8U-Decomp work](https://github.com/laqieer/fireemblem8u) and advices.
 
