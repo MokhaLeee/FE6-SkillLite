@@ -1,10 +1,7 @@
-W.I.P to make a SkillLite-style buildfile for FE6.
-See source code at [MokhaLeee@git](https://github.com/MokhaLeee/FE6-SkillLite)
-
 # Build in WSL & Ubuntu:
-
-1. You must have a copy of the FE6 clean ROM named `fe6.gba` in the repository directory.
-2. Install dependence
+1. You must have a linux system as WSL(for Windows user, see: https://learn.microsoft.com/en-sg/windows/wsl/install) or Ubuntu.
+2. You must have a copy of the FE6 clean ROM named `fe6.gba` in the repository directory.
+3. Install dependence
 ```
 # Install .Net SDK, see: https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004
 
@@ -13,11 +10,11 @@ sudo apt-get install binutils-arm-none-eabi build-essential cmake \
 
 pip install pyelftools PyInstaller tmx six
 ```
-3. Build tools:
+4. Build tools:
 ```
 ./build_tools.sh
 ```
-4. `make -j8` in repository directory, then you will get **fe6-chax.gba** in your repo.
+5. `make -j8` in repository directory, then you will get **fe6-chax.gba** in your repo.
 
 
 # Advantage on working on FE6
