@@ -6,8 +6,8 @@
 # Install .Net SDK, see: https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004
 ```
 ```
-sudo apt-get install binutils-arm-none-eabi build-essential cmake \
-    re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev python3-pip
+sudo apt-get install binutils-arm-none-eabi gcc-arm-none-eabi build-essential \
+    cmake re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev python3-pip
 ```
 ```
 pip install pyelftools PyInstaller tmx six
