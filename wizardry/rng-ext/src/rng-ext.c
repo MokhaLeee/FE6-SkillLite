@@ -42,10 +42,24 @@ void RandInitExt()
 
 int NextRNExts(int time)
 {
+    int ret;
+
+    u16 bak[3] = {
+        gRandStC[0],
+        gRandStC[1],
+        gRandStC[2]
+    };
+
     while (time-- > 0)
         NextRNE();
 
-    return NextRNE();
+    ret = NextRNE();
+
+    gRandStC[0] = bak[0];
+    gRandStC[1] = bak[1];
+    gRandStC[2] = bak[2];
+
+    return ret;
 }
 
 int RandNextExts(int max, int time)

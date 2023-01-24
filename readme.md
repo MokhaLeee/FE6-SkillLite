@@ -49,7 +49,7 @@ pip install pyelftools PyInstaller tmx six
 	- [ ] fill-map functions rework
 	- [ ] check can cover range
 	- [ ] staff range rework
-- [ ] **chapter-based random-number system**
+- [x] **chapter-based random-number system**
 - [ ] **stat-screen**
 	- [x] UI rework
 	- [ ] negative stat boosts UI
