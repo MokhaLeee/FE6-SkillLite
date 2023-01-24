@@ -33,13 +33,6 @@ pip install pyelftools PyInstaller tmx six
 	- [x] skill stat-screen
 	- [x] skill ROM list
 	- [ ] skill RAM list
-	- [ ] skill prep-screen selection
-	- [ ] skill activation animations
-- [ ] **combat-arts**
-	- [ ] combat-art infos
-	- [ ] combat-art tester
-	- [ ] combat-art prep-screen selection
-	- [ ] combat-art battle-forcast selection
 - [ ] **status-getter**
 	- [x] modular status getter
 	- [ ] mov & con getter
@@ -50,6 +43,12 @@ pip install pyelftools PyInstaller tmx six
 	- [ ] weapon tri-angle
 	- [ ] effective judgement
 	- [ ] battle forcast
+- [ ] **weapon range**
+	- [ ] weapon-range getter
+	- [ ] draw-string
+	- [ ] fill-map functions rework
+	- [ ] check can cover range
+	- [ ] staff range rework
 - [ ] **extra random-number system**
 	- [ ] Switch & 3DS style level up
 - [ ] **stat-screen**
@@ -76,6 +75,18 @@ pip install pyelftools PyInstaller tmx six
 	- [x] expanded modular save
 	- [x] null-bwl
 	- [ ] bwl-support
+- [ ] **combat-arts**
+	- [ ] combat-art infos
+	- [ ] combat-art tester
+	- [ ] combat-art prep-screen selection
+	- [ ] combat-art battle-forcast selection
+- [ ] **prep-screen rework**
+	- [ ] prep-screen menu-items reorder
+	- [ ] skill prep-screen selection
+	- [ ] combat-art prep-screen selection
+- [ ] **combat anims**
+	- [ ] skill & combat-art activation animations
+	- [ ] map banim item effects
 - [x] **unit-menu**
 - [x] **unit-action**
 - [x] **icon-rework**
