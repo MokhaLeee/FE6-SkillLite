@@ -59,6 +59,7 @@ dkms.conf
 test.sh
 
 # gba related
+tools/agbcc/
 *.gba
 *.sav
 *.sym
