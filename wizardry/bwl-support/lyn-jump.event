@@ -1,0 +1,10 @@
+LYN_JUMP_UTIL(ClearUnit, $17394)
+LYN_JUMP_UTIL(UnitInitSupports, $17798)
+LYN_JUMP_UTIL(GetUnitLeaderPid, $18528)
+// LYN_JUMP_UTIL(SetUnitLeaderPid, $18540) /* does NOT have enough space*/
+LYN_JUMP_UTIL(GetUnitSupportLevel, $22af0)
+LYN_JUMP_UTIL(UnitGainSupportExp, $22b40)
+LYN_JUMP_UTIL(UnitGainSupportLevel, $22b8c)
+LYN_JUMP_UTIL(CanUnitSupportNow, $22ba4)
+LYN_JUMP_UTIL(ClearUnitSupports, $22c60)
+LYN_JUMP_UTIL(DoSupportAction, $2a3ec)

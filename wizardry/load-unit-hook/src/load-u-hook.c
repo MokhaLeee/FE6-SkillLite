@@ -6,6 +6,9 @@
 typedef void (*lu_func)(struct Unit *unit);
 extern lu_func OnLoadUnitFuncList[];
 
+/* bwl-support */
+void _SetUnitLeaderPid(struct Unit * unit, int pid);
+
 struct Unit *CreateUnit(struct UnitInfo const *info)
 {
     struct Unit *unit = NULL;
@@ -43,7 +46,7 @@ struct Unit *CreateUnit(struct UnitInfo const *info)
             UnitAutolevel(unit);
             UnitAutolevelWeaponExp(unit, info);
 
-            SetUnitLeaderPid(unit, info->pid_lead);
+            _SetUnitLeaderPid(unit, info->pid_lead);
         }
     }
 

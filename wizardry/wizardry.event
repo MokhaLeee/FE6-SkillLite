@@ -25,6 +25,10 @@ POP
     #include "null-bwl/null-bwl.event"
 #endif
 
+#ifdef CONFIG_BWL_SUPPORT
+    #include "bwl-support/bwl-support.event"
+#endif
+
 #include "save-data/save-data.event"
 
 /**************

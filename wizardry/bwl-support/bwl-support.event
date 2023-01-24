@@ -1,0 +1,8 @@
+#ifndef BWL_SUPPORT
+#define BWL_SUPPORT
+
+#include "src/bwl-support.lyn.event"
+
+#include "lyn-jump.event"
+
+#endif

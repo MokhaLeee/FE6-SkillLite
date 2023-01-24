@@ -71,10 +71,10 @@ pip install pyelftools PyInstaller tmx six
 - [ ] **item effect rework**
 	- [ ] bm effect
 	- [ ] prep-screen effect
-- [ ] **save-data**
+- [x] **save-data**
 	- [x] expanded modular save
 	- [x] null-bwl
-	- [ ] bwl-support
+	- [x] bwl-support
 - [ ] **combat-arts**
 	- [ ] combat-art infos
 	- [ ] combat-art tester
