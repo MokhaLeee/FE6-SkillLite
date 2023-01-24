@@ -22,8 +22,9 @@
 
 #define gBuWpnBackUp_ptr 0x2025B8C
 #define gHasInventoryWpnBackUp_ptr 0x2025B8E
+#define gRandStC_ptr 0x2025B90
 
-#define FreeRAMSpace_cur 0x2025B90
+#define FreeRAMSpace_cur 0x2025B96
 
 
 /**
@@ -53,6 +54,13 @@
 #ifdef CONFIG_NULL_BWL
     #define CONFIG_BWL_SUPPORT
 #endif
+
+/**
+ * Enable chapter-based random number system.
+ * This means you will get RNG that can only be changed if restart chapter
+ */
+#define CONFIG_RNG_EXT
+
 
 /**
  * Icon-rework getter

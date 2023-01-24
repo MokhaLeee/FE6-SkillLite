@@ -5,6 +5,8 @@
 #include "map.h"
 #include "bm.h"
 
+#include "rng-ext.h"
+
 typedef void (*cih_func)(ProcPtr proc);
 extern cih_func ChapterInitHooks[];
 
@@ -28,6 +30,9 @@ void PrepPhase_Init(ProcPtr proc)
     gPlaySt.vision = GetChapterInfo(gPlaySt.chapter)->fog;
 
     /* Internal modular */
+#ifdef CONFIG_RNG_EXT
+    RandInitExt();
+#endif
 
     /* External modular */
     while (ChapterInitHooks[i])

@@ -14,13 +14,17 @@ POP
 /****************
  * Core Support *
  ****************/
- #include "debug/debug.event"
+#include "debug/debug.event"
 #include "icon-display/icon-display.event"
 #include "unit-menu/unit-menu.event"
 #include "unit-action/unit-action.event"
 #include "battle-unit-hook/battle-unit-hook.event"
 #include "load-unit-hook/load-unit-hook.event"
 #include "chapter-init-hook/chapter-init-hook.event"
+
+#ifdef CONFIG_RNG_EXT
+    #include "rng-ext/rng-ext.event"
+#endif
 
 #ifdef CONFIG_NULL_BWL
     #include "null-bwl/null-bwl.event"

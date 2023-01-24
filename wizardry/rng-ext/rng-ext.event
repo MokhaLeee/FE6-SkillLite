@@ -1,0 +1,9 @@
+#ifndef RNG_EXT
+#define RNG_EXT
+
+#include "src/rng-ext.lyn.event"
+
+ALIGN 4
+gRandStC:   WORD gRandStC_ptr
+
+#endif

@@ -49,8 +49,7 @@ pip install pyelftools PyInstaller tmx six
 	- [ ] fill-map functions rework
 	- [ ] check can cover range
 	- [ ] staff range rework
-- [ ] **extra random-number system**
-	- [ ] Switch & 3DS style level up
+- [ ] **chapter-based random-number system**
 - [ ] **stat-screen**
 	- [x] UI rework
 	- [ ] negative stat boosts UI
@@ -95,6 +94,7 @@ pip install pyelftools PyInstaller tmx six
 - [x] **battle-unit hook**
 - [x] **chapter init hook**
 - [ ] **level-up rework**
+	- [ ] Switch & 3DS style level up
 	- [ ] level-up hook
 	- [ ] promotion hook
 	- [ ] modular growth getter
