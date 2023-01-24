@@ -20,6 +20,12 @@
  */
 #define FreeRAMSpace 0x2025B8C /* sDebugTextSt, size = 0x2028, end at 0x2027BB4 */
 
+#define gBuWpnBackUp_ptr 0x2025B8C
+#define gHasInventoryWpnBackUp_ptr 0x2025B8E
+
+#define FreeRAMSpace_cur 0x2025B90
+
+
 /**
  * Free RAM Space in SRAM
  * Note that these data can only be accessed via function:

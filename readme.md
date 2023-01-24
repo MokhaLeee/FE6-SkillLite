@@ -46,7 +46,7 @@ pip install pyelftools PyInstaller tmx six
 - [ ] **battle-system**
 	- [x] pre-battle calculation
 	- [ ] battle order
-	- [ ] battle can-counter
+	- [x] battle can-counter
 	- [ ] weapon tri-angle
 	- [ ] effective judgement
 	- [ ] battle forcast

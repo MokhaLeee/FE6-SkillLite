@@ -2,9 +2,13 @@
 #define BATTLE_SYSTEM
 
 #include "src/pre-battle-calc.lyn.event"
+#include "src/battle-can-counter.lyn.event"
 
 #include "lyn-jump.event"
 
+/*
+ * Pre-battle-calc
+ */
 ALIGN 4
 ModularBuAtkGetter:
     NULL_PTR
@@ -25,6 +29,21 @@ ModularBuCrtGetter:
     NULL_PTR
 
 ModularBuDgeGetter:
+    NULL_PTR
+
+
+/*
+ * Battle can counter
+ */
+ALIGN 4
+gBuWpnBackUp:           WORD gBuWpnBackUp_ptr
+gHasInventoryWpnBackUp: WORD gHasInventoryWpnBackUp_ptr
+
+BattleCheckNullCounterCalculator:
+    POIN mcc_range
+    POIN mcc_debuf_sleep
+    POIN mcc_wpn_uncounter
+    POIN mcc_debuf_berserk
     NULL_PTR
 
 #endif

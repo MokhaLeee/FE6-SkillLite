@@ -6,3 +6,6 @@ LYN_JUMP_UTIL(ComputeBattleUnitSpeed, $248e8)
 LYN_JUMP_UTIL(ComputeBattleUnitHitRate, $24920)
 LYN_JUMP_UTIL(ComputeBattleUnitAvoidRate, $24958)
 LYN_JUMP_UTIL(ComputeBattleUnitCritRate, $24988)
+
+LYN_JUMP_UTIL(SetBattleUnitWeapon, $245a0)
+LYN_JUMP_UTIL(BattleInitTargetCanCounter, $25b1c)
