@@ -93,6 +93,7 @@ pip install pyelftools PyInstaller tmx six
 - [ ] **popup-rework**
 - [x] **load unit hook**
 - [x] **battle-unit hook**
+- [x] **chapter init hook**
 - [ ] **level-up rework**
 	- [ ] level-up hook
 	- [ ] promotion hook

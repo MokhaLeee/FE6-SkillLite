@@ -1,0 +1,12 @@
+#ifndef CHAPTER_INIT_HOOK
+#define CHAPTER_INIT_HOOK
+
+#include "src/chapter-init-hook.lyn.event"
+
+#include "lyn-jump.event"
+
+ALIGN 4
+ChapterInitHooks:
+    NULL_PTR
+
+#endif
