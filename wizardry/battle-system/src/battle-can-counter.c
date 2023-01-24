@@ -14,6 +14,7 @@ extern mcc_func BattleCheckNullCounterCalculator[];
 extern u16 *gBuWpnBackUp;
 extern bool8 *gHasInventoryWpnBackUp; 
 
+LYN_REPLACE_CHECK(SetBattleUnitWeapon);
 void SetBattleUnitWeapon(struct BattleUnit *bu, int item_slot)
 {
     if (item_slot == -1)
@@ -67,6 +68,7 @@ void SetBattleUnitWeapon(struct BattleUnit *bu, int item_slot)
     }
 }
 
+LYN_REPLACE_CHECK(BattleInitTargetCanCounter);
 void BattleInitTargetCanCounter(void)
 {
     int i = 0;
