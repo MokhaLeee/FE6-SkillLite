@@ -6,8 +6,14 @@
 
 #include "include/skill-defs.h"
 
+/**
+ * Macro definitions
+ */
 #define LYN_JUMP(aTarget) "WORD $46C04778 $E59FC000 $E12FFF1C; POIN aTarget; "
 #define LYN_JUMP_UTIL(func, ptr) "PUSH; ORG (ptr); ALIGN 4; WORD $46C04778 $E59FC000 $E12FFF1C; POIN (func); POP; PROTECT (ptr) (ptr + 16)"
+
+#define NULL_PTR "WORD 0"
+
 
 ORG FreeSpaceStr
 #include "writans/repoint/repoint_text_table.event"

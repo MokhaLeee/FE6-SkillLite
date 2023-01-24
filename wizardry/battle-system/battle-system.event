@@ -5,4 +5,26 @@
 
 #include "lyn-jump.event"
 
+ALIGN 4
+ModularBuAtkGetter:
+    NULL_PTR
+
+ModularBuDefGetter:
+    NULL_PTR
+
+ModularBuSpdGetter:
+    NULL_PTR
+
+ModularBuHitGetter:
+    NULL_PTR
+
+ModularBuAvoGetter:
+    NULL_PTR
+
+ModularBuCrtGetter:
+    NULL_PTR
+
+ModularBuDgeGetter:
+    NULL_PTR
+
 #endif
