@@ -1,17 +1,7 @@
 # Build in WSL & Ubuntu:
-1. You must have a linux system as WSL(for Windows user, see: https://learn.microsoft.com/en-sg/windows/wsl/install) or Ubuntu.
+1. You must have a linux system as WSL(for Windows user, see [here](https://learn.microsoft.com/en-sg/windows/wsl/install)) or Ubuntu.
 2. You must have a copy of the FE6 clean ROM named `fe6.gba` in the repository directory.
-3. Install dependence
-```
-# Install .Net SDK, see: https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004
-```
-```
-sudo apt-get install binutils-arm-none-eabi gcc-arm-none-eabi build-essential \
-    cmake re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev python3-pip
-```
-```
-pip install pyelftools PyInstaller tmx six
-```
+3. Install [.Net SDK](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004)
 4. Build tools:
 ```
 ./build_tools.sh
