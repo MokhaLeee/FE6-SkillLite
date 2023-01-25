@@ -34,10 +34,10 @@ void RandInitExt()
     int i;
 
     for(i = 0; i < 20; i++)
-		NextRN();
+        NextRN();
 
-	for( int i = 0; i < 3; i++ )
-		gRandStC[i] = sRandStA[i];
+    for( int i = 0; i < 3; i++ )
+        gRandStC[i] = sRandStA[i];
 }
 
 int NextRNExts(int time)
@@ -66,7 +66,7 @@ int RandNextExts(int max, int time)
 {
     // take the next rn (range 0-0xFFFF) and convert it to a range 0-(max-1) value
     // NOTE: bugged due to rounding
-    return NextRNExts(time) / (UINT16_MAX / max);
+    return Div(NextRNExts(time), Div(UINT16_MAX, max));
 }
 
 
@@ -74,7 +74,7 @@ int RandNextExts_100(int time)
 {
     // take the next rn (range 0-0xFFFF) and convert it to a range 0-(max-1) value
     // NOTE: bugged due to rounding
-    return NextRNExts(time) / (UINT16_MAX / 100);
+    return Div(NextRNExts(time), UINT16_MAX / 100);
 }
 
 bool RandExtRoll2Rn(int threshold, int time)

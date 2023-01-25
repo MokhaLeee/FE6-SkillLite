@@ -38,19 +38,21 @@ void InitBattleUnitStatus(struct BattleUnit *bu)
 LYN_REPLACE_CHECK(ComputeBattleUnitDefense);
 void ComputeBattleUnitDefense(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
-    int status, i = 0;
+    int status;
+    pbc_func *it;
     
     status = GetItemAttributes(defender->weapon) & ITEM_ATTR_MAGIC
            ? attacker->unit.res
            : attacker->unit.def;
 
+    /* Internal modular */
     status += GetItemAttributes(defender->weapon) & ITEM_ATTR_MAGIC
             ? attacker->terrain_resistance
             : attacker->terrain_defense;
     
     /* External modular */
-    while (ModularBuDefGetter[i])
-        status = ModularBuDefGetter[i++](attacker, defender, status);
+    for (it = ModularBuDefGetter; *it; it++)
+        status = (*it)(attacker, defender, status);
 
     LIMIT_AREA(status, 0, BATTLE_MAX_STATUS);
     attacker->battle_defense = status;
@@ -59,14 +61,17 @@ void ComputeBattleUnitDefense(struct BattleUnit *attacker, struct BattleUnit *de
 LYN_REPLACE_CHECK(ComputeBattleUnitBaseDefense);
 void ComputeBattleUnitBaseDefense(struct BattleUnit *bu)
 {
-    int status, i = 0;
+    int status;
+    pbc_func *it;
 
     status = bu->unit.def;
+
+    /* Internal modular */
     status = status + bu->terrain_defense;
 
     /* External modular */
-    while (ModularBuDefGetter[i])
-        status = ModularBuDefGetter[i++](bu, NULL, status);
+    for (it = ModularBuDefGetter; *it; it++)
+        status = (*it)(bu, NULL, status);
 
     LIMIT_AREA(status, 0, BATTLE_MAX_STATUS);
     bu->battle_defense = status;
@@ -75,13 +80,17 @@ void ComputeBattleUnitBaseDefense(struct BattleUnit *bu)
 LYN_REPLACE_CHECK(ComputeBattleUnitAttack);
 void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
-    int status, i = 0;
+    int status;
+    pbc_func *it;
 
-    status = GetItemMight(attacker->weapon) + attacker->advantage_bonus_damage;
+    status = GetItemMight(attacker->weapon);
+
+    /* Internal modular */
+    status = status + attacker->advantage_bonus_damage;
 
     /* External modular */
-    while (ModularBuAtkGetter[i])
-        status = ModularBuAtkGetter[i++](attacker, defender, status);
+    for (it = ModularBuAtkGetter; *it; it++)
+        status = (*it)(attacker, defender, status);
 
     if (IsItemEffectiveAgainst(attacker->weapon, &defender->unit) == TRUE)
         status *= 3;
@@ -95,10 +104,12 @@ void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *def
 LYN_REPLACE_CHECK(ComputeBattleUnitSpeed);
 void ComputeBattleUnitSpeed(struct BattleUnit *attacker)
 {
-    int status, weight, i = 0;
+    int status, weight;
+    pbc_func *it;
 
     status = attacker->unit.spd;
 
+    /* Internal modular */
     weight = GetItemWeight(attacker->weapon_before) - attacker->unit.bonus_con;
     if (weight < 0)
         weight = 0;
@@ -106,8 +117,8 @@ void ComputeBattleUnitSpeed(struct BattleUnit *attacker)
     status = status - weight;
 
     /* External modular */
-    while (ModularBuSpdGetter[i])
-        status = ModularBuSpdGetter[i++](attacker, NULL, status);
+    for (it = ModularBuSpdGetter; *it; it++)
+        status = (*it)(attacker, NULL, status);
 
     LIMIT_AREA(status, 0, BATTLE_MAX_STATUS);
     attacker->battle_speed = status;
@@ -116,16 +127,19 @@ void ComputeBattleUnitSpeed(struct BattleUnit *attacker)
 LYN_REPLACE_CHECK(ComputeBattleUnitHitRate);
 void ComputeBattleUnitHitRate(struct BattleUnit *attacker)
 {
-    int status, i = 0;
+    int status;
+    pbc_func *it;
 
     status = attacker->unit.skl * 2;
+
+    /* Internal modular */
     status = status + GetItemHit(attacker->weapon);
     status = status + attacker->unit.lck / 2;
     status = status + attacker->advantage_bonus_hit;
 
     /* External modular */
-    while (ModularBuHitGetter[i])
-        status = ModularBuHitGetter[i++](attacker, NULL, status);
+    for (it = ModularBuHitGetter; *it; it++)
+        status = (*it)(attacker, NULL, status);
 
     LIMIT_AREA(status, 0, BATTLE_MAX_STATUS);
     attacker->battle_hit = status;
@@ -134,15 +148,18 @@ void ComputeBattleUnitHitRate(struct BattleUnit *attacker)
 LYN_REPLACE_CHECK(ComputeBattleUnitAvoidRate);
 void ComputeBattleUnitAvoidRate(struct BattleUnit * attacker)
 {
-    int status, i = 0;
+    int status;
+    pbc_func *it;
 
     status = attacker->battle_speed * 2;
+
+    /* Internal modular */
     status = status + attacker->terrain_avoid;
     status = status + attacker->unit.lck;
 
     /* External modular */
-    while (ModularBuAvoGetter[i])
-        status = ModularBuAvoGetter[i++](attacker, NULL, status);
+    for (it = ModularBuAvoGetter; *it; it++)
+        status = (*it)(attacker, NULL, status);
 
     LIMIT_AREA(status, 0, BATTLE_MAX_STATUS);
     attacker->battle_avoid = status;
@@ -151,17 +168,20 @@ void ComputeBattleUnitAvoidRate(struct BattleUnit * attacker)
 LYN_REPLACE_CHECK(ComputeBattleUnitCritRate);
 void ComputeBattleUnitCritRate(struct BattleUnit *attacker)
 {
-    int status, i = 0;
+    int status;
+    pbc_func *it;
 
     status = GetItemCrit(attacker->weapon);
+
+    /* Internal modular */
     status = status + attacker->unit.skl / 2;
 
     if (UNIT_ATTRIBUTES(&attacker->unit) & UNIT_ATTR_CRITBONUS)
         status += 30;
     
     /* External modular */
-    while (ModularBuCrtGetter[i])
-        status = ModularBuCrtGetter[i++](attacker, NULL, status);
+    for (it = ModularBuCrtGetter; *it; it++)
+        status = (*it)(attacker, NULL, status);
 
     LIMIT_AREA(status, 0, BATTLE_MAX_STATUS);
     attacker->battle_crit = status;
@@ -170,13 +190,16 @@ void ComputeBattleUnitCritRate(struct BattleUnit *attacker)
 /* No enough space for lyn-jump ... */
 void _ComputeBattleUnitDodgeRate(struct BattleUnit *attacker)
 {
-    int status, i = 0;
+    int status;
+    pbc_func *it;
 
     status = attacker->unit.lck;
 
+    /* Internal modular */
+
     /* External modular */
-    while (ModularBuDgeGetter[i])
-        status = ModularBuDgeGetter[i++](attacker, NULL, status);
+    for (it = ModularBuDgeGetter; *it; it++)
+        status = (*it)(attacker, NULL, status);
 
     LIMIT_AREA(status, 0, BATTLE_MAX_STATUS);
     attacker->battle_dodge = status;

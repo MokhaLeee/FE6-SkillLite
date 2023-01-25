@@ -8,6 +8,7 @@
 #define InjectSkillInfo(id, info) "PUSH; ORG SkillInfoTable + 4 * (id); POIN (info); POP"
 
 ALIGN 4
-SkillTester_Extern: WORD 0
+SkillTester_Extern:
+    NULL_PTR
 
 #endif

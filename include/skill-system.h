@@ -10,7 +10,7 @@ struct SkillInfo {
     u16 name;
     u16 desc;
     const u8 *icon;
-	u32 priv;
+    u32 priv;
 };
 extern const struct SkillInfo * const SkillInfoTable[MAX_SKILL_NUM];
 
@@ -25,8 +25,10 @@ struct SkillRomTable {
 };
 extern const struct SkillRomTable Skills_PData[], Skills_JData[];
 
-extern bool (*const SkillTester)(struct Unit *unit, const u8 skill);
-extern bool (*const SkillTester_Extern)(struct Unit *unit, const u8 skill);
+typedef bool (*const skill_test_func_t)(struct Unit *unit, const u8 skill);
+
+extern skill_test_func_t SkillTester;
+extern skill_test_func_t SkillTester_Extern[];
 
 const void* GetSkillIconGfx(unsigned id);
 u16 GetSkillName(const u8 skill);

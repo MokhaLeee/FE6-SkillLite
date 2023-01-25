@@ -12,7 +12,7 @@ void _SetUnitLeaderPid(struct Unit * unit, int pid);
 struct Unit *CreateUnit(struct UnitInfo const *info)
 {
     struct Unit *unit = NULL;
-    lu_func *it = OnLoadUnitFuncList;
+    lu_func *it;
 
     switch (info->faction_id) {
     case FACTION_ID_BLUE:
@@ -57,8 +57,8 @@ struct Unit *CreateUnit(struct UnitInfo const *info)
 
     unit->hp = GetUnitMaxHp(unit);
 
-    while (*it)
-        (*it++)(unit);
+    for (it = OnLoadUnitFuncList; *it; it++)
+        (*it)(unit);
 
     return unit;
 }

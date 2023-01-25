@@ -8,47 +8,47 @@ extern const ActionFunc UnitActionCallTable[];
 
 static int RequiresProcYield(ActionFunc func)
 {
-	const u32 raw = (u32)(func);
-	return (raw >> 28) ? 1 : 0;
+    const u32 raw = (u32)(func);
+    return (raw >> 28) ? 1 : 0;
 }
 
 static ActionFunc FilterFunc(ActionFunc func)
 {
-	const u32 raw           = (u32)(func);
-	const ActionFunc result = (ActionFunc)(raw & 0xFFFFFFF);
+    const u32 raw           = (u32)(func);
+    const ActionFunc result = (ActionFunc)(raw & 0xFFFFFFF);
 
-	return result;
+    return result;
 }
 
 LYN_REPLACE_CHECK(DoAction);
 bool DoAction(ProcPtr proc)
 {
-	ActionFunc func;
+    ActionFunc func;
 
     gActiveUnit = GetUnit(gAction.instigator);
 
-	func = UnitActionCallTable[gAction.id];
-	if (func) {
-		if (RequiresProcYield(func)) {
-			func = FilterFunc(func);
-			func(proc);
+    func = UnitActionCallTable[gAction.id];
+    if (func) {
+        if (RequiresProcYield(func)) {
+            func = FilterFunc(func);
+            func(proc);
 
-			return FALSE;
-		}
+            return FALSE;
+        }
 
-		return func(proc);
-	}
+        return func(proc);
+    }
 
-	return TRUE;
+    return TRUE;
 }
 
 bool WaitAction(ProcPtr proc)
 {
-	gActiveUnit->flags |= UNIT_FLAG_HAD_ACTION;
-	return TRUE;
+    gActiveUnit->flags |= UNIT_FLAG_HAD_ACTION;
+    return TRUE;
 }
 
 bool ActionDefualt(ProcPtr proc)
 {
-	return TRUE;
+    return TRUE;
 }

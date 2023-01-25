@@ -71,14 +71,14 @@ void SetBattleUnitWeapon(struct BattleUnit *bu, int item_slot)
 LYN_REPLACE_CHECK(BattleInitTargetCanCounter);
 void BattleInitTargetCanCounter(void)
 {
-    int i = 0;
+    mcc_func *it;
 
     *gBuWpnBackUp = gBattleUnitB.weapon;
     *gHasInventoryWpnBackUp = gBattleUnitB.has_inventory_weapon;
 
     /* External modular */
-    while (BattleCheckNullCounterCalculator[i]) {
-        switch (BattleCheckNullCounterCalculator[i]()) {
+    for (it = BattleCheckNullCounterCalculator; *it; it++) {
+        switch ((*it)()) {
         case NULL_COUNTER:
         case FORCE_COUNTER:
             return;

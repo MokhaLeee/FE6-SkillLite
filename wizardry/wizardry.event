@@ -14,7 +14,6 @@ POP
 /****************
  * Core Support *
  ****************/
-#include "eabi2agbcc/eabi-2-agbcc.lyn.event"
 #include "debug/debug.event"
 #include "icon-display/icon-display.event"
 #include "unit-menu/unit-menu.event"

@@ -52,14 +52,18 @@ static bool JudgeSkillRom(struct Unit *unit, const u8 skill)
 
 static bool _SkillTester(struct Unit *unit, const u8 skill)
 {
+    int i;
+
     BasicJudgeSkill(unit, skill);
 
     if (TRUE == JudgeSkillRom(unit, skill))
         return TRUE;
 
     /* External modular */
-    if (SkillTester_Extern)
-        return SkillTester_Extern(unit, skill);
+    for (i = 0; NULL != SkillTester_Extern[i]; i++) {
+        if (TRUE == SkillTester_Extern[i](unit, skill))
+            return TRUE;
+    }
 
     return FALSE;
 }

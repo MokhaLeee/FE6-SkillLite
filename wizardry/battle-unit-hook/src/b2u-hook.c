@@ -11,7 +11,7 @@ extern B2U_func Battle2UnitFuncList[];
 
 void InitBattleUnit(struct BattleUnit *bu, struct Unit *unit)
 {
-    U2B_func *it = Unit2BattleFuncList;
+    U2B_func *it;
 
     if (!unit)
         return;
@@ -57,14 +57,14 @@ void InitBattleUnit(struct BattleUnit *bu, struct Unit *unit)
     gBattleUnitA.exp_gain = 0;
     gBattleUnitB.exp_gain = 0;
 
-    while (*it)
-        (*it++)(bu, unit);
+    for (it = Unit2BattleFuncList; *it; it++)
+        (*it)(bu, unit);
 }
 
 void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
 {
     int tmp;
-    B2U_func *it = Battle2UnitFuncList;
+    B2U_func *it;
 
     unit->level = bu->unit.level;
     unit->exp   = bu->unit.exp;
@@ -96,7 +96,7 @@ void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
 
     if (bu->exp_gain)
         PidStatsAddExpGained(unit->pinfo->id, bu->exp_gain);
-    
-    while (*it)
-        (*it++)(unit, bu);
+
+    for (it = Battle2UnitFuncList; *it; it++)
+        (*it)(unit, bu);
 }

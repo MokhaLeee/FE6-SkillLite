@@ -12,7 +12,7 @@ extern cih_func ChapterInitHooks[];
 
 void PrepPhase_Init(ProcPtr proc)
 {
-    int i = 0;
+    cih_func *it;
 
     if (!GetChapterInfo(gPlaySt.chapter)->has_prep) {
         Proc_End(proc);
@@ -35,8 +35,8 @@ void PrepPhase_Init(ProcPtr proc)
 #endif
 
     /* External modular */
-    while (ChapterInitHooks[i])
-        ChapterInitHooks[i++](proc);
+    for (it = ChapterInitHooks; *it; it++)
+        (*it)(proc);
 
     RefreshEntityMaps();
     RenderMap();
