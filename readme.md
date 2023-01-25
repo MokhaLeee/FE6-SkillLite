@@ -43,7 +43,6 @@
 - [ ] **stat-screen**
 	- [x] UI rework
 	- [ ] negative stat boosts UI
-- [ ] **weapon range**
 - [ ] **str / mag split**
 	- [ ] combat hack
 	- [ ] unit magic power getter

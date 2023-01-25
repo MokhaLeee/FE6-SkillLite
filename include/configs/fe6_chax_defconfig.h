@@ -67,7 +67,6 @@
  * Since the physical memory is unit->supports[],
  * so we need ensure BWL_SUPPORT config is open.
  */
-// #if (defined(CONFIG_SKILL_RAM_LIST) && defined(CONFIG_BWL_SUPPORT))
 #ifdef CONFIG_SKILL_RAM_LIST
     #ifdef CONFIG_BWL_SUPPORT
         #define CONFIG_SKILL_RAM_LIST_SUPPORT
