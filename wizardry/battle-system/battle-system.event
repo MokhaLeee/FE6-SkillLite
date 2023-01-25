@@ -10,6 +10,21 @@
  * Pre-battle-calc
  */
 ALIGN 4
+ModularPreBuCalcator:
+    POIN InitBattleUnitStatus
+
+    POIN ComputeBattleUnitDefense
+    POIN ComputeBattleUnitAttack
+    POIN ComputeBattleUnitSpeed
+    POIN ComputeBattleUnitHitRate
+    POIN ComputeBattleUnitAvoidRate
+    POIN ComputeBattleUnitCritRate
+    POIN _ComputeBattleUnitDodgeRate
+
+    POIN $080247F1 /* ComputeBattleUnitSupportBonuses */
+    POIN PreBuStatusMinusZero
+    NULL_PTR
+
 ModularBuAtkGetter:
     NULL_PTR
 

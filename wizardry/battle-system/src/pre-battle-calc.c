@@ -3,36 +3,43 @@
 #include "item.h"
 #include "battle.h"
 
+typedef void (*const pbc_loopfunc)(struct BattleUnit *buA, struct BattleUnit *buB);
 typedef int (*const pbc_func)(struct BattleUnit *buA, struct BattleUnit *buB, int old_status);
+
+extern pbc_loopfunc ModularPreBuCalcator[];
 extern pbc_func ModularBuAtkGetter[], ModularBuDefGetter[], ModularBuSpdGetter[], ModularBuHitGetter[], \
                 ModularBuAvoGetter[], ModularBuCrtGetter[], ModularBuDgeGetter[];
-
-void _ComputeBattleUnitDodgeRate(struct BattleUnit *bu);
-void InitBattleUnitStatus(struct BattleUnit *bu);
 
 LYN_REPLACE_CHECK(ComputeBattleUnitStats);
 void ComputeBattleUnitStats(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
-    InitBattleUnitStatus(attacker);
-    ComputeBattleUnitDefense(attacker, defender);
-    ComputeBattleUnitAttack(attacker, defender);
-    ComputeBattleUnitSpeed(attacker);
-    ComputeBattleUnitHitRate(attacker);
-    ComputeBattleUnitAvoidRate(attacker);
-    ComputeBattleUnitCritRate(attacker);
-    _ComputeBattleUnitDodgeRate(attacker);
-    ComputeBattleUnitSupportBonuses(attacker, defender);
+    pbc_loopfunc *it;
+    for (it = ModularPreBuCalcator; *it; it++)
+        (*it)(attacker, defender);
 }
 
-void InitBattleUnitStatus(struct BattleUnit *bu)
+void InitBattleUnitStatus(struct BattleUnit *bu, struct BattleUnit *other)
 {
-    bu->battle_attack = 0;
-    bu->battle_defense = 0;
-    bu->battle_speed = 0;
-    bu->battle_hit = 0;
-    bu->battle_avoid = 0;
-    bu->battle_crit = 0;
-    bu->battle_dodge = 0;
+    bu->battle_attack  = GetItemMight(bu->weapon);
+    bu->battle_defense = GetItemAttributes(other->weapon) & ITEM_ATTR_MAGIC
+                       ? bu->unit.res
+                       : bu->unit.def;
+    bu->battle_speed   = bu->unit.spd;
+    bu->battle_hit     = bu->unit.skl * 2 + GetItemHit(bu->weapon) + bu->unit.lck / 2;;
+    bu->battle_avoid   = bu->battle_speed * 2 + bu->unit.lck;
+    bu->battle_crit    = GetItemCrit(bu->weapon) + bu->unit.skl / 2;
+    bu->battle_dodge   = bu->unit.lck;
+}
+
+void PreBuStatusMinusZero(struct BattleUnit *bu)
+{
+    LIMIT_AREA(bu->battle_attack,  0, BATTLE_MAX_STATUS);
+    LIMIT_AREA(bu->battle_defense, 0, BATTLE_MAX_STATUS);
+    LIMIT_AREA(bu->battle_speed,   0, BATTLE_MAX_STATUS);
+    LIMIT_AREA(bu->battle_hit,     0, BATTLE_MAX_STATUS);
+    LIMIT_AREA(bu->battle_avoid,   0, BATTLE_MAX_STATUS);
+    LIMIT_AREA(bu->battle_crit,    0, BATTLE_MAX_STATUS);
+    LIMIT_AREA(bu->battle_dodge,   0, BATTLE_MAX_STATUS);
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitDefense);
@@ -41,9 +48,7 @@ void ComputeBattleUnitDefense(struct BattleUnit *attacker, struct BattleUnit *de
     int status;
     pbc_func *it;
     
-    status = GetItemAttributes(defender->weapon) & ITEM_ATTR_MAGIC
-           ? attacker->unit.res
-           : attacker->unit.def;
+    status = attacker->battle_defense;
 
     /* Internal modular */
     status += GetItemAttributes(defender->weapon) & ITEM_ATTR_MAGIC
@@ -54,7 +59,6 @@ void ComputeBattleUnitDefense(struct BattleUnit *attacker, struct BattleUnit *de
     for (it = ModularBuDefGetter; *it; it++)
         status = (*it)(attacker, defender, status);
 
-    LIMIT_AREA(status, 0, BATTLE_MAX_STATUS);
     attacker->battle_defense = status;
 }
 
@@ -64,7 +68,7 @@ void ComputeBattleUnitBaseDefense(struct BattleUnit *bu)
     int status;
     pbc_func *it;
 
-    status = bu->unit.def;
+    status = bu->battle_defense;
 
     /* Internal modular */
     status = status + bu->terrain_defense;
@@ -73,7 +77,6 @@ void ComputeBattleUnitBaseDefense(struct BattleUnit *bu)
     for (it = ModularBuDefGetter; *it; it++)
         status = (*it)(bu, NULL, status);
 
-    LIMIT_AREA(status, 0, BATTLE_MAX_STATUS);
     bu->battle_defense = status;
 }
 
@@ -83,7 +86,7 @@ void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *def
     int status;
     pbc_func *it;
 
-    status = GetItemMight(attacker->weapon);
+    status = attacker->battle_attack;
 
     /* Internal modular */
     status = status + attacker->advantage_bonus_damage;
@@ -97,7 +100,6 @@ void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *def
 
     status += attacker->unit.pow;
 
-    LIMIT_AREA(status, 0, BATTLE_MAX_STATUS);
     attacker->battle_attack = status;
 }
 
@@ -107,7 +109,7 @@ void ComputeBattleUnitSpeed(struct BattleUnit *attacker)
     int status, weight;
     pbc_func *it;
 
-    status = attacker->unit.spd;
+    status = attacker->battle_speed;
 
     /* Internal modular */
     weight = GetItemWeight(attacker->weapon_before) - attacker->unit.bonus_con;
@@ -120,7 +122,6 @@ void ComputeBattleUnitSpeed(struct BattleUnit *attacker)
     for (it = ModularBuSpdGetter; *it; it++)
         status = (*it)(attacker, NULL, status);
 
-    LIMIT_AREA(status, 0, BATTLE_MAX_STATUS);
     attacker->battle_speed = status;
 }
 
@@ -130,18 +131,15 @@ void ComputeBattleUnitHitRate(struct BattleUnit *attacker)
     int status;
     pbc_func *it;
 
-    status = attacker->unit.skl * 2;
+    status = attacker->battle_hit;
 
     /* Internal modular */
-    status = status + GetItemHit(attacker->weapon);
-    status = status + attacker->unit.lck / 2;
     status = status + attacker->advantage_bonus_hit;
 
     /* External modular */
     for (it = ModularBuHitGetter; *it; it++)
         status = (*it)(attacker, NULL, status);
 
-    LIMIT_AREA(status, 0, BATTLE_MAX_STATUS);
     attacker->battle_hit = status;
 }
 
@@ -151,17 +149,15 @@ void ComputeBattleUnitAvoidRate(struct BattleUnit * attacker)
     int status;
     pbc_func *it;
 
-    status = attacker->battle_speed * 2;
+    status = attacker->battle_avoid;
 
     /* Internal modular */
     status = status + attacker->terrain_avoid;
-    status = status + attacker->unit.lck;
 
     /* External modular */
     for (it = ModularBuAvoGetter; *it; it++)
         status = (*it)(attacker, NULL, status);
 
-    LIMIT_AREA(status, 0, BATTLE_MAX_STATUS);
     attacker->battle_avoid = status;
 }
 
@@ -171,11 +167,9 @@ void ComputeBattleUnitCritRate(struct BattleUnit *attacker)
     int status;
     pbc_func *it;
 
-    status = GetItemCrit(attacker->weapon);
+    status = attacker->battle_crit;
 
     /* Internal modular */
-    status = status + attacker->unit.skl / 2;
-
     if (UNIT_ATTRIBUTES(&attacker->unit) & UNIT_ATTR_CRITBONUS)
         status += 30;
     
@@ -183,7 +177,6 @@ void ComputeBattleUnitCritRate(struct BattleUnit *attacker)
     for (it = ModularBuCrtGetter; *it; it++)
         status = (*it)(attacker, NULL, status);
 
-    LIMIT_AREA(status, 0, BATTLE_MAX_STATUS);
     attacker->battle_crit = status;
 }
 
@@ -193,7 +186,7 @@ void _ComputeBattleUnitDodgeRate(struct BattleUnit *attacker)
     int status;
     pbc_func *it;
 
-    status = attacker->unit.lck;
+    status = attacker->battle_dodge;
 
     /* Internal modular */
 
@@ -201,6 +194,5 @@ void _ComputeBattleUnitDodgeRate(struct BattleUnit *attacker)
     for (it = ModularBuDgeGetter; *it; it++)
         status = (*it)(attacker, NULL, status);
 
-    LIMIT_AREA(status, 0, BATTLE_MAX_STATUS);
     attacker->battle_dodge = status;
 }
