@@ -1,4 +1,5 @@
 #pragma once
+#include "common-chax.h"
 #include "skill-defs.h"
 
 #include "unit.h"
@@ -14,14 +15,16 @@ struct SkillInfo {
 };
 extern const struct SkillInfo * const SkillInfoTable[MAX_SKILL_NUM];
 
-enum skill_rom_table_counts {
-    SKILL_ROM_DEFAULT_COUNT = 3,
-    SKILL_ROM_LEVEL_COUNNT = 5,
+enum skill_data_sizes {
+    SKILL_ROM_DEFAULT_LIST_SIZE = 3,
+    SKILL_ROM_LEVEL_LIST_SIZE = 5,
+
+    SKILL_RAM_LIST_SIZE = 5,
 };
 
 struct SkillRomTable {
-    u8 default_skills[SKILL_ROM_DEFAULT_COUNT];
-    u8 level_skills[SKILL_ROM_LEVEL_COUNNT];
+    u8 default_skills[SKILL_ROM_DEFAULT_LIST_SIZE];
+    u8 level_skills[SKILL_ROM_LEVEL_LIST_SIZE];
 };
 extern const struct SkillRomTable Skills_PData[], Skills_JData[];
 
@@ -29,6 +32,15 @@ typedef bool (*const skill_test_func_t)(struct Unit *unit, const u8 skill);
 
 extern skill_test_func_t SkillTester;
 extern skill_test_func_t SkillTester_Extern[];
+
+#ifdef CONFIG_SKILL_RAM_LIST
+u8 *GetSkillRamList(struct Unit *unit);
+#else
+static inline u8 *GetSkillRamList(struct Unit *unit)
+{
+    return NULL;
+}
+#endif /* CONFIG_SKILL_RAM_LIST */
 
 const void* GetSkillIconGfx(unsigned id);
 u16 GetSkillName(const u8 skill);

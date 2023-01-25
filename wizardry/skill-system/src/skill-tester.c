@@ -22,12 +22,25 @@ do {                                    \
         return FALSE;                   \
 } while (0)
 
+#ifdef CONFIG_SKILL_RAM_LIST
+u8 *GetSkillRamList(struct Unit *unit)
+{
+    if (NULL != unit) {
+#ifdef CONFIG_SKILL_RAM_LIST_SUPPORT
+        return &unit->supports[0];
+#endif
+    }
+
+    return NULL;
+}
+#endif /* CONFIG_SKILL_RAM_LIST */
+
 static bool JudgeSkillRom(struct Unit *unit, const u8 skill)
 {
     int i;
 
     /* Judge default skills */
-    for (i = 0; i < SKILL_ROM_DEFAULT_COUNT; i++) {
+    for (i = 0; i < SKILL_ROM_DEFAULT_LIST_SIZE; i++) {
         if (skill == Skills_PData[unit->pinfo->id].default_skills[i])
             return TRUE;
 
@@ -36,7 +49,7 @@ static bool JudgeSkillRom(struct Unit *unit, const u8 skill)
     }
 
     /* Judge level-based skills */
-    for (i = 0; i < SKILL_ROM_LEVEL_COUNNT; i++) {
+    for (i = 0; i < SKILL_ROM_LEVEL_LIST_SIZE; i++) {
         if (unit->level < 5 * i)
             break;
 
@@ -50,18 +63,41 @@ static bool JudgeSkillRom(struct Unit *unit, const u8 skill)
     return FALSE;
 }
 
-static bool _SkillTester(struct Unit *unit, const u8 skill)
+#ifdef CONFIG_SKILL_RAM_LIST
+static bool JudgeSkillRam(struct Unit *unit, const u8 skill)
 {
     int i;
+
+    u8 *list = GetSkillRamList(unit);
+
+    if (list) {
+        for (i = 0; i < SKILL_RAM_LIST_SIZE; i++) {
+            if (skill == list[i])
+                return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+#endif /* CONFIG_SKILL_RAM_LIST */
+
+static bool _SkillTester(struct Unit *unit, const u8 skill)
+{
+    skill_test_func_t *it;
 
     BasicJudgeSkill(unit, skill);
 
     if (TRUE == JudgeSkillRom(unit, skill))
         return TRUE;
 
+#ifdef CONFIG_SKILL_RAM_LIST
+    if (TRUE == JudgeSkillRam(unit, skill))
+        return TRUE;
+#endif /* CONFIG_SKILL_RAM_LIST */
+
     /* External modular */
-    for (i = 0; NULL != SkillTester_Extern[i]; i++) {
-        if (TRUE == SkillTester_Extern[i](unit, skill))
+    for (it = SkillTester_Extern; *it; it++) {
+        if (TRUE == (*it)(unit, skill))
             return TRUE;
     }
 

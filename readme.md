@@ -18,11 +18,11 @@
 3. Scalability on system design with lots of free-space on item/unit/class attr and others.
 
 # Wizardy to-do list:
-- [ ] **skill-system**
+- [x] **skill-system**
 	- [x] skill infos
 	- [x] skill stat-screen
 	- [x] skill ROM list
-	- [ ] skill RAM list
+	- [x] skill RAM list
 - [ ] **status-getter**
 	- [x] modular status getter
 	- [ ] mov & con getter
