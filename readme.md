@@ -2,10 +2,7 @@
 1. You must have a linux system as WSL(for Windows user, see [here](https://learn.microsoft.com/en-sg/windows/wsl/install)) or Ubuntu.
 2. You must have a copy of the FE6 clean ROM named `fe6.gba` in the repository directory.
 3. Install [.Net SDK](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004)
-4. Build tools:
-```
-./build_tools.sh
-```
+4. `./build_tools.sh` in the repository directory.
 5. `make -j8` in repository directory, then you will get **fe6-chax.gba** in your repo.
 
 
@@ -18,9 +15,9 @@
 3. Scalability on system design with lots of free-space on item/unit/class attr and others.
 
 # Wizardy to-do list:
-- [x] **skill-system**
+- [ ] **skill-system**
 	- [x] skill infos
-	- [x] skill stat-screen
+	- [ ] skill stat-screen
 	- [x] skill ROM list
 	- [x] skill RAM list
 - [ ] **status-getter**
@@ -30,9 +27,9 @@
 	- [x] pre-battle calculation
 	- [ ] battle order
 	- [x] battle can-counter
-	- [ ] weapon tri-angle
+	- [x] weapon tri-angle
 	- [ ] effective judgement
-	- [ ] battle forcast
+	- [ ] battle preview
 - [ ] **weapon range**
 	- [ ] weapon-range getter
 	- [ ] draw-string

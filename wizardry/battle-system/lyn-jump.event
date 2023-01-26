@@ -9,3 +9,5 @@ LYN_JUMP_UTIL(ComputeBattleUnitCritRate, $24988)
 
 LYN_JUMP_UTIL(SetBattleUnitWeapon, $245a0)
 LYN_JUMP_UTIL(BattleInitTargetCanCounter, $25b1c)
+
+LYN_JUMP_UTIL(BattleApplyWeaponTriangleEffect, $25a90)
