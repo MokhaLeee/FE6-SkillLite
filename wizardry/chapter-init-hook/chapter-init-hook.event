@@ -9,4 +9,9 @@ ALIGN 4
 ChapterInitHooks:
     NULL_PTR
 
+PUSH
+ORG $5C4F5C
+PROC_CALL_ROUTINE(ChapterInitHookloop)
+POP
+
 #endif
