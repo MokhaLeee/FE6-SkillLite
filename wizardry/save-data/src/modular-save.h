@@ -22,8 +22,8 @@
  * save2           0x3D6C          0x14A8          0xDF0           0x6B8
  * save3           0x5214          0x14A8          0xDF0           0x6B8
  * link_arena      0x66BC          0x93C           0x93C           0x0
- * block_6         0x6FF8          0x1000          0x1000          0x0
- * _PAD_           0x7FF8          0x8             -----           -----
+ * _PAD_           0x6FF8          0x8             -----           -----
+ * block_6         0x6000          0x1000          0x1000          0x0
  */
 
 enum EMS_SRAM_block_sizes {
