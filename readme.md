@@ -24,11 +24,12 @@
 	- [x] modular status getter
 	- [ ] mov & con getter
 - [ ] **battle-system**
+	- [x] battle-unit hook
 	- [x] pre-battle calculation
 	- [ ] battle order
 	- [x] battle can-counter
 	- [x] weapon tri-angle
-	- [ ] effective judgement
+	- [x] effective judgement
 	- [ ] battle preview
 - [ ] **weapon range**
 	- [ ] weapon-range getter
@@ -77,7 +78,6 @@
 - [x] **icon-rework**
 - [ ] **popup-rework**
 - [x] **load unit hook**
-- [x] **battle-unit hook**
 - [x] **chapter init hook**
 - [ ] **level-up rework**
 	- [ ] Switch & 3DS style level up

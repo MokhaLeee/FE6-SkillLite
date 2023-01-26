@@ -1,3 +1,4 @@
+LYN_JUMP_UTIL(BattleGenerate, $242c8)
 LYN_JUMP_UTIL(ComputeBattleUnitStats, $24790)
 LYN_JUMP_UTIL(ComputeBattleUnitDefense, $24844)
 LYN_JUMP_UTIL(ComputeBattleUnitBaseDefense, $24884)
@@ -11,3 +12,9 @@ LYN_JUMP_UTIL(SetBattleUnitWeapon, $245a0)
 LYN_JUMP_UTIL(BattleInitTargetCanCounter, $25b1c)
 
 LYN_JUMP_UTIL(BattleApplyWeaponTriangleEffect, $25a90)
+
+LYN_JUMP_UTIL(IsItemEffectiveAgainst, $16a10)
+
+/* battle-unit hook */
+LYN_JUMP_UTIL(InitBattleUnit, $243f8)
+LYN_JUMP_UTIL(UpdateUnitFromBattle, $25644)

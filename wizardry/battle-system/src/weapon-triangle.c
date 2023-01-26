@@ -28,8 +28,8 @@ void BattleApplyWeaponTriangleEffect(struct BattleUnit *attacker, struct BattleU
 }
 
 
-/* I prefer to put WTA-bonus calc to pre-battle-calc */
-void PreBuCalc_WTA_Bonus(struct BattleUnit *attacker, struct BattleUnit *defender)
+/* I prefer to put WTA-bonus calc to main battle-calc */
+void BuCalcMain_WTABonus(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     struct WeaponTriangleRule const *it;
 

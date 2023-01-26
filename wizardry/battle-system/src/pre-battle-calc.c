@@ -3,12 +3,38 @@
 #include "item.h"
 #include "battle.h"
 
+typedef void (*const mbc_loopfunc)(struct BattleUnit *buA, struct BattleUnit *buB);
 typedef void (*const pbc_loopfunc)(struct BattleUnit *buA, struct BattleUnit *buB);
 typedef int (*const pbc_func)(struct BattleUnit *buA, struct BattleUnit *buB, int old_status);
 
+extern mbc_loopfunc ModularMainBuCalcator[];
 extern pbc_loopfunc ModularPreBuCalcator[];
 extern pbc_func ModularBuAtkGetter[], ModularBuDefGetter[], ModularBuSpdGetter[], ModularBuHitGetter[], \
                 ModularBuAvoGetter[], ModularBuCrtGetter[], ModularBuDgeGetter[];
+
+LYN_REPLACE_CHECK(BattleGenerate);
+void BattleGenerate(struct Unit *instigator, struct Unit *target)
+{
+    mbc_loopfunc *it;
+
+    ComputeBattleUnitStats(&gBattleUnitA, &gBattleUnitB);
+    ComputeBattleUnitStats(&gBattleUnitB, &gBattleUnitA);
+
+    ComputeBattleUnitEffectiveStats(&gBattleUnitA, &gBattleUnitB);
+    ComputeBattleUnitEffectiveStats(&gBattleUnitB, &gBattleUnitA);
+
+    /* Internal modular */
+
+    
+    /* External modular */
+    for (it = ModularMainBuCalcator; *it; it++)
+        (*it)(&gBattleUnitA, &gBattleUnitB);
+
+    if (target == NULL)
+        ComputeBattleObstacleStats();
+
+    BattleUnwind();
+}
 
 LYN_REPLACE_CHECK(ComputeBattleUnitStats);
 void ComputeBattleUnitStats(struct BattleUnit *attacker, struct BattleUnit *defender)

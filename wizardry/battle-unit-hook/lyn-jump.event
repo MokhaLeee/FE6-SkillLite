@@ -1,2 +1,0 @@
-LYN_JUMP_UTIL(InitBattleUnit, $243f8)
-LYN_JUMP_UTIL(UpdateUnitFromBattle, $25644)

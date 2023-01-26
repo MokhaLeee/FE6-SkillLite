@@ -4,6 +4,8 @@
 #include "src/pre-battle-calc.lyn.event"
 #include "src/battle-can-counter.lyn.event"
 #include "src/weapon-triangle.lyn.event"
+#include "src/effective-attack.lyn.event"
+#include "src/battle-unit-hook.lyn.event"
 
 #include "lyn-jump.event"
 
@@ -11,7 +13,9 @@
  * Pre-battle-calc
  */
 ALIGN 4
-/* typedef void (*const pbc_loopfunc)(struct BattleUnit *buA, struct BattleUnit *buB); */
+ModularMainBuCalcator:
+    NULL_PTR
+
 ModularPreBuCalcator:
     POIN InitBattleUnitStatus
 
@@ -22,8 +26,6 @@ ModularPreBuCalcator:
     POIN ComputeBattleUnitAvoidRate
     POIN ComputeBattleUnitCritRate
     POIN _ComputeBattleUnitDodgeRate
-
-    POIN PreBuCalc_WTA_Bonus
 
     POIN $080247F1 /* ComputeBattleUnitSupportBonuses */
     POIN PreBuStatusMinusZero
@@ -54,7 +56,6 @@ ModularBuDgeGetter:
 /*
  * Battle can counter
  */
-ALIGN 4
 gBuWpnBackUp:           WORD gBuWpnBackUp_ptr
 gHasInventoryWpnBackUp: WORD gHasInventoryWpnBackUp_ptr
 
@@ -64,5 +65,15 @@ BattleCheckNullCounterCalculator:
     POIN mcc_wpn_uncounter
     POIN mcc_debuf_berserk
     NULL_PTR
+
+
+/*
+ * Battle-unit hook
+ */
+Unit2BattleFuncList:
+	NULL_PTR
+
+Battle2UnitFuncList:
+	NULL_PTR
 
 #endif
