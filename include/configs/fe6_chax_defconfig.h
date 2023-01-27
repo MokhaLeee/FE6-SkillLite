@@ -97,4 +97,14 @@
  */
 #define BATTLE_MAX_STATUS 0x7FFF
 
+/**
+ * Skip game intro movie
+ */
+#define CONFIG_SKIP_INTRO
+
+/**
+ * Enable all chapters get accress to prep-screen
+ */
+// #define CONFIG_ALL_CHAPTER_PREP
+
 #endif /* _CONFIG_H */

@@ -9,7 +9,6 @@ POP
 #include "unicode/unicode.event"
 #include "unicode/unicode-transcoder.event"
 #include "unicode/unicode-strings.event"
-#include "misc/skip-intro.event"
 
 /****************
  * Core Support *
@@ -43,3 +42,14 @@ POP
 #include "status-getter/status-getter.event"
 #include "skill-system/skill-system.event"
 #include "battle-system/battle-system.event"
+
+/************
+ * Features *
+ ************/
+#ifdef CONFIG_SKIP_INTRO
+    #include "misc/skip-intro.event"
+#endif
+
+#ifdef CONFIG_ALL_CHAPTER_PREP
+    #include "misc/enable-prep.event"
+#endif

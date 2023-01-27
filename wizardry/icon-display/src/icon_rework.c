@@ -110,7 +110,7 @@ void PutIconObjImg(int icon, int chr)
     const u8 *src = GetIconGfx(icon);
     u8 *dst = OBJ_VRAM0 + CHR_SIZE * (chr & 0x3FF);
 
-    if (src) {
+    if (!src) {
         // no icon, we clear the target graphics
         RegisterDataFill(0, dst,         CHR_SIZE * 2);
         RegisterDataFill(0, dst + 0x400, CHR_SIZE * 2);
