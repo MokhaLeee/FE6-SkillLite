@@ -19,6 +19,8 @@ ModularMainBuCalcator:
 ModularPreBuCalcator:
     POIN InitBattleUnitStatus
 
+    POIN BuCalcMain_WTABonus
+
     POIN ComputeBattleUnitDefense
     POIN ComputeBattleUnitAttack
     POIN ComputeBattleUnitSpeed

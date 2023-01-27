@@ -57,6 +57,7 @@ dkms.conf
 # git related
 .cache
 test.sh
+*.bak
 
 # gba related
 tools/agbcc/
