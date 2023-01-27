@@ -15,11 +15,12 @@
 3. Scalability on system design with lots of free-space on item/unit/class attr and others.
 
 # Wizardy to-do list:
-- [ ] **skill-system**
+- [x] **skill-system**
 	- [x] skill infos
-	- [ ] skill stat-screen
+	- [x] skill stat-screen
 	- [x] skill ROM list
 	- [x] skill RAM list
+	- [x] skill fast list
 - [ ] **status-getter**
 	- [x] modular status getter
 	- [ ] mov & con getter
@@ -78,6 +79,7 @@
 - [x] **icon-rework**
 - [ ] **popup-rework**
 - [x] **load unit hook**
+- [x] **game init hook**
 - [x] **chapter init hook**
 - [ ] **level-up rework**
 	- [ ] Switch & 3DS style level up

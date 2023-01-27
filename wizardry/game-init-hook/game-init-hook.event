@@ -1,0 +1,11 @@
+#ifndef GAME_INIT_HOOK
+#define GAME_INIT_HOOK
+
+#include "src/game-init-hook.lyn.event"
+#include "lyn-jump.event"
+
+ALIGN 4
+GameInitHooks:
+    NULL_PTR
+
+#endif

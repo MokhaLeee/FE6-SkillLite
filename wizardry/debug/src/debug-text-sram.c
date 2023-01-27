@@ -30,6 +30,22 @@ struct DebugTextSramSt {
     char screen[256][32];
 };
 
+void InitDebugTextData()
+{
+    int size, left_size = sizeof(struct DebugTextSramSt);
+    u32 cur = DebugTextSramSt_ptr;
+
+    while (left_size > 0) {
+        size = left_size > sizeof(gBuf) ? sizeof(gBuf) : left_size;
+
+        CpuFastFill16(0, gBuf, size);
+        WriteAndVerifySramFast(gBuf, (u8 *)cur, size);
+
+        left_size -= size;
+        cur += size;
+    }
+}
+
 struct DebugTextSramSt const * const gDebugTextSramSt = (void *)DebugTextSramSt_ptr;
 
 void DebugInitBg(int bg, int vramOffset)

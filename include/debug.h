@@ -5,6 +5,8 @@
 noreturn void FailScreen(void);
 
 #ifdef CONFIG_USE_DEBUG_TEXT
+void InitDebugTextData();
+
 void DebugInitBg(int bg, int vramOffset);
 void DebugPutStr(u16 *tm, char const *str);
 void DebugPutFmt(u16 *tm, char const *fmt, ...);
@@ -23,6 +25,8 @@ void DebugPutObjStr(int x, int y, char const *str);
 void DebugPutObjNumber(int x, int y, int number, int length);
 void DebugPutObjNumberHex(int x, int y, int number, int length);
 #else
+static inline void InitDebugTextData() {}
+
 static inline void DebugInitBg(int bg, int vramOffset) {}
 static inline void DebugPutStr(u16 *tm, char const *str) {}
 static inline void DebugPutFmt(u16 *tm, char const *fmt, ...) {}

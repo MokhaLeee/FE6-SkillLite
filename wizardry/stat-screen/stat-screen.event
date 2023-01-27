@@ -2,6 +2,12 @@
 #ifndef STAT_SCREEN
 
 #include "src/draw-pages.lyn.event"
+#include "src/page1-rtext.lyn.event"
 #include "lyn-jump.event"
+
+PUSH
+ORG $6778B4
+POIN HelpInfo_StatScreenSkill1
+POP
 
 #endif /* STAT_SCREEN */

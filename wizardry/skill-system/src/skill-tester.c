@@ -2,6 +2,7 @@
 #include "unit.h"
 #include "constants/jids.h"
 #include "constants/pids.h"
+
 #include "skill-system.h"
 
 #define BasicJudgeSkill(unit, skill)    \
@@ -81,7 +82,7 @@ static bool JudgeSkillRam(struct Unit *unit, const u8 skill)
 }
 #endif /* CONFIG_SKILL_RAM_LIST */
 
-static bool _SkillTester(struct Unit *unit, const u8 skill)
+bool SkillTester_comm(struct Unit *unit, const u8 skill)
 {
     skill_test_func_t *it;
 
@@ -104,4 +105,17 @@ static bool _SkillTester(struct Unit *unit, const u8 skill)
     return FALSE;
 }
 
-bool (*const SkillTester)(struct Unit *unit, const u8 skill) = _SkillTester;
+bool SkillTester_fast(struct Unit *unit, const u8 skill)
+{
+    int i;
+    struct SkillFastList *list = GetUnitSkillFastList(unit);
+
+    for (i = 0; i < list->count; i++) {
+        if (list->skills[i] == skill)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+bool (*const SkillTester)(struct Unit *unit, const u8 skill) = SkillTester_fast;

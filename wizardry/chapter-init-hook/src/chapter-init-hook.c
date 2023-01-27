@@ -6,6 +6,7 @@
 #include "bm.h"
 
 #include "rng-ext.h"
+#include "skill-system.h"
 
 typedef void (*cih_func)(ProcPtr proc);
 extern cih_func ChapterInitHooks[];
@@ -18,6 +19,8 @@ void ChapterInitHookloop(ProcPtr proc)
 #ifdef CONFIG_RNG_EXT
     RandInitExt();
 #endif
+
+    ResetSkillFastLists();
 
     /* External modular */
     for (it = ChapterInitHooks; *it; it++)

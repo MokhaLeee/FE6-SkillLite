@@ -4,11 +4,15 @@
 #include "src/skill-tester.lyn.event"
 #include "src/skill-infos.lyn.event"
 #include "src/skill-screen.lyn.event"
+#include "src/skill-fast-list.lyn.event"
 
 #define InjectSkillInfo(id, info) "PUSH; ORG SkillInfoTable + 4 * (id); POIN (info); POP"
 
 ALIGN 4
 SkillTester_Extern:
     NULL_PTR
+
+gSkillFastListA: WORD gSkillFastListA_ptr
+gSkillFastListB: WORD gSkillFastListB_ptr
 
 #endif

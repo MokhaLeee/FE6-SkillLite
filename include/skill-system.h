@@ -2,6 +2,7 @@
 #include "common-chax.h"
 #include "skill-defs.h"
 
+#include "helpbox.h"
 #include "unit.h"
 
 #define MAX_SKILL_NUM 255
@@ -20,6 +21,9 @@ enum skill_data_sizes {
     SKILL_ROM_LEVEL_LIST_SIZE = 5,
 
     SKILL_RAM_LIST_SIZE = 5,
+
+    UNIT_MAX_SKILL_COUNT = 0x1E,
+    MSS_MAX_SKILL_COUNT = 5,
 };
 
 struct SkillRomTable {
@@ -28,11 +32,36 @@ struct SkillRomTable {
 };
 extern const struct SkillRomTable Skills_PData[], Skills_JData[];
 
-typedef bool (*const skill_test_func_t)(struct Unit *unit, const u8 skill);
+/**
+ * skill fast test
+ */
+struct SkillFastList {
+    u8 pid;
+    u8 count;
+    u8 skills[UNIT_MAX_SKILL_COUNT];
+};
+extern struct SkillFastList *gSkillFastListA, *gSkillFastListB;
 
+struct SkillFastList *GetUnitSkillFastList(struct Unit *unit);
+int GetUsedSkillCounts(struct Unit *unit);
+void ResetSkillFastLists();
+void DisableUnitSkills(struct Unit *unit);
+
+
+/**
+ * Skill Testers
+ */
+typedef bool (*const skill_test_func_t)(struct Unit *unit, const u8 skill);
 extern skill_test_func_t SkillTester;
 extern skill_test_func_t SkillTester_Extern[];
 
+bool SkillTester_comm(struct Unit *unit, const u8 skill);
+bool SkillTester_fast(struct Unit *unit, const u8 skill);
+
+
+/**
+ * Skill RAM List
+ */
 #ifdef CONFIG_SKILL_RAM_LIST
 u8 *GetSkillRamList(struct Unit *unit);
 #else
@@ -46,4 +75,10 @@ const void* GetSkillIconGfx(unsigned id);
 u16 GetSkillName(const u8 skill);
 u16 GetSkillDesc(const u8 skill);
 u32 GetSkillPriv(const u8 skill);
+
+/**
+ * Skill Screen
+ */
 void DrawSkillPage();
+void HelpBoxRedirectStatScreenSkills(struct HelpBoxProc *proc);
+void HelpBoxPopulateStatScreenSkill(struct HelpBoxProc *proc);

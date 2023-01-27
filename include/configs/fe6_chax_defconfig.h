@@ -23,8 +23,10 @@
 #define gBuWpnBackUp_ptr 0x2025B8C
 #define gHasInventoryWpnBackUp_ptr 0x2025B8E
 #define gRandStC_ptr 0x2025B90
+#define gSkillFastListA_ptr 0x2025B98
+#define gSkillFastListB_ptr 0x2025BB8
 
-#define FreeRAMSpace_cur 0x2025B96
+#define FreeRAMSpace_cur 0x2025BD8
 
 
 /**

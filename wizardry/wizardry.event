@@ -20,6 +20,7 @@ POP
 #include "unit-action/unit-action.event"
 #include "load-unit-hook/load-unit-hook.event"
 #include "chapter-init-hook/chapter-init-hook.event"
+#include "game-init-hook/game-init-hook.event"
 
 #ifdef CONFIG_RNG_EXT
     #include "rng-ext/rng-ext.event"
