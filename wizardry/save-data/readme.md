@@ -4,10 +4,10 @@ Total length: 32K, 0x8000 (0x0E000000 ~ 0x0E007FFF)
 ```
 SAVE NAME       SAVE OFFSET     SAVE LENGTH     DEFAULT LENGTH  EXPANSION SIZE
 meta            0x00            0x94            0x94            0x0
-suspend0        0x94            0x2830          0x1DAC          0xA184
-save1           0x28C4          0x14A8          0xDF0           0x6B8
-save2           0x3D6C          0x14A8          0xDF0           0x6B8
-save3           0x5214          0x14A8          0xDF0           0x6B8
+suspend0        0x94            0x2A40          0x1DAC          0xC94
+save1           0x2AD4          0x13F8          0xDF0           0x608
+save2           0x3ECC          0x13F8          0xDF0           0x608
+save3           0x52C4          0x13F8          0xDF0           0x608
 link_arena      0x66BC          0x93C           0x93C           0x0
 _PAD_           0x6FF8          0x8             -----           -----
 block_6         0x7000          0x1000          0x1000          0x0
@@ -23,5 +23,5 @@ save2           0x46CC          0x17A8          0xDF0           0x9B8
 save3           0x5E44          0x17A8          0xDF0           0x9B8
 link_arena      0x75BC          0x93C           0x93C           0x0
 _PAD_           0x7EF8          0x8             -----           -----
-block_6         -----           -----          0x1000           -----
+block_6         -----           -----           0x1000           -----
 ```

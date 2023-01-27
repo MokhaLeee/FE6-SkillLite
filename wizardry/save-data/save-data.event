@@ -1,24 +1,6 @@
 #ifndef EXPANDED_MODULAR_SAVE
 #define EXPANDED_MODULAR_SAVE
 
-#define EmsChunk(aOffset, aSize, apSaver, apLoader) "SHORT (aOffset) (aSize); POIN (apSaver | 1) (apLoader | 1)"
-#define EmsChunkEnd "SHORT 0xFFFF 0 0 0 0 0"
-
-ALIGN 4
-EmsChunkSa:
-    EmsChunk(0x0000, 0x05D0, MSA_SaveBasic, MSA_LoadBasic)
-    EmsChunk(0x05D0, 0x0820, MSA_SaveUnit, MSA_LoadUnit)
-
-    /* Free: 0x0DF0 ~ 0x14A8, Size: 0x6B8 */
-    EmsChunkEnd
-
-EmsChunkSu:
-    EmsChunk(0x0000, 0x06EC, MSU_SaveBasic, MSU_LoadBasic)
-    EmsChunk(0x06EC, 0x16C0, MSU_SaveUnit, MSU_LoadUnit)
-
-    /* Free: 0x1DAC ~ 0x2830, Size: 0xA84 */
-    EmsChunkEnd
-
 #include "src/ms-core.lyn.event"
 #include "src/msa.lyn.event"
 #include "src/msu.lyn.event"

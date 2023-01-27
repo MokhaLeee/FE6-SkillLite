@@ -4,7 +4,14 @@
 #include "hardware.h"
 #include "chapter.h"
 
+#include "debug.h"
 #include "modular-save.h"
+
+noreturn void ModSaveErrLog(char *str)
+{
+    DebugPrintStr(str);
+    FailScreen();
+}
 
 LYN_REPLACE_CHECK(WriteSaveBlockInfo);
 void WriteSaveBlockInfo(struct SaveBlockInfo *chunk, int index)
@@ -121,12 +128,15 @@ void SaveGame(int slot)
     struct SaveBlockInfo chunk;
     u8 *dst = GetSaveTargetAddress(slot);
 
+    if (gMsaRsvSize < 0)
+        ModSaveErrLog("SaveGame: gMsaRsvSize\n");
+
     ResetSaveBlockInfo(SAVE_ID_SUSPEND0);
 
     gPlaySt.save_slot = slot;
     
-    for (cur = EmsChunkSa; cur->offset != 0xFFFF; cur++)
-        cur->save(dst + cur->offset, cur->size);
+    for (cur = EmsChunkSa; cur->off != EMS_CHUNK_INVALID_OFFSET; cur++)
+        cur->save(dst + cur->off, cur->size);
 
     chunk.magic_a = SAVE_MAGICA_COMM;
     chunk.kind = BLOCK_INFO_KIND_SAV;
@@ -140,11 +150,14 @@ void LoadGame(int slot)
     const struct EmsChunk *cur;
     u8 *src = GetSaveSourceAddress(slot);
 
+    if (gMsaRsvSize < 0)
+        ModSaveErrLog("LoadGame: gMsaRsvSize\n");
+
     if (!(BM_FLAG_LINKARENA & gBmSt.flags))
         ResetSaveBlockInfo(SAVE_ID_SUSPEND0);
 
-    for (cur = EmsChunkSa; cur->offset != 0xFFFF; cur++)
-        cur->load(src + cur->offset, cur->size);
+    for (cur = EmsChunkSa; cur->off != EMS_CHUNK_INVALID_OFFSET; cur++)
+        cur->load(src + cur->off, cur->size);
 
     gPlaySt.save_slot = slot;
     UpdateLastUsedGameSaveSlot(slot);
@@ -162,11 +175,14 @@ void SaveSuspendedGame(int slot)
 
     if (!IsSramWorking())
         return;
+    
+    if (gMsuRsvSize < 0)
+        ModSaveErrLog("SaveSuspendedGame: gMsuRsvSize\n");
 
     dst = GetSaveTargetAddress(SAVE_ID_SUSPEND0);
 
-    for (cur = EmsChunkSu; cur->offset != 0xFFFF; cur++)
-        cur->save(dst + cur->offset, cur->size);
+    for (cur = EmsChunkSu; cur->off != EMS_CHUNK_INVALID_OFFSET; cur++)
+        cur->save(dst + cur->off, cur->size);
 
     chunk.magic_a = SAVE_MAGICA_COMM;
     chunk.kind = BLOCK_INFO_KIND_SUS;
@@ -182,6 +198,9 @@ void LoadSuspendedGame(int slot)
     const struct EmsChunk *cur;
     u8 *src = GetSaveSourceAddress(SAVE_ID_SUSPEND0);
 
-    for (cur = EmsChunkSu; cur->offset != 0xFFFF; cur++)
-        cur->load(src + cur->offset, cur->size);
+    if (gMsuRsvSize < 0)
+        ModSaveErrLog("LoadSuspendedGame: gMsuRsvSize\n");
+
+    for (cur = EmsChunkSu; cur->off != EMS_CHUNK_INVALID_OFFSET; cur++)
+        cur->load(src + cur->off, cur->size);
 }
