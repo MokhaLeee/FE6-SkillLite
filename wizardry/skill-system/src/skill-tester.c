@@ -108,13 +108,16 @@ bool SkillTester_comm(struct Unit *unit, const u8 skill)
 bool SkillTester_fast(struct Unit *unit, const u8 skill)
 {
     int i;
-    struct SkillFastList *list = GetUnitSkillFastList(unit);
+    struct SkillFastList *list;
 
     BasicJudgeSkill(unit, skill);
 
-    for (i = 0; i < list->count; i++) {
-        if (list->skills[i] == skill)
-            return TRUE;
+    list = GetUnitSkillFastList(unit);
+    if (list) {
+        for (i = 0; i < list->count; i++) {
+            if (list->skills[i] == skill)
+                return TRUE;
+        }
     }
 
     return FALSE;
