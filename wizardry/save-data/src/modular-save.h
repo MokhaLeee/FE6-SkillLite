@@ -17,12 +17,7 @@ struct EmsChunk {
 
 extern const struct EmsChunk EmsChunkSa[], EmsChunkSu[];
 
-extern const int gMsaTotalSize;
-extern const int gMsaUsedSize;
-extern const int gMsaRsvSize;
-
-extern const int gMsuTotalSize;
-extern const int gMsuUsedSize;
-extern const int gMsuRsvSize;
+extern const int gMsaTotalSize, gMsaUsedSize, gMsaRsvSize;
+extern const int gMsuTotalSize, gMsuUsedSize, gMsuRsvSize;
 
 noreturn void ModSaveErrLog(char *str);

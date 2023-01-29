@@ -34,8 +34,7 @@ enum msu_memmap_unit {
     MSU_MEMMAP_UNIT_R   = MSU_MEMMAP_UNIT_B + UNIT_SAVE_AMOUNT_BLUE  * 0x34 /* sizeof(struct SuspendPackedUnit) */,
     MSU_MEMMAP_UNIT_G   = MSU_MEMMAP_UNIT_R + UNIT_SAVE_AMOUNT_RED   * 0x34 /* sizeof(struct SuspendPackedUnit) */,
     MSU_MEMMAP_UNIT_END = MSU_MEMMAP_UNIT_G + UNIT_SAVE_AMOUNT_GREEN * 0x34 /* sizeof(struct SuspendPackedUnit) */,
-    
-    MSU_SIZE_UNIT = MSU_MEMMAP_UNIT_END
+    MSU_SIZE_UNIT       = MSU_MEMMAP_UNIT_END
 };
 
 enum msu_memmap {
@@ -57,8 +56,7 @@ enum msu_memmap {
 
 enum msa_memmap_unit {
     MSA_MEMMAP_UNIT_END = 0 + UNIT_SAVE_AMOUNT_BLUE  * 0x28 /* sizeof(struct SavePackedUnit) */,
-    
-    MSA_SIZE_UNIT = MSA_MEMMAP_UNIT_END
+    MSA_SIZE_UNIT       = MSA_MEMMAP_UNIT_END
 };
 
 enum msa_memmap {
