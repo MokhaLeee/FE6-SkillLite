@@ -1,6 +1,8 @@
 ALIGN 4
 SI_CritUp:	#incbin "icons/CritUp.4bpp"
 
+#include "src/battle-status.lyn.event"
+
 ALIGN 4
 SkillInfo_CritUp:
 	/* name */ SHORT 0

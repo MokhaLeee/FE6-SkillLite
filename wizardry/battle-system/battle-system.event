@@ -20,6 +20,8 @@ ModularPreBuCalcator:
     POIN InitBattleUnitStatus
 
     POIN BuCalcMain_WTABonus
+    POIN BuCalcMain_BuStatus
+    POIN BuCalcMain_BattleBlow
 
     POIN ComputeBattleUnitDefense
     POIN ComputeBattleUnitAttack
@@ -63,8 +65,11 @@ gHasInventoryWpnBackUp: WORD gHasInventoryWpnBackUp_ptr
 
 BattleCheckNullCounterCalculator:
     POIN mcc_range
-    POIN mcc_debuf_sleep
     POIN mcc_wpn_uncounter
+
+    POIN CheckCanCounterSkills
+
+    POIN mcc_debuf_sleep
     POIN mcc_debuf_berserk
     NULL_PTR
 

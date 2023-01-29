@@ -97,10 +97,8 @@ int mcc_range()
         gBattleUnitA.has_inventory_weapon = FALSE;
     }
 
-    if (!CanItemReachDistance(gBattleUnitB.weapon, gBattleSt.range) || gBattleUnitB.weapon_inventory_slot == 0xFF) {
-        gBattleUnitB.weapon = 0;
-        gBattleUnitB.has_inventory_weapon = FALSE;
-    }
+    if (!CanItemReachDistance(gBattleUnitB.weapon, gBattleSt.range) || gBattleUnitB.weapon_inventory_slot == 0xFF)
+        NullTargetCounterAtk();
 
     return NORMAL_COUNTER;
 }
@@ -112,20 +110,16 @@ int mcc_debuf_sleep()
         gBattleUnitA.has_inventory_weapon = FALSE;
     }
 
-    if (gBattleUnitB.unit.status == UNIT_STATUS_SLEEP) {
-        gBattleUnitB.weapon = 0;
-        gBattleUnitB.has_inventory_weapon = FALSE;
-    }
+    if (gBattleUnitB.unit.status == UNIT_STATUS_SLEEP)
+        NullTargetCounterAtk();
 
     return NORMAL_COUNTER;
 }
 
 int mcc_wpn_uncounter()
 {
-    if ((gBattleUnitA.weapon_attributes | gBattleUnitB.weapon_attributes) & ITEM_ATTR_UNCOUNTERABLE) {
-        gBattleUnitB.weapon = 0;
-        gBattleUnitB.has_inventory_weapon = FALSE;
-    }
+    if ((gBattleUnitA.weapon_attributes | gBattleUnitB.weapon_attributes) & ITEM_ATTR_UNCOUNTERABLE)
+        NullTargetCounterAtk();
 
     return NORMAL_COUNTER;
 }
@@ -133,10 +127,8 @@ int mcc_wpn_uncounter()
 int mcc_debuf_berserk()
 {
     if (gBattleUnitA.unit.status == UNIT_STATUS_BERSERK) {
-        if ((UNIT_FACTION(&gBattleUnitA.unit) == FACTION_BLUE) && (UNIT_FACTION(&gBattleUnitB.unit) == FACTION_BLUE)) {
-            gBattleUnitB.weapon = 0;
-            gBattleUnitB.has_inventory_weapon = FALSE;
-        }
+        if ((UNIT_FACTION(&gBattleUnitA.unit) == FACTION_BLUE) && (UNIT_FACTION(&gBattleUnitB.unit) == FACTION_BLUE))
+            NullTargetCounterAtk();
     }
 
     return NORMAL_COUNTER;

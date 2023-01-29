@@ -25,7 +25,7 @@ void BattleGenerate(struct Unit *instigator, struct Unit *target)
 
     /* Internal modular */
 
-    
+
     /* External modular */
     for (it = ModularMainBuCalcator; *it; it++)
         (*it)(&gBattleUnitA, &gBattleUnitB);

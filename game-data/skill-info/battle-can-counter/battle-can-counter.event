@@ -6,6 +6,8 @@ SI_CloseCounter:	#incbin "icons/CloseCounter.4bpp"
 SI_CounterAttack:	#incbin "icons/CounterAttack.4bpp"
 SI_WindSweep:		#incbin "icons/WindSweep.4bpp"
 
+#include "src/battle-can-counter.lyn.event"
+
 ALIGN 4
 SkillInfo_CloseCounter:
 	/* name */ SHORT 0

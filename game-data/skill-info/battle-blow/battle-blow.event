@@ -10,6 +10,7 @@ SI_BlowFiendish:	#incbin "icons/BlowFiendish.4bpp"
 SI_BlowUncanny:		#incbin "icons/BlowUncanny.4bpp"	
 SI_BlowWarding:		#incbin "icons/BlowWarding.4bpp"
 
+#include "src/battle-blow.lyn.event"
 
 ALIGN 4
 SkillInfo_BlowDarting:
