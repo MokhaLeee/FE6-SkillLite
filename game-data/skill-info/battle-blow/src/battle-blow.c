@@ -4,7 +4,7 @@
 
 #include "skill-system.h"
 
-void BuCalcMain_BattleBlow(struct BattleUnit *buA, struct BattleUnit *buB)
+void BuCalcMain_BattleBlowSkills(struct BattleUnit *buA, struct BattleUnit *buB)
 {
     struct Unit *unit = GetUnit(buA->unit.id);
 

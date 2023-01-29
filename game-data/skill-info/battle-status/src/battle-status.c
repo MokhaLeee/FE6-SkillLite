@@ -3,7 +3,7 @@
 
 #include "skill-system.h"
 
-void BuCalcMain_BuStatus(struct BattleUnit *buA, struct BattleUnit *buB)
+void BuCalcMain_BuStatusSkills(struct BattleUnit *buA, struct BattleUnit *buB)
 {
     struct Unit *unit = GetUnit(buA->unit.id);
 

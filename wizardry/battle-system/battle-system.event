@@ -20,8 +20,8 @@ ModularPreBuCalcator:
     POIN InitBattleUnitStatus
 
     POIN BuCalcMain_WTABonus
-    POIN BuCalcMain_BuStatus
-    POIN BuCalcMain_BattleBlow
+    POIN BuCalcMain_BuStatusSkills
+    POIN BuCalcMain_BattleBlowSkills
 
     POIN ComputeBattleUnitDefense
     POIN ComputeBattleUnitAttack
