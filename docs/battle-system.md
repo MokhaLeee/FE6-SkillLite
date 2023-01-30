@@ -21,7 +21,10 @@ DoCombatAction
 │       │       └── BattleGenerateRoundHits
 │       │           ├── GetBattleUnitHitCount
 │       │           └── BattleGenerateHit
-│       └── BattleUnitTargetCheckCanCounter
+│       ├── BattleUnitTargetCheckCanCounter
+│       └── BattleApplyExpGains
+│           ├── GetBattleUnitExpGain
+│           └── CheckBattleUnitLevelUp          ==> check level up
 └── ProcScr_CombatAction
     └── BattleApplyGameStateUpdates
         └── BattleApplyUnitUpdates
