@@ -28,8 +28,8 @@ SkillInfo_WindSweep:
 	/* priv */ WORD 0
 
 
-InjectSkillInfo(SKILLID_CloseCounter, SkillInfo_CloseCounter)
-InjectSkillInfo(SKILLID_CounterAttack, SkillInfo_CounterAttack)
-InjectSkillInfo(SKILLID_WindSweep, SkillInfo_WindSweep)
+InjectSkillInfo(SID_CloseCounter, SkillInfo_CloseCounter)
+InjectSkillInfo(SID_CounterAttack, SkillInfo_CounterAttack)
+InjectSkillInfo(SID_WindSweep, SkillInfo_WindSweep)
 
 #endif

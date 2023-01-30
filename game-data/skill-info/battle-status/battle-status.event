@@ -10,4 +10,4 @@ SkillInfo_CritUp:
 	/* icon */ POIN SI_CritUp
 	/* priv */ WORD 0
 
-InjectSkillInfo(SKILLID_CritUp, SkillInfo_CritUp)
+InjectSkillInfo(SID_CritUp, SkillInfo_CritUp)

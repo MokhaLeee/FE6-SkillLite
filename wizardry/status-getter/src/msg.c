@@ -21,7 +21,7 @@ int GetUnitMaxHp(struct Unit *unit)
     /* Internal modular */
     status = unit->max_hp;
     status += GetItemHpBonus(GetUnitEquippedWeapon(unit));
-    status += SkillTester(unit, SKILLID_HpBonus) ? 5 : 0;
+    status += SkillTester(unit, SID_HpBonus) ? 5 : 0;
 
     /* External modular */
     for (it = ModularHpGetter; *it; it++)
@@ -40,7 +40,7 @@ int GetUnitPower(struct Unit *unit)
     /* Internal modular */
     status = unit->pow;
     status += GetItemPowBonus(GetUnitEquippedWeapon(unit));
-    status += SkillTester(unit, SKILLID_StrBonus) ? 2 : 0;
+    status += SkillTester(unit, SID_StrBonus) ? 2 : 0;
 
     /* External modular */
     for (it = ModularPowGetter; *it; it++)
@@ -59,7 +59,7 @@ int GetUnitSkill(struct Unit *unit)
     /* Internal modular */
     status = unit->flags & UNIT_FLAG_RESCUING ? unit->skl / 2 : unit->skl;
     status += GetItemSklBonus(GetUnitEquippedWeapon(unit));
-    status += SkillTester(unit, SKILLID_SklBonus) ? 2 : 0;
+    status += SkillTester(unit, SID_SklBonus) ? 2 : 0;
 
     /* External modular */
     for (it = ModularSklGetter; *it; it++)
@@ -78,7 +78,7 @@ int GetUnitSpeed(struct Unit *unit)
     /* Internal modular */
     status = unit->flags & UNIT_FLAG_RESCUING ? unit->spd / 2 : unit->spd;
     status += GetItemSpdBonus(GetUnitEquippedWeapon(unit));
-    status += SkillTester(unit, SKILLID_SpdBonus) ? 2 : 0;
+    status += SkillTester(unit, SID_SpdBonus) ? 2 : 0;
 
     /* External modular */
     for (it = ModularSpdGetter; *it; it++)
@@ -97,7 +97,7 @@ int GetUnitDefense(struct Unit *unit)
     /* Internal modular */
     status = unit->def;
     status += GetItemDefBonus(GetUnitEquippedWeapon(unit));
-    status += SkillTester(unit, SKILLID_DefBonus) ? 2 : 0;
+    status += SkillTester(unit, SID_DefBonus) ? 2 : 0;
 
     /* External modular */
     for (it = ModularDefGetter; *it; it++)
@@ -116,7 +116,7 @@ int GetUnitResistance(struct Unit *unit)
     /* Internal modular */
     status = unit->res;
     status += GetItemResBonus(GetUnitEquippedWeapon(unit));
-    status += SkillTester(unit, SKILLID_ResBonus) ? 2 : 0;
+    status += SkillTester(unit, SID_ResBonus) ? 2 : 0;
     status += unit->barrier;
 
     /* External modular */
@@ -136,7 +136,7 @@ int GetUnitLuck(struct Unit *unit)
     /* Internal modular */
     status = unit->lck;
     status += GetItemLckBonus(GetUnitEquippedWeapon(unit));
-    status += SkillTester(unit, SKILLID_LckBonus) ? 2 : 0;
+    status += SkillTester(unit, SID_LckBonus) ? 2 : 0;
 
     /* External modular */
     for (it = ModularLckGetter; *it; it++)
@@ -154,7 +154,7 @@ int GetUnitMove(struct Unit *unit)
     /* Internal modular */
     status = UNIT_CON_BASE(unit);
     status += unit->bonus_mov;
-    status += SkillTester(unit, SKILLID_MovBonus) ? 2 : 0;
+    status += SkillTester(unit, SID_MovBonus) ? 2 : 0;
 
     /* External modular */
     for (it = ModularMovGetter; *it; it++)

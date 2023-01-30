@@ -12,6 +12,6 @@ SkillInfo_Discipline:
 	/* priv */ WORD 0
 
 
-InjectSkillInfo(SKILLID_Discipline, SkillInfo_Discipline)
+InjectSkillInfo(SID_Discipline, SkillInfo_Discipline)
 
 #endif

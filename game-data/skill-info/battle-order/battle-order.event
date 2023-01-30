@@ -39,10 +39,10 @@ SkillInfo_DoubleLion:
 	/* icon */ POIN SI_DoubleLion
 	/* priv */ WORD 0
 
-InjectSkillInfo(SKILLID_QuickRiposte, SkillInfo_QuickRiposte)
-InjectSkillInfo(SKILLID_Vantage, SkillInfo_Vantage)
-InjectSkillInfo(SKILLID_Desperation, SkillInfo_Desperation)
-InjectSkillInfo(SKILLID_WaryFighter, SkillInfo_WaryFighter)
-InjectSkillInfo(SKILLID_DoubleLion, SkillInfo_DoubleLion)
+InjectSkillInfo(SID_QuickRiposte, SkillInfo_QuickRiposte)
+InjectSkillInfo(SID_Vantage, SkillInfo_Vantage)
+InjectSkillInfo(SID_Desperation, SkillInfo_Desperation)
+InjectSkillInfo(SID_WaryFighter, SkillInfo_WaryFighter)
+InjectSkillInfo(SID_DoubleLion, SkillInfo_DoubleLion)
 
 #endif

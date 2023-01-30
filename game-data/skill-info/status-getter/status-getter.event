@@ -57,11 +57,11 @@ SkillInfo_MovBonus:
 	/* icon */ POIN SI_MovBonus
 	/* priv */ WORD 0
 
-InjectSkillInfo(SKILLID_StrBonus, SkillInfo_StrBonus)
-InjectSkillInfo(SKILLID_MagBonus, SkillInfo_MagBonus)
-InjectSkillInfo(SKILLID_SklBonus, SkillInfo_SklBonus)
-InjectSkillInfo(SKILLID_SpdBonus, SkillInfo_SpdBonus)
-InjectSkillInfo(SKILLID_LckBonus, SkillInfo_LckBonus)
-InjectSkillInfo(SKILLID_DefBonus, SkillInfo_DefBonus)
-InjectSkillInfo(SKILLID_ResBonus, SkillInfo_ResBonus)
-InjectSkillInfo(SKILLID_MovBonus, SkillInfo_MovBonus)
+InjectSkillInfo(SID_StrBonus, SkillInfo_StrBonus)
+InjectSkillInfo(SID_MagBonus, SkillInfo_MagBonus)
+InjectSkillInfo(SID_SklBonus, SkillInfo_SklBonus)
+InjectSkillInfo(SID_SpdBonus, SkillInfo_SpdBonus)
+InjectSkillInfo(SID_LckBonus, SkillInfo_LckBonus)
+InjectSkillInfo(SID_DefBonus, SkillInfo_DefBonus)
+InjectSkillInfo(SID_ResBonus, SkillInfo_ResBonus)
+InjectSkillInfo(SID_MovBonus, SkillInfo_MovBonus)

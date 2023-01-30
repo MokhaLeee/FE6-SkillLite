@@ -10,18 +10,18 @@ int CheckCanCounterSkills()
     struct Unit *unitA = GetUnit(gBattleUnitA.unit.id);
     struct Unit *unitB = GetUnit(gBattleUnitB.unit.id);
 
-    if (SkillTester(unitA, SKILLID_WindSweep)) {
+    if (SkillTester(unitA, SID_WindSweep)) {
         NullTargetCounterAtk();
         return NULL_COUNTER;
     }
 
-    if (SkillTester(unitB, SKILLID_CounterAttack)) {
+    if (SkillTester(unitB, SID_CounterAttack)) {
         ResetTargetCounterAtk();
         return FORCE_COUNTER;
     }
 
     if (1 == gBattleSt.range) {
-        if (SkillTester(unitB, SKILLID_CloseCounter)) {
+        if (SkillTester(unitB, SID_CloseCounter)) {
             ResetTargetCounterAtk();
             return FORCE_COUNTER;
         }

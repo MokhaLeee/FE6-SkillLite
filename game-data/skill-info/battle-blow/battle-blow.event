@@ -55,12 +55,12 @@ SkillInfo_BlowUncanny:
 	/* icon */ POIN SI_BlowUncanny
 	/* priv */ WORD 0
 
-InjectSkillInfo(SKILLID_BlowDarting, SkillInfo_BlowDarting)
-InjectSkillInfo(SKILLID_BlowDeath, SkillInfo_BlowDeath)
-InjectSkillInfo(SKILLID_BlowArmored, SkillInfo_BlowArmored)
-InjectSkillInfo(SKILLID_BlowFiendish, SkillInfo_BlowFiendish)
-InjectSkillInfo(SKILLID_BlowWarding, SkillInfo_BlowWarding)
-InjectSkillInfo(SKILLID_BlowDuelist, SkillInfo_BlowDuelist)
-InjectSkillInfo(SKILLID_BlowUncanny, SkillInfo_BlowUncanny)
+InjectSkillInfo(SID_BlowDarting, SkillInfo_BlowDarting)
+InjectSkillInfo(SID_BlowDeath, SkillInfo_BlowDeath)
+InjectSkillInfo(SID_BlowArmored, SkillInfo_BlowArmored)
+InjectSkillInfo(SID_BlowFiendish, SkillInfo_BlowFiendish)
+InjectSkillInfo(SID_BlowWarding, SkillInfo_BlowWarding)
+InjectSkillInfo(SID_BlowDuelist, SkillInfo_BlowDuelist)
+InjectSkillInfo(SID_BlowUncanny, SkillInfo_BlowUncanny)
 
 #endif
