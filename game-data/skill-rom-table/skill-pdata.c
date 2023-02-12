@@ -12,4 +12,14 @@ const struct SkillRomTable Skills_PData[MAX_PIDS] = {
             SID_BlowDeath,
         },
     },
+
+    [PID_LANCE] = {
+        .default_skills = {
+            SID_DefBonus,
+            SID_BlowDeath,
+        },
+        .level_skills = {
+            SID_CritUp,
+        },
+    },
 };

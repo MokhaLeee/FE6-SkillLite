@@ -2,6 +2,7 @@
 #include "unit.h"
 #include "battle.h"
 #include "save.h"
+#include "skill-system.h"
 
 typedef void (*U2B_func)(struct BattleUnit* bu, struct Unit* unit);
 typedef void (*B2U_func)(struct Unit* unit, struct BattleUnit* bu);
@@ -96,6 +97,9 @@ void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
 
     if (bu->exp_gain)
         PidStatsAddExpGained(unit->pinfo->id, bu->exp_gain);
+    
+    /* Internal Modular */
+    ResetSkillFastLists();
 
     for (it = Battle2UnitFuncList; *it; it++)
         (*it)(unit, bu);

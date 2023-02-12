@@ -10,17 +10,21 @@ struct SkillFastList *GetUnitSkillFastList(struct Unit *unit)
     int i;
     struct SkillFastList *list = NULL;
 
-    if (UNIT_PID(unit) == gSkillFastListA->pid)
-        list = gSkillFastListA;
-    else if (UNIT_PID(unit) == gSkillFastListB->pid)
-        list = gSkillFastListB;
+    if (UNIT_PID(unit) == gSkillFastLists[0]->pid)
+        list = gSkillFastLists[0];
+    else if (UNIT_PID(unit) == gSkillFastLists[1]->pid)
+        list = gSkillFastLists[1];
 
     if (!list) {
-        list = gSkillFastListA;
+        /* List advance */
+        list = gSkillFastLists[~*gSkillFastListNext];
 
+        /* Fasten for battle-units judgement */
+        if (UNIT_PID(unit) == UNIT_PID(&gBattleUnitA.unit))
+            list = gSkillFastLists[0];
         if (UNIT_PID(unit) == UNIT_PID(&gBattleUnitB.unit))
-            list = gSkillFastListB;
-        
+            list = gSkillFastLists[1];
+
         list->pid = UNIT_PID(unit);
         list->count = 0;
 
@@ -45,8 +49,7 @@ int GetUsedSkillCounts(struct Unit *unit)
 
 void ResetSkillFastLists()
 {
-    CpuFastFill16(0, gSkillFastListA, sizeof(struct SkillFastList));
-    CpuFastFill16(0, gSkillFastListB, sizeof(struct SkillFastList));
+    CpuFastFill16(0, gSkillFastLists[0], 2 * sizeof(struct SkillFastList));
 }
 
 void DisableUnitSkills(struct Unit *unit)

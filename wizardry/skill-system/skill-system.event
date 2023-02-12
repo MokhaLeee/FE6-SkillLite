@@ -12,7 +12,7 @@ ALIGN 4
 SkillTester_Extern:
     NULL_PTR
 
-gSkillFastListA: WORD gSkillFastListA_ptr
-gSkillFastListB: WORD gSkillFastListB_ptr
+gSkillFastLists: WORD gSkillFastLists_ptr
+gSkillFastListNext: WORD gSkillFastListNext_ptr
 
 #endif

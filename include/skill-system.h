@@ -40,7 +40,8 @@ struct SkillFastList {
     u8 count;
     u8 skills[UNIT_MAX_SKILL_COUNT];
 };
-extern struct SkillFastList *gSkillFastListA, *gSkillFastListB;
+extern struct SkillFastList *gSkillFastLists[2];
+extern bool8 *gSkillFastListNext;
 
 struct SkillFastList *GetUnitSkillFastList(struct Unit *unit);
 int GetUsedSkillCounts(struct Unit *unit);
