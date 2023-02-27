@@ -1,9 +1,12 @@
 ```
-func_fe6_0807B6BC:
-    StartPrepScreen
+gUnk_08678E38:
+    ProcScr_AtMenu
 
 func_fe6_0807AD78:
-    maybe prep-screen proc idle
+    AtMenu CTRL loop
+
+func_fe6_0807C5B8:
+    Start unit-select screen
 
 func_fe6_0807B28C:
     maybe start sub-menu
