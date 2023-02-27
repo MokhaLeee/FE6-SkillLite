@@ -8,7 +8,7 @@ FE6_DIR=$TOOL_DIR/fe6
 
 # Install dependence
 sudo apt-get install binutils-arm-none-eabi gcc-arm-none-eabi build-essential \
-    cmake re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev python3-pip p7zip-full
+    cmake re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev python3-pip
 
 pip install pyelftools PyInstaller tmx six
 
@@ -16,11 +16,7 @@ pip install pyelftools PyInstaller tmx six
 git submodule update --init --recursive
 
 # Build event-assembler
-install -d $EA_DIR && cd $EA_DIR
-    wget https://github.com/MokhaLeee/event_assembler/releases/download/1.0/EventAssembler.7z &&
-    7z x EventAssembler.7z &&
-    rm EventAssembler.7z &&
-    chmod -R 777 $EA_DIR
+cd $EA_DIR && ./build.sh
 
 # Build and install agbcc
 TEMP_DIR=$(mktemp -d)

@@ -4,3 +4,6 @@
 [submodule "tools/fe6"]
 	path = tools/fe6
 	url = git@github.com:MokhaLeee/fe6.git
+[submodule "tools/EventAssembler"]
+	path = tools/EventAssembler
+	url = git@github.com:StanHash/EventAssembler.git
