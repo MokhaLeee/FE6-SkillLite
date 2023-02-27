@@ -1600,8 +1600,23 @@ UString_ClassReel_Label_Defense: @ '守備'
 UString_ClassReel_Label_Resistance: @ '魔防'
     .asciz "Res"
 
+    .global UString_PrepUnit_Label1
+    .type UString_PrepUnit_Label1, object
+UString_PrepUnit_Label1: @ '残り'
+    .asciz "残り"
+
+    .global UString_PrepUnit_Label3
+    .type UString_PrepUnit_Label3, object
+UString_PrepUnit_Label3: @ '人'
+    .asciz "人"
+
+    .global UString_PrepUnit_Label4
+    .type UString_PrepUnit_Label4, object
+UString_PrepUnit_Label4: @ '／'
+    .asciz "／"
+
     .global DateCvtStringsBuilt
     .type DateCvtStringsBuilt, object
 DateCvtStringsBuilt:
-    .asciz "2022-10-08"
+    .asciz "2023-02-27"
 

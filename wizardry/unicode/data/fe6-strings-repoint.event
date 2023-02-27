@@ -60,6 +60,10 @@ PUSH
     POIN UString_UnitScreen_08327170
     ORG $076D2C
     POIN UString_UnitScreen_08327170
+    ORG $079F40
+    POIN UString_PrepUnit_Label1
+    POIN UString_PrepUnit_Label3
+    POIN UString_PrepUnit_Label4
     ORG $105788
     POIN UString_ItemRange_1ToMag
     POIN UString_ItemRange_1

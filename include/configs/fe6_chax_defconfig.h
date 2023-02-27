@@ -105,6 +105,6 @@
 /**
  * Enable all chapters get accress to prep-screen
  */
-// #define CONFIG_ALL_CHAPTER_PREP
+#define CONFIG_ALL_CHAPTER_PREP
 
 #endif /* _CONFIG_H */

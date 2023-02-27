@@ -367,3 +367,9 @@
 0835C7F4 ClassReel_Label_Speed "Spd"
 0835C7FC ClassReel_Label_Defense "Def"
 0835C804 ClassReel_Label_Resistance "Res"
+
+# prepscreen related
+08327254 PrepUnit_Label1
+0832725C PrepUnit_Label2
+0832725C PrepUnit_Label3
+08327260 PrepUnit_Label4
