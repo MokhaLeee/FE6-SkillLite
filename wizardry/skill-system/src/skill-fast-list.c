@@ -10,20 +10,24 @@ struct SkillFastList *GetUnitSkillFastList(struct Unit *unit)
     int i;
     struct SkillFastList *list = NULL;
 
-    if (UNIT_PID(unit) == gSkillFastLists[0]->pid)
+    if (UNIT_PID(unit) == gSkillFastLists[0]->pid) {
+        *gSkillFastListNext = 1;
         list = gSkillFastLists[0];
-    else if (UNIT_PID(unit) == gSkillFastLists[1]->pid)
+    }
+    else if (UNIT_PID(unit) == gSkillFastLists[1]->pid) {
+        gSkillFastListNext = 0;
         list = gSkillFastLists[1];
+    }
 
     if (!list) {
-        /* List advance */
-        list = gSkillFastLists[~*gSkillFastListNext];
-
         /* Fasten for battle-units judgement */
         if (UNIT_PID(unit) == UNIT_PID(&gBattleUnitA.unit))
-            list = gSkillFastLists[0];
+            *gSkillFastListNext = 0;
         if (UNIT_PID(unit) == UNIT_PID(&gBattleUnitB.unit))
-            list = gSkillFastLists[1];
+            *gSkillFastListNext = 1;
+
+        /* List advance */
+        list = gSkillFastLists[~*gSkillFastListNext];
 
         list->pid = UNIT_PID(unit);
         list->count = 0;
