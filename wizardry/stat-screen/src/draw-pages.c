@@ -15,7 +15,7 @@ extern struct StatScreenTextInfo const gStatScreenPersonalInfoLabelsInfo[];
 void PutStatScreenPersonalInfoPage()
 {
     Decompress(gUnk_08307D58, gBuf);
-    TmApplyTsa_t(gUnk_Tm_02003738, gBuf, TILEREF(BGCHR_WINDOWFRAME, BGPAL_WINDOWFRAME));
+    TmApplyTsa(gUiTmScratchB, gBuf, TILEREF(BGCHR_WINDOWFRAME, BGPAL_WINDOWFRAME));
 
     PutStatScreenText(gStatScreenPersonalInfoLabelsInfo);
 
@@ -23,13 +23,13 @@ void PutStatScreenPersonalInfoPage()
     if (UnitKnowsMagic(gStatScreenSt.unit)) {
         /* magic */
         PutDrawText(gStatScreenSt.text + STATSCREEN_TEXT_POW,
-            gUnk_Tm_02003238 + TM_OFFSET(1, 1),
+            gUiTmScratchB + TM_OFFSET(1, 1),
             TEXT_COLOR_SYSTEM_GOLD, 0, 0,
             TEXT("魔力", "Mag"));
     } else {
         /* strength */
         PutDrawText(gStatScreenSt.text + STATSCREEN_TEXT_POW,
-            gUnk_Tm_02003238 + TM_OFFSET(1, 1),
+            gUiTmScratchA + TM_OFFSET(1, 1),
             TEXT_COLOR_SYSTEM_GOLD, 4, 0,
             TEXT("力", "Str"));
     }
@@ -87,11 +87,11 @@ void PutStatScreenPersonalInfoPage()
         UNIT_CON_CAP(gStatScreenSt.unit));
 
     /* display unit aid */
-    PutNumber(gUnk_Tm_02003238 + TM_OFFSET(13, 5), TEXT_COLOR_SYSTEM_BLUE,
+    PutNumber(gUiTmScratchA + TM_OFFSET(13, 5), TEXT_COLOR_SYSTEM_BLUE,
         GetUnitAid(gStatScreenSt.unit));
 
     /* display unit aid icon */
-    PutIcon(gUnk_Tm_02003238 + TM_OFFSET(14, 5),
+    PutIcon(gUiTmScratchA + TM_OFFSET(14, 5),
         GetAidIconFromAttributes(UNIT_ATTRIBUTES(gStatScreenSt.unit)),
         TILEREF(0, BGPAL_ICONS + 1));
 
@@ -107,12 +107,12 @@ void PutStatScreenPersonalInfoPage()
 
     /* display status turns */
     if (gStatScreenSt.unit->status != UNIT_STATUS_NONE)
-        PutNumberSmall(gUnk_Tm_02003238 + TM_OFFSET(16, 11),
+        PutNumberSmall(gUiTmScratchA + TM_OFFSET(16, 11),
             TEXT_COLOR_SYSTEM_WHITE,
             gStatScreenSt.unit->status_duration);
 
     /* display affininity icon and name */
-    PutIcon(gUnk_Tm_02003238 + TM_OFFSET(12, 9),
+    PutIcon(gUiTmScratchA + TM_OFFSET(12, 9),
         GetUnitAffinityIcon(gStatScreenSt.unit),
         TILEREF(0, BGPAL_ICONS + 1));
 

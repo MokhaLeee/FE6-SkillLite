@@ -2,6 +2,9 @@
 
 #include "common-chax.h"
 #include "unit.h"
+#include "save_stats.h"
+
+extern struct PidStats gPidStats[PID_STATS_COUNT];
 
 #ifndef CONFIG_NULL_BWL
 

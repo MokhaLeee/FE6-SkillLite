@@ -1,6 +1,0 @@
-LYN_JUMP_UTIL(DebugInitBg, $4e58)
-LYN_JUMP_UTIL(DebugPutStr, $4f18)
-LYN_JUMP_UTIL(DebugScreenInit, $4fc4)
-LYN_JUMP_UTIL(DebugPrintStr, $5204)
-LYN_JUMP_UTIL(DebugPutScreen, $52cc)
-LYN_JUMP_UTIL(DebugUpdateScreen, $53b0)

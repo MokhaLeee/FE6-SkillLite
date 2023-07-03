@@ -17,13 +17,13 @@ void DrawSkillPage()
 
     if (list->count != 0) {
         PutDrawText(gStatScreenSt.text + STATSCREEN_TEXT_BWL,
-            gUnk_Tm_02003238 + TM_OFFSET(X, Y),
+            gUiTmScratchA + TM_OFFSET(X, Y),
             TEXT_COLOR_SYSTEM_GOLD, 0, 0,
             "Skills:");
     }
 
     for (i = 0; i < list->count; i++) {
-        PutIcon(gUnk_Tm_02003238 + TM_OFFSET(X + 4 + i * 2, Y + 1),
+        PutIcon(gUiTmScratchA + TM_OFFSET(X + 4 + i * 2, Y + 1),
             SKILL_ICON(list->skills[i]),
             TILEREF(0, BGPAL_ICONS));
         

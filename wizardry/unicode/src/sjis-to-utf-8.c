@@ -1,7 +1,7 @@
 #include "common-chax.h"
 
 #include "msg.h"
-#include "ramfunc.h"
+#include "armfunc.h"
 #include "debug.h"
 
 #include <string.h>

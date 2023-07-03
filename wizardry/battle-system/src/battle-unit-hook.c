@@ -2,6 +2,7 @@
 #include "unit.h"
 #include "battle.h"
 #include "save.h"
+#include "save_stats.h"
 #include "skill-system.h"
 
 typedef void (*U2B_func)(struct BattleUnit* bu, struct Unit* unit);

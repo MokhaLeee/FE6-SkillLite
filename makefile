@@ -86,7 +86,7 @@ $(FE6_SYM): $(FE6_ELF)
 	@$(ELF2SYM) $(FE6_ELF) > $(FE6_SYM)
 
 $(FE6_GBA): $(FE6_ELF)
-	@echo "[ODP]	$(notdir $@)"
+	@echo "[GEN]	$(notdir $@)"
 	@touch $(FE6_GBA)
 
 
@@ -109,7 +109,7 @@ SDEPFLAGS = --MD "$(CACHE_DIR)/$(notdir $*).d"
 	@$(LYN) $< $(LYN_REF) > $@
 
 %.dmp: %.o
-	@echo "[OPY]	$(notdir $@)"
+	@echo "[GEN]	$(notdir $@)"
 	@$(OBJCOPY) -S $< -O binary $@
 
 %.o: %.s
@@ -141,7 +141,7 @@ CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) $(SFILES:.s=.lyn.event)
 # = Game Data =
 # =============
 %.event: %.csv %.nmm
-	@echo "[CEA]	$(notdir $@)"
+	@echo "[GEN]	$(notdir $@)"
 	@echo | $(C2EA) -csv $*.csv -nmm $*.nmm -out $*.event $(ROM_SOURCE) > /dev/null
 
 NMM_FILES := $(shell find -type f -name '*.nmm')
@@ -158,11 +158,11 @@ WRITANS_INSTALLER   := $(WRITANS_DIR)/text.event
 WRITANS_DEFINITIONS := $(WRITANS_DIR)/text_defs.event
 
 $(WRITANS_INSTALLER) $(WRITANS_DEFINITIONS): $(WRITANS_TEXT_MAIN) $(WRITANS_ALL_TEXT)
-	@echo "[TPS]	$(notdir $@)"
+	@echo "[GEN]	$(notdir $@)"
 	@$(TEXT_PROCESS) $(WRITANS_TEXT_MAIN) --installer $(WRITANS_INSTALLER) --definitions $(WRITANS_DEFINITIONS) --parser-exe $(PARSEFILE)
 
 %.fetxt.dmp: %.fetxt
-	@echo "[PAS]	$(notdir $@)"
+	@echo "[GEN]	$(notdir $@)"
 	@$(PARSEFILE) -i $< -o $@ > /dev/null
 
 CLEAN_FILES += $(WRITANS_INSTALLER) $(WRITANS_DEFINITIONS)

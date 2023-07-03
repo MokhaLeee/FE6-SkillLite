@@ -28,18 +28,6 @@
 
 #define FreeRAMSpace_cur 0x2025BD8
 
-
-/**
- * Free SRAM Space
- * Note that these data can only be accessed via function:
- * WriteAndVerifySramFast() & ReadSramFast()
- */
-#define FreeSRAMSpace 0x0E008000
-#define DebugTextSramSt_ptr 0x0E008000
-
-#define FreeSRAMSpace_cur 0x0E00A028
-
-
 /**
  * Enable debug log with function FailScreen() etc.
  * BTW, sDebugTextSt has been moved to SRAM Free Space.

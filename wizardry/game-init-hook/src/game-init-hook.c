@@ -27,8 +27,7 @@ void StartGame()
     SetOnVBlank(OnVBlank);
 
     /* Internal modular */
-    InitDebugTextData();
-    
+
 
     /* External modular */
     for (it = GameInitHooks; *it; it++)
