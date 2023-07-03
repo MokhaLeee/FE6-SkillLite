@@ -2,8 +2,10 @@
 
 #include "common-chax.h"
 #include "debug.h"
-
+#include "savelayout.h"
 #include "ms-memmap.h"
+
+extern struct SramMain *gSramMain;
 
 #define EMS_CHUNK_INVALID_OFFSET ((u16)-1)
 

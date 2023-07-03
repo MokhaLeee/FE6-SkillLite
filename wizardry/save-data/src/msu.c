@@ -3,7 +3,7 @@
 #include "bm.h"
 #include "action.h"
 #include "hardware.h"
-#include "sram.h"
+#include "gbasram.h"
 #include "unit.h"
 #include "supply.h"
 #include "trap.h"
@@ -17,7 +17,7 @@ void MSU_SavePlaySt(u8 *dst, const u32 size)
     if (size < SUS_SIZE_PLAYST)
         ModSaveErrLog("MSU_SavePlaySt: size\n");
 
-    gPlaySt.unk_00 = GetGameTime();
+    gPlaySt.time_saved = GetGameTime();
 
     WriteAndVerifySramFast(
         (u8 *)&gPlaySt,
@@ -35,7 +35,7 @@ void MSU_LoadPlaySt(u8 *src, const u32 size)
         (u8 *)&gPlaySt,
         SUS_SIZE_PLAYST);
 
-    SetGameTime(gPlaySt.unk_00);
+    SetGameTime(gPlaySt.time_saved);
 }
 
 void MSU_SaveAction(u8 *dst, const u32 size)
@@ -69,7 +69,7 @@ void MSU_SaveTrap(u8 *dst, const u32 size)
     if (size < SUS_SIZE_TRAP)
         ModSaveErrLog("MSU_SaveTrap: size\n");
 
-    SaveTraps(dst + MSU_MEMMAP_TRAP);
+    WriteTraps(dst + MSU_MEMMAP_TRAP);
 }
 
 void MSU_LoadTrap(u8 *src, const u32 size)
@@ -77,7 +77,7 @@ void MSU_LoadTrap(u8 *src, const u32 size)
     if (size < SUS_SIZE_TRAP)
         ModSaveErrLog("MSU_LoadTrap: size\n");
 
-    LoadTraps(src + MSU_MEMMAP_TRAP);
+    ReadTraps(src + MSU_MEMMAP_TRAP);
 }
 
 void MSU_SaveSupply(u8 *dst, const u32 size)
@@ -85,7 +85,7 @@ void MSU_SaveSupply(u8 *dst, const u32 size)
     if (size < SUS_SIZE_SUPPLY)
         ModSaveErrLog("MSU_SaveSupply: size\n");
 
-    SaveSupplyItems(dst + MSU_MEMMAP_SUPPLY);
+    WriteSupplyItems(dst + MSU_MEMMAP_SUPPLY);
 }
 
 void MSU_LoadSupply(u8 *src, const u32 size)
@@ -93,7 +93,7 @@ void MSU_LoadSupply(u8 *src, const u32 size)
     if (size < SUS_SIZE_SUPPLY)
         ModSaveErrLog("MSU_LoadSupply: size\n");
 
-    LoadSupplyItems(src + MSU_MEMMAP_SUPPLY);
+    ReadSupplyItems(src + MSU_MEMMAP_SUPPLY);
 }
 
 void MSU_SaveBwl(u8 *dst, const u32 size)
@@ -101,7 +101,7 @@ void MSU_SaveBwl(u8 *dst, const u32 size)
     if (size < 0x460 /* SUS_SIZE_PIDSTATS */)
         ModSaveErrLog("MSU_SaveBwl: size\n");
 
-    SavePidStats(dst + MSU_MEMMAP_PIDSTATS);
+    WritePidStats(dst + MSU_MEMMAP_PIDSTATS);
 }
 
 void MSU_LoadBwl(u8 *src, const u32 size)
@@ -109,7 +109,7 @@ void MSU_LoadBwl(u8 *src, const u32 size)
     if (size < 0x460 /* SUS_SIZE_PIDSTATS */)
         ModSaveErrLog("MSU_LoadBwl: size\n");
 
-    LoadPidStats(src + MSU_MEMMAP_PIDSTATS);
+    ReadPidStats(src + MSU_MEMMAP_PIDSTATS);
 }
 
 void MSU_SaveChWin(u8 *dst, const u32 size)
@@ -117,7 +117,7 @@ void MSU_SaveChWin(u8 *dst, const u32 size)
     if (size < SUS_SIZE_CHWIN)
         ModSaveErrLog("MSU_SaveChWin: size\n");
 
-    SaveChWinData(dst + MSU_MEMMAP_CHWIN);
+    WriteChapterStats(dst + MSU_MEMMAP_CHWIN);
 }
 
 void MSU_LoadChWin(u8 *src, const u32 size)
@@ -125,7 +125,7 @@ void MSU_LoadChWin(u8 *src, const u32 size)
     if (size < SUS_SIZE_CHWIN)
         ModSaveErrLog("MSU_LoadChWin: size\n");
 
-    LoadChWinData(src + MSU_MEMMAP_CHWIN);
+    ReadChapterStats(src + MSU_MEMMAP_CHWIN);
 }
 
 void MSU_SavePermFlag(u8 *dst, const u32 size)
@@ -133,7 +133,7 @@ void MSU_SavePermFlag(u8 *dst, const u32 size)
     if (size < SUS_SIZE_PERMFLAG)
         ModSaveErrLog("MSU_SavePermFlag: size\n");
 
-    SavePermanentFlagBits(dst + MSU_MEMMAP_PERMFLAG);
+    WritePermanentFlags(dst + MSU_MEMMAP_PERMFLAG);
 }
 
 void MSU_LoadPermFlag(u8 *src, const u32 size)
@@ -141,7 +141,7 @@ void MSU_LoadPermFlag(u8 *src, const u32 size)
     if (size < SUS_SIZE_PERMFLAG)
         ModSaveErrLog("MSU_LoadPermFlag: size\n");
 
-    LoadPermanentFlagBits(src + MSU_MEMMAP_PERMFLAG);
+    ReadPermanentFlags(src + MSU_MEMMAP_PERMFLAG);
 }
 
 void MSU_SaveTempFlag(u8 *dst, const u32 size)
@@ -149,7 +149,7 @@ void MSU_SaveTempFlag(u8 *dst, const u32 size)
     if (size < SUS_SIZE_PERMFLAG)
         ModSaveErrLog("MSU_SaveTempFlag: size\n");
 
-    SaveChapterFlagBits(dst + MSU_MEMMAP_TEMPFLAG);
+    WriteChapterFlags(dst + MSU_MEMMAP_TEMPFLAG);
 }
 
 void MSU_LoadTempFlag(u8 *src, const u32 size)
@@ -157,7 +157,7 @@ void MSU_LoadTempFlag(u8 *src, const u32 size)
     if (size < SUS_SIZE_PERMFLAG)
         ModSaveErrLog("MSU_LoadTempFlag: size\n");
 
-    LoadChapterFlagBits(src + MSU_MEMMAP_TEMPFLAG);
+    ReadChapterFlags(src + MSU_MEMMAP_TEMPFLAG);
 }
 
 void MSU_SaveUnit(u8 *dst, const u32 size)
@@ -168,19 +168,19 @@ void MSU_SaveUnit(u8 *dst, const u32 size)
         ModSaveErrLog("MSU_SaveUnit: size\n");
 
     for (i = 0; i < UNIT_SAVE_AMOUNT_BLUE; i++) {
-        PackUnitForSuspend(
+        EncodeSuspendSavePackedUnit(
             &gUnitArrayBlue[i],
             gBuf + MSU_MEMMAP_UNIT_B + i * 0x34 /* sizeof(struct SuspendPackedUnit) */);
     }
 
     for (i = 0; i < UNIT_SAVE_AMOUNT_RED; i++) {
-        PackUnitForSuspend(
+        EncodeSuspendSavePackedUnit(
             &gUnitArrayRed[i],
             gBuf + MSU_MEMMAP_UNIT_R + i * 0x34 /* sizeof(struct SuspendPackedUnit) */);
     }
 
     for (i = 0; i < UNIT_SAVE_AMOUNT_GREEN; i++) {
-        PackUnitForSuspend(
+        EncodeSuspendSavePackedUnit(
             &gUnitArrayGreen[i],
             gBuf + MSU_MEMMAP_UNIT_G + i * 0x34 /* sizeof(struct SuspendPackedUnit) */);
     }
@@ -198,19 +198,19 @@ void MSU_LoadUnit(u8 *src, const u32 size)
     InitUnits();
     
     for (i = 0; i < UNIT_SAVE_AMOUNT_BLUE; i++) {
-        LoadUnitFormSuspend(
+        ReadSuspendSavePackedUnit(
             src + MSU_MEMMAP_UNIT_B + i * 0x34 /* sizeof(struct SuspendPackedUnit) */,
             &gUnitArrayBlue[i]);
     }
 
     for (i = 0; i < UNIT_SAVE_AMOUNT_RED; i++) {
-        LoadUnitFormSuspend(
+        ReadSuspendSavePackedUnit(
             src + MSU_MEMMAP_UNIT_R + i * 0x34 /* sizeof(struct SuspendPackedUnit) */,
             &gUnitArrayRed[i]);
     }
 
     for (i = 0; i < UNIT_SAVE_AMOUNT_GREEN; i++) {
-        LoadUnitFormSuspend(
+        ReadSuspendSavePackedUnit(
             src + MSU_MEMMAP_UNIT_G + i * 0x34 /* sizeof(struct SuspendPackedUnit) */,
             &gUnitArrayGreen[i]);
     }

@@ -2,7 +2,7 @@
 #include "save.h"
 #include "bm.h"
 #include "hardware.h"
-#include "sram.h"
+#include "gbasram.h"
 #include "chapter.h"
 
 #include "debug.h"
@@ -14,7 +14,7 @@ void MSA_SavePlaySt(u8 *dst, const u32 size)
     if (size < SAV_SIZE_PLAYST)
         ModSaveErrLog("MSA_SavePlaySt: size\n");
 
-    gPlaySt.unk_00 = GetGameTime();
+    gPlaySt.time_saved = GetGameTime();
 
     WriteAndVerifySramFast(
         (u8 *)&gPlaySt,
@@ -32,7 +32,7 @@ void MSA_LoadPlaySt(u8 *src, const u32 size)
         (u8 *)&gPlaySt,
         SAV_SIZE_PLAYST);
 
-    SetGameTime(gPlaySt.unk_00);
+    SetGameTime(gPlaySt.time_saved);
 }
 
 void MSA_SaveSupply(u8 *dst, const u32 size)
@@ -40,7 +40,7 @@ void MSA_SaveSupply(u8 *dst, const u32 size)
     if (size < SAV_SIZE_SUPPLY)
         ModSaveErrLog("MSA_SaveSupply: size\n");
 
-    SaveSupplyItems(dst + MSA_MEMMAP_SUPPLY);
+    WriteSupplyItems(dst + MSA_MEMMAP_SUPPLY);
 }
 
 void MSA_LoadSupply(u8 *src, const u32 size)
@@ -48,7 +48,7 @@ void MSA_LoadSupply(u8 *src, const u32 size)
     if (size < SAV_SIZE_SUPPLY)
         ModSaveErrLog("MSA_LoadSupply: size\n");
 
-    LoadSupplyItems(src + MSA_MEMMAP_SUPPLY);
+    ReadSupplyItems(src + MSA_MEMMAP_SUPPLY);
 }
 
 void MSA_SaveBwl(u8 *dst, const u32 size)
@@ -56,7 +56,7 @@ void MSA_SaveBwl(u8 *dst, const u32 size)
     if (size < 0x460 /* SAV_SIZE_PIDSTATS */)
         ModSaveErrLog("MSA_SaveBwl: size\n");
 
-    SavePidStats(dst + MSA_MEMMAP_PIDSTATS);
+    WritePidStats(dst + MSA_MEMMAP_PIDSTATS);
 }
 
 void MSA_LoadBwl(u8 *src, const u32 size)
@@ -64,7 +64,7 @@ void MSA_LoadBwl(u8 *src, const u32 size)
     if (size < 0x460 /* SAV_SIZE_PIDSTATS */)
         ModSaveErrLog("MSA_LoadBwl: size\n");
 
-    LoadPidStats(src + MSA_MEMMAP_PIDSTATS);
+    ReadPidStats(src + MSA_MEMMAP_PIDSTATS);
 }
 
 void MSA_SaveChWin(u8 *dst, const u32 size)
@@ -72,7 +72,7 @@ void MSA_SaveChWin(u8 *dst, const u32 size)
     if (size < SAV_SIZE_CHWIN)
         ModSaveErrLog("MSA_SaveChWin: size\n");
 
-    SaveChWinData(dst + MSA_MEMMAP_CHWIN);
+    WriteChapterStats(dst + MSA_MEMMAP_CHWIN);
 }
 
 void MSA_LoadChWin(u8 *src, const u32 size)
@@ -80,7 +80,7 @@ void MSA_LoadChWin(u8 *src, const u32 size)
     if (size < SAV_SIZE_CHWIN)
         ModSaveErrLog("MSA_LoadChWin: size\n");
 
-    LoadChWinData(src + MSA_MEMMAP_CHWIN);
+    ReadChapterStats(src + MSA_MEMMAP_CHWIN);
 }
 
 void MSA_SavePermFlag(u8 *dst, const u32 size)
@@ -88,7 +88,7 @@ void MSA_SavePermFlag(u8 *dst, const u32 size)
     if (size < SAV_SIZE_PERMFLAG)
         ModSaveErrLog("MSA_SavePermFlag: size\n");
 
-    SavePermanentFlagBits(dst + MSA_MEMMAP_PERMFLAG);
+    WritePermanentFlags(dst + MSA_MEMMAP_PERMFLAG);
 }
 
 void MSA_LoadPermFlag(u8 *src, const u32 size)
@@ -96,7 +96,7 @@ void MSA_LoadPermFlag(u8 *src, const u32 size)
     if (size < SAV_SIZE_PERMFLAG)
         ModSaveErrLog("MSA_LoadPermFlag: size\n");
 
-    LoadPermanentFlagBits(src + MSA_MEMMAP_PERMFLAG);
+    ReadPermanentFlags(src + MSA_MEMMAP_PERMFLAG);
 }
 
 void MSA_SaveUnit(u8 *dst, const u32 size)
@@ -107,7 +107,7 @@ void MSA_SaveUnit(u8 *dst, const u32 size)
         ModSaveErrLog("MSA_SaveUnit: size\n");
 
     for (i = 0; i < UNIT_SAVE_AMOUNT_BLUE; i++)
-        SaveUnit(
+        WriteGameSavePackedUnit(
             &gUnitArrayBlue[i],
             dst + i * 0x28 /* sizeof(struct SavePackedUnit) */);
 }
@@ -122,7 +122,7 @@ void MSA_LoadUnit(u8 *src, const u32 size)
     InitUnits();
 
     for (i = 0; i < UNIT_SAVE_AMOUNT_BLUE; i++)
-        LoadUnit(
+        ReadGameSavePackedUnit(
             src + i * 0x28 /* sizeof(struct SavePackedUnit) */,
             &gUnitArrayBlue[i]);
 }

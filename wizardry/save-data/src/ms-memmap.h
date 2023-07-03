@@ -2,6 +2,7 @@
 
 #include "common-chax.h"
 #include "save.h"
+#include "ms-memmap-vanilla.h"
 
 enum ems_block_max_size {
     EMS_SRAM_SIZE_HEADE = 0x94,
