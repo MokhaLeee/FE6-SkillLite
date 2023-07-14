@@ -20,9 +20,8 @@ cd $EA_DIR && ./build.sh
 
 # Build and install agbcc
 TEMP_DIR=$(mktemp -d)
-git clone git@github.com:StanHash/agbcc.git $TEMP_DIR
+git clone git@github.com:pret/agbcc.git $TEMP_DIR -b master
 cd $TEMP_DIR
-git checkout origin/fix-dwarf-debug-line
 ./build.sh
 ./install.sh $BASE_DIR
 ./install.sh $FE6_DIR
